@@ -35,9 +35,9 @@ const NavBar = () => {
   );
 
   return (
-    <div>
-      <div className="navbar bg-base-100">
-        <div className="flex-1">
+    <div className="max-w-screen-lg mx-auto">
+      <div className="navbar bg-base-100 ">
+        <div className="flex-1 ">
           <Link to="/">
             {theme === "myDarkTheme" ? (
               <img className="w-32" src={lightlogo} alt="" />

@@ -1,3 +1,5 @@
+import { FaDog, FaCat } from "react-icons/fa6";
+import { MdPets } from "react-icons/md";
 const Menu = () => {
   return (
     <div>
@@ -33,7 +35,9 @@ const Menu = () => {
                 {/* Navbar menu content here */}
                 <li className="w-1/5">
                   <details>
-                    <summary>Dogs</summary>
+                    <summary>
+                      <FaDog className="text-xl"></FaDog> Dogs
+                    </summary>
                     <ul>
                       <li>
                         <a>Submenu 1</a>
@@ -46,7 +50,9 @@ const Menu = () => {
                 </li>
                 <li className="w-1/5">
                   <details>
-                    <summary>{"Cat's"}</summary>
+                    <summary>
+                      <FaCat className="text-xl"></FaCat> {"Cat's"}
+                    </summary>
                     <ul>
                       <li>
                         <a>Submenu 1</a>
@@ -59,7 +65,9 @@ const Menu = () => {
                 </li>
                 <li className="w-1/5">
                   <details>
-                    <summary>Other {"Pet's"}</summary>
+                    <summary>
+                      <MdPets className="text-xl"></MdPets> Other {"Pet's"}
+                    </summary>
                     <ul>
                       <li>
                         <a>Submenu 1</a>
@@ -93,7 +101,9 @@ const Menu = () => {
             {/* Sidebar content here */}
             <li>
               <details>
-                <summary>Dogs</summary>
+                <summary>
+                  <FaDog className="text-xl"></FaDog> Dogs
+                </summary>
                 <ul>
                   <li>
                     <a>Submenu 1</a>
@@ -106,7 +116,9 @@ const Menu = () => {
             </li>
             <li>
               <details>
-                <summary>{"Cat's"}</summary>
+                <summary>
+                  <FaCat className="text-xl"></FaCat> {"Cat's"}
+                </summary>
                 <ul>
                   <li>
                     <a>Submenu 1</a>
@@ -119,7 +131,10 @@ const Menu = () => {
             </li>
             <li>
               <details>
-                <summary>Other {"Pet's"}</summary>
+                <summary>
+                  {" "}
+                  <MdPets className="text-xl"></MdPets>Other {"Pet's"}
+                </summary>
                 <ul>
                   <li>
                     <a>Submenu 1</a>

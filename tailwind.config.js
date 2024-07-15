@@ -11,7 +11,7 @@ export default {
       {
         mytheme: {
           primary: "#5D2E46",
-          secondary: "#AD6A6C",
+          secondary: "#E8D6CB",
           accent: "#37cdbe",
           neutral: "#3d4451",
           "base-100": "#E8D6CB",
@@ -21,7 +21,7 @@ export default {
       {
         myDarkTheme: {
           primary: "#E8D6CB",
-          secondary: "#AD6A6C",
+          secondary: "#5D2E46",
           accent: "#37cdbe",
           neutral: "#3d4451",
           "base-100": "#5D2E46",
