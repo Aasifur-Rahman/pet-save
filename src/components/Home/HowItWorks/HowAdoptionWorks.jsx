@@ -1,11 +1,11 @@
 import petAdoptionImg from "../../../assets/Images/pet_adoption4S.png";
 const HowAdoptionWorks = () => {
   return (
-    <div>
+    <div className="max-w-screen-lg mx-auto">
       <div className="lg:flex md:flex justify-center items-center gap-10">
         <div className="">
           <img
-            className="w-2/3 lg:w-full md:w-full hover:scale-105 transition-all ease-in-out rounded-xl hover:rounded-xl"
+            className="w-full  hover:scale-105 transition-all ease-in-out rounded-xl hover:rounded-xl"
             src={petAdoptionImg}
             alt=""
           />

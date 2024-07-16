@@ -1,11 +1,11 @@
-import bannerimg from "../../../assets/Images/ai-generated-bengal-cat-peeking-out-from-behind-a-white-banner-free-photo-removebg-preview.png";
+import bannerimg from "../../../assets/Images/—Pngtree—cute dogs peeking cartoon_15020940.png";
 const Banner = () => {
   return (
     <div>
       <div className="bg-primary w-full h-96 rounded-lg relative flex justify-center items-center">
         <div className="bg-cover bg-center w-full h-full">
           <img
-            className="absolute w-1/2 bottom-1 md:bottom-2 lg:bottom-3 right-1/2 transform translate-y-1/4  "
+            className="absolute w-1/2 lg:w-1/3 bottom-0  right-1/2 transform translate-y-1/3  "
             src={bannerimg}
             alt="cat peeking"
           />
