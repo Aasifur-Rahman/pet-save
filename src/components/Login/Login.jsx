@@ -1,12 +1,24 @@
+import { useContext } from "react";
 import NavBar from "../../Shared/NavBar";
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
+import { AuthContext } from "../../Providers/AuthProvider";
+
 const Login = () => {
+  const { userLogIn } = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
+    userLogIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -41,7 +53,7 @@ const Login = () => {
                         type="email"
                         name="email"
                         placeholder="email"
-                        className="input input-bordered"
+                        className="input input-bordered focus:bg-primary focus:text-secondary "
                         required
                       />
                     </div>
