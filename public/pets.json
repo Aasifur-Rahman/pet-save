@@ -1,0 +1,76 @@
+{
+    "pets": [
+      {
+        "id": 1,
+        "name": "Bella",
+        "type": "dog",
+        "category": "rescued",
+        "image": "https://example.com/images/bella.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Max",
+        "type": "cat",
+        "category": "for adoption",
+        "image": "https://example.com/images/max.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "type": "rabbit",
+        "category": "fostering home",
+        "image": "https://example.com/images/charlie.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Lucy",
+        "type": "dog",
+        "category": "rescued",
+        "image": "https://example.com/images/lucy.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Daisy",
+        "type": "cat",
+        "category": "for adoption",
+        "image": "https://example.com/images/daisy.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Molly",
+        "type": "dog",
+        "category": "fostering home",
+        "image": "https://example.com/images/molly.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Oliver",
+        "type": "cat",
+        "category": "rescued",
+        "image": "https://example.com/images/oliver.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Oscar",
+        "type": "dog",
+        "category": "for adoption",
+        "image": "https://example.com/images/oscar.jpg"
+      },
+      {
+        "id": 9,
+        "name": "Lola",
+        "type": "hamster",
+        "category": "fostering home",
+        "image": "https://example.com/images/lola.jpg"
+      },
+      {
+        "id": 10,
+        "name": "Leo",
+        "type": "cat",
+        "category": "rescued",
+        "image": "https://example.com/images/leo.jpg"
+      }
+    ]
+  }
+  
+  

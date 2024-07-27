@@ -1,5 +1,6 @@
 import { FaDog, FaCat } from "react-icons/fa6";
 import { MdPets } from "react-icons/md";
+import { Link } from "react-router-dom";
 const Menu = () => {
   return (
     <div>
@@ -106,10 +107,13 @@ const Menu = () => {
                 </summary>
                 <ul>
                   <li>
-                    <a>Submenu 1</a>
+                    <Link>For Adoption</Link>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <Link>Rescued Dogs</Link>
+                  </li>
+                  <li>
+                    <Link>Lost Dogs</Link>
                   </li>
                 </ul>
               </details>
@@ -121,10 +125,13 @@ const Menu = () => {
                 </summary>
                 <ul>
                   <li>
-                    <a>Submenu 1</a>
+                    <Link>For Adoption</Link>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <Link>Rescued {"Cat's"}</Link>
+                  </li>
+                  <li>
+                    <Link>Lost {"Cat's"}</Link>
                   </li>
                 </ul>
               </details>
@@ -137,13 +144,22 @@ const Menu = () => {
                 </summary>
                 <ul>
                   <li>
-                    <a>Submenu 1</a>
+                    <Link>Birds</Link>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <Link>Horse</Link>
+                  </li>
+                  <li>
+                    <Link>Goat</Link>
+                  </li>
+                  <li>
+                    <Link>Lamb</Link>
                   </li>
                 </ul>
               </details>
+            </li>
+            <li>
+              <Link>Lost Pet List</Link>
             </li>
           </ul>
         </div>

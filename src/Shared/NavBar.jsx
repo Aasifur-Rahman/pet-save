@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import logo from "../assets/Logo/Pet save logo.png";
 import lightlogo from "../assets/Logo/Pet save logo light.png";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import { ThemeContext } from "../Providers/ThemeProvider";
 
 const NavBar = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "mytheme"
-  );
+  const { user, logOut } = useContext(AuthContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleToggle = (e) => {
     if (e.target.checked) {
@@ -17,16 +18,20 @@ const NavBar = () => {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
+  const handleSignOut = () => {
+    logOut();
+  };
 
   const navLinks = (
     <>
       <li>
-        <Link to="/login">Login</Link>
+        {user ? (
+          <button onClick={handleSignOut}>
+            <Link to="/login">Sign out</Link>
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </li>
       <li>
         <Link to="/signUp">Sign Up</Link>
