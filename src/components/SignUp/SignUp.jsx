@@ -3,9 +3,10 @@ import NavBar from "../../Shared/NavBar";
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -19,6 +20,16 @@ const SignUp = () => {
         console.log(result.user);
         // updateProfile
         updateUser(name);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result.user);
       })
       .catch((error) => {
         console.log(error.message);
@@ -92,8 +103,14 @@ const SignUp = () => {
                             </Link>
                           </p>
                         </label>
+                        <div className="flex justify-center items-center mt-3">
+                          <FcGoogle
+                            onClick={handleGoogleSignIn}
+                            className="text-3xl lg:text-4xl "
+                          />
+                        </div>
                       </div>
-                      <div className="form-control mt-6">
+                      <div className="form-control mt-3">
                         <button className="btn btn-primary">Login</button>
                       </div>
                     </form>

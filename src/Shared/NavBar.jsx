@@ -5,6 +5,7 @@ import lightlogo from "../assets/Logo/Pet save logo light.png";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { ThemeContext } from "../Providers/ThemeProvider";
+import { FaSignOutAlt } from "react-icons/fa";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -24,18 +25,20 @@ const NavBar = () => {
 
   const navLinks = (
     <>
-      <li>
-        {user ? (
-          <button onClick={handleSignOut}>
-            <Link to="/login">Sign out</Link>
-          </button>
-        ) : (
-          <Link to="/login">Login</Link>
-        )}
-      </li>
-      <li>
-        <Link to="/signUp">Sign Up</Link>
-      </li>
+      {user ? (
+        <button className="flex items-center  " onClick={handleSignOut}>
+          <FaSignOutAlt className="ml-1 text-2xl" />
+        </button>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -51,17 +54,17 @@ const NavBar = () => {
             )}
           </Link>
         </div>
-        <div className="flex-none">
+        <div className="flex flex-row-reverse mt-2 ">
           <div>
             <input
               checked={theme === "mytheme" ? false : true}
               onChange={handleToggle}
               type="checkbox"
               value="synthwave"
-              className="toggle theme-controller"
+              className="toggle theme-controller mt-1"
             />
           </div>
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-4">{navLinks}</ul>
         </div>
       </div>
       <div className=" w-full">

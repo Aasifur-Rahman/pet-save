@@ -41,10 +41,13 @@ const Menu = () => {
                     </summary>
                     <ul>
                       <li>
-                        <a>Submenu 1</a>
+                        <Link>For Adoption</Link>
                       </li>
                       <li>
-                        <a>Submenu 2</a>
+                        <Link>Rescued Dogs</Link>
+                      </li>
+                      <li>
+                        <Link>Lost Dogs</Link>
                       </li>
                     </ul>
                   </details>
@@ -56,10 +59,13 @@ const Menu = () => {
                     </summary>
                     <ul>
                       <li>
-                        <a>Submenu 1</a>
+                        <Link>For Adoption</Link>
                       </li>
                       <li>
-                        <a>Submenu 2</a>
+                        <Link>Rescued {"Cat's"}</Link>
+                      </li>
+                      <li>
+                        <Link>Lost {"Cat's"}</Link>
                       </li>
                     </ul>
                   </details>
@@ -71,22 +77,22 @@ const Menu = () => {
                     </summary>
                     <ul>
                       <li>
-                        <a>Submenu 1</a>
+                        <Link>Birds</Link>
                       </li>
                       <li>
-                        <a>Submenu 2</a>
+                        <Link>Horse</Link>
                       </li>
                       <li>
-                        <a>Submenu 4</a>
+                        <Link>Goat</Link>
                       </li>
                       <li>
-                        <a>Submenu 5</a>
+                        <Link>Lamb</Link>
                       </li>
                     </ul>
                   </details>
                 </li>
                 <li className="w-1/5">
-                  <a>Lost Pet List</a>
+                  <Link to="/allpets">{"All Pet's"}</Link>
                 </li>
               </ul>
             </div>
@@ -159,7 +165,7 @@ const Menu = () => {
               </details>
             </li>
             <li>
-              <Link>Lost Pet List</Link>
+              <Link to="/allpets">{"All Pet's"}</Link>
             </li>
           </ul>
         </div>

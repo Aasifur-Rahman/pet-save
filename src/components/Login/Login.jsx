@@ -2,9 +2,10 @@ import { useContext } from "react";
 import NavBar from "../../Shared/NavBar";
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { userLogIn } = useContext(AuthContext);
+  const { userLogIn, googleSignIn } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,6 +19,16 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  const handleGoogleLogIn = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
       });
   };
 
@@ -73,6 +84,12 @@ const Login = () => {
                           Forgot password?
                         </a>
                       </label>
+                      <div className="flex justify-center items-center mt-3">
+                        <FcGoogle
+                          onClick={handleGoogleLogIn}
+                          className="text-3xl lg:text-4xl "
+                        />
+                      </div>
                     </div>
                     <div className="form-control mt-6">
                       <button className="btn btn-primary">Login</button>

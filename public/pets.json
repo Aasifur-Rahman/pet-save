@@ -5,70 +5,70 @@
         "name": "Bella",
         "type": "dog",
         "category": "rescued",
-        "image": "https://example.com/images/bella.jpg"
+        "image": "https://images.unsplash.com/photo-1532592333381-a141e3f197c9?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 2,
         "name": "Max",
         "type": "cat",
         "category": "for adoption",
-        "image": "https://example.com/images/max.jpg"
+        "image": "https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 3,
         "name": "Charlie",
         "type": "rabbit",
         "category": "fostering home",
-        "image": "https://example.com/images/charlie.jpg"
+        "image": "https://images.unsplash.com/photo-1535241749838-299277b6305f?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 4,
         "name": "Lucy",
         "type": "dog",
         "category": "rescued",
-        "image": "https://example.com/images/lucy.jpg"
+        "image": "https://images.unsplash.com/photo-1491604612772-6853927639ef?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 5,
         "name": "Daisy",
         "type": "cat",
         "category": "for adoption",
-        "image": "https://example.com/images/daisy.jpg"
+        "image": "https://images.unsplash.com/photo-1518288774672-b94e808873ff?q=80&w=1338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 6,
         "name": "Molly",
         "type": "dog",
         "category": "fostering home",
-        "image": "https://example.com/images/molly.jpg"
+        "image": "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1262&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 7,
         "name": "Oliver",
         "type": "cat",
         "category": "rescued",
-        "image": "https://example.com/images/oliver.jpg"
+        "image": "https://images.unsplash.com/photo-1503777119540-ce54b422baff?q=80&w=1286&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 8,
         "name": "Oscar",
         "type": "dog",
         "category": "for adoption",
-        "image": "https://example.com/images/oscar.jpg"
+        "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 9,
         "name": "Lola",
         "type": "hamster",
         "category": "fostering home",
-        "image": "https://example.com/images/lola.jpg"
+        "image": "https://images.unsplash.com/photo-1655527291171-73c4677c3281?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "id": 10,
         "name": "Leo",
         "type": "cat",
         "category": "rescued",
-        "image": "https://example.com/images/leo.jpg"
+        "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       }
     ]
   }
