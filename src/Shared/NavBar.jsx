@@ -9,6 +9,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const { theme, setTheme } = useContext(ThemeContext);
 
   const handleToggle = (e) => {
@@ -26,9 +27,15 @@ const NavBar = () => {
   const navLinks = (
     <>
       {user ? (
-        <button className="flex items-center  " onClick={handleSignOut}>
-          <FaSignOutAlt className="ml-1 text-2xl" />
-        </button>
+        <>
+          <div className="flex justify-end gap-2">
+            <img className="w-1/4 rounded-full" src={user?.photoURL} alt="" />
+
+            <button className="flex items-center  " onClick={handleSignOut}>
+              <FaSignOutAlt className="ml-1 text-2xl" />
+            </button>
+          </div>
+        </>
       ) : (
         <>
           <li>
@@ -43,32 +50,34 @@ const NavBar = () => {
   );
 
   return (
-    <div className="max-w-screen-lg mx-auto">
-      <div className="navbar bg-base-100 ">
-        <div className="flex-1 ">
-          <Link to="/">
-            {theme === "myDarkTheme" ? (
-              <img className="w-32" src={lightlogo} alt="" />
-            ) : (
-              <img className="w-32" src={logo} alt="" />
-            )}
-          </Link>
-        </div>
-        <div className="flex flex-row-reverse mt-2 ">
-          <div>
-            <input
-              checked={theme === "mytheme" ? false : true}
-              onChange={handleToggle}
-              type="checkbox"
-              value="synthwave"
-              className="toggle theme-controller mt-1"
-            />
+    <div className="mx-auto">
+      <div className="xl:max-w-screen-xl lg:max-w-screen-lg mx-auto">
+        <div className="navbar bg-base-100 ">
+          <div className="flex-1 ">
+            <Link to="/">
+              {theme === "myDarkTheme" ? (
+                <img className="w-32" src={lightlogo} alt="" />
+              ) : (
+                <img className="w-32" src={logo} alt="" />
+              )}
+            </Link>
           </div>
-          <ul className="menu menu-horizontal px-4">{navLinks}</ul>
+          <div className="flex flex-row-reverse mt-2 ">
+            <div>
+              <input
+                checked={theme === "mytheme" ? false : true}
+                onChange={handleToggle}
+                type="checkbox"
+                value="synthwave"
+                className="toggle theme-controller mt-1"
+              />
+            </div>
+            <ul className="menu menu-horizontal px-4">{navLinks}</ul>
+          </div>
         </div>
       </div>
-      <div className=" w-full">
-        <Menu className=""></Menu>
+      <div className=" w-full  ">
+        <Menu></Menu>
       </div>
     </div>
   );

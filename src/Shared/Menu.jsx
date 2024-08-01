@@ -3,12 +3,12 @@ import { MdPets } from "react-icons/md";
 import { Link } from "react-router-dom";
 const Menu = () => {
   return (
-    <div>
+    <div className="">
       <div className="drawer z-10">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
-          <div className="navbar bg-base-100 w-full  ">
+          <div className="navbar bg-base-200  w-full  ">
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"
@@ -32,14 +32,14 @@ const Menu = () => {
             </div>
 
             <div className="hidden flex-none lg:block w-full ">
-              <ul className="menu menu-horizontal w-full gap-10 justify-center">
+              <ul className="menu menu-horizontal w-full gap-4 justify-center">
                 {/* Navbar menu content here */}
-                <li className="w-1/5">
+                <li className="w-1/6">
                   <details>
                     <summary>
                       <FaDog className="text-xl"></FaDog> Dogs
                     </summary>
-                    <ul>
+                    <ul className="w-full">
                       <li>
                         <Link>For Adoption</Link>
                       </li>
@@ -52,7 +52,7 @@ const Menu = () => {
                     </ul>
                   </details>
                 </li>
-                <li className="w-1/5">
+                <li className="w-1/6">
                   <details>
                     <summary>
                       <FaCat className="text-xl"></FaCat> {"Cat's"}
@@ -70,7 +70,7 @@ const Menu = () => {
                     </ul>
                   </details>
                 </li>
-                <li className="w-1/5">
+                <li className="w-1/6">
                   <details>
                     <summary>
                       <MdPets className="text-xl"></MdPets> Other {"Pet's"}
@@ -91,7 +91,22 @@ const Menu = () => {
                     </ul>
                   </details>
                 </li>
-                <li className="w-1/5">
+                <li className="w-1/6">
+                  <details>
+                    <summary>
+                      <MdPets className="text-xl"></MdPets> Post Mission
+                    </summary>
+                    <ul>
+                      <li>
+                        <Link>Lost Pet</Link>
+                      </li>
+                      <li>
+                        <Link>Injured Animal</Link>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+                <li className="w-1/6">
                   <Link to="/allpets">{"All Pet's"}</Link>
                 </li>
               </ul>
@@ -166,6 +181,9 @@ const Menu = () => {
             </li>
             <li>
               <Link to="/allpets">{"All Pet's"}</Link>
+            </li>
+            <li>
+              <Link to="/Lost Pet's input">{"Lost Pet's input"}</Link>
             </li>
           </ul>
         </div>
