@@ -3,15 +3,15 @@ import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import Footer from "../../Shared/Footer";
-import SearchPet from "../../Shared/SearchPet/SearchPet";
+import PetListMenu from "./PetListMenu/PetListMenu";
 
 const Home = () => {
   return (
     <div>
       <NavBar></NavBar>
       <Banner></Banner>
-      <div className="mt-40 ">
-        <SearchPet></SearchPet>
+      <div>
+        <PetListMenu></PetListMenu>
       </div>
       <HowItWorks></HowItWorks>
       <AboutUs></AboutUs>

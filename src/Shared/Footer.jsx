@@ -1,10 +1,10 @@
-import { useContext } from "react";
 import lightlogo from "../assets/Logo/Pet save logo.png";
 import logo from "../assets/Logo/Pet save logo light.png";
-import { ThemeContext } from "../Providers/ThemeProvider";
+
+import useTheme from "../hooks/useTheme";
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   return (
     <div>

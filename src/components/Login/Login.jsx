@@ -1,11 +1,11 @@
-import { useContext } from "react";
 import NavBar from "../../Shared/NavBar";
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const { userLogIn, googleSignIn } = useContext(AuthContext);
+  const { userLogIn, googleSignIn } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();

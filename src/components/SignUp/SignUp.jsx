@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import NavBar from "../../Shared/NavBar";
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
-  const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignIn } = useAuth();
 
   const handleSignUp = (e) => {
     e.preventDefault();

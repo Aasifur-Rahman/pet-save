@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import logo from "../assets/Logo/Pet save logo.png";
 import lightlogo from "../assets/Logo/Pet save logo light.png";
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
-import { ThemeContext } from "../Providers/ThemeProvider";
+
 import { FaSignOutAlt } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
+import useTheme from "../hooks/useTheme";
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  console.log(user);
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { user, logOut } = useAuth();
+
+  const { theme, setTheme } = useTheme();
 
   const handleToggle = (e) => {
     if (e.target.checked) {

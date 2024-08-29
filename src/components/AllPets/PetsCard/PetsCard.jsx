@@ -1,15 +1,20 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const Pets = ({ pet }) => {
-  const { name, type, category, image } = pet;
+const PetsCard = ({ pet }) => {
+  const { _id, name, type, category, image } = pet;
+
   return (
     <div>
-      <div className="card  hover:scale-105 transition-all ease-in-out bg-base-200 lg:w-80 md:w-80 w-80  shadow-xl mb-5">
+      <Link
+        to={`/pets/${_id}`}
+        className="card  hover:scale-105 transition-all ease-in-out bg-base-200 lg:w-80 md:w-80 w-80  shadow-xl mb-5"
+      >
         <figure>
           <img
             className=" h-64 w-full object-cover  object-center"
             src={image}
-            alt="Shoes"
+            alt="pets"
           />
         </figure>
         <div className="card-body ">
@@ -30,13 +35,13 @@ const Pets = ({ pet }) => {
             </button>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
 
-export default Pets;
+export default PetsCard;
 
-Pets.propTypes = {
+PetsCard.propTypes = {
   pet: PropTypes.object.isRequired,
 };
