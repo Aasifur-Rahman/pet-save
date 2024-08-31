@@ -183,7 +183,21 @@ const Menu = () => {
               <Link to="/allpets">{"All Pet's"}</Link>
             </li>
             <li>
-              <Link to="/Lost Pet's input">{"Lost Pet's input"}</Link>
+              <li className="w-full">
+                <details>
+                  <summary>
+                    <MdPets className="text-xl"></MdPets> Post Mission
+                  </summary>
+                  <ul>
+                    <li>
+                      <Link to="/lostpet">Lost Pet</Link>
+                    </li>
+                    <li>
+                      <Link to="/injuredAnimal">Injured Animal</Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
             </li>
           </ul>
         </div>

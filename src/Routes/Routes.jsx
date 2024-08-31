@@ -6,6 +6,7 @@ import Root from "../Layout/Root";
 import SignUp from "../components/SignUp/SignUp";
 import AllPets from "../components/AllPets/AllPets";
 import Pets from "../components/AllPets/Pets/Pets";
+import LostPet from "../components/AllPets/LostPet/LostPet";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         element: <Pets></Pets>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/pets/${params.id}`),
+      },
+      {
+        path: "/lostpet",
+        element: <LostPet></LostPet>,
       },
     ],
   },

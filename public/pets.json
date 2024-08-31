@@ -1,19 +1,30 @@
  [
       {
-        
         "name": "Bella",
         "type": "dog",
         "category": "rescued",
         "location": "Dhaka",
-        "image": "https://images.unsplash.com/photo-1532592333381-a141e3f197c9?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+          "img1" : "https://images.unsplash.com/photo-1532592333381-a141e3f197c9?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "img2" : "https://focus.belfasttelegraph.co.uk/thumbor/vGFvi4sp4jC3Tpgw4DylTpBDFDc=/0x53:1500x880/1280x853/prod-mh-ireland/27a18746-9530-11ed-baf4-0210609a3fe2.JPG",
+        "img3" : "https://live.staticflickr.com/5703/31273911822_97d622307c_z.jpg",
+        "img4" : "https://sherlockenglishcockers.com/wp-content/uploads/2014/05/29f2fa_17f7cd0e2b3b4f159c28e23c3a1af697mv2_d_3888_2592_s_4_2.jpg"
+        }
+
       },
+        
       {
       
         "name": "Max",
         "type": "cat",
         "category": "for adoption",
         "location": "Cumilla",
-        "image": "https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+        "img1" : "https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "img2": "https://media.istockphoto.com/id/539833558/photo/shouting-kitten.jpg?s=612x612&w=0&k=20&c=0oWlBMBY4u7tRg6ANeU5s2UQu2mB5DSAT1lxYF4E6po=",
+        "img3": "https://i.pinimg.com/736x/87/07/e2/8707e20fee9bea47c4ecb95bb497a132.jpg",
+        "img4": "https://cdn.pixabay.com/photo/2013/11/22/23/00/meow-216005_1280.jpg"
+        }
       },
       {
       
@@ -21,7 +32,13 @@
         "type": "rabbit",
         "category": "fostering home",
         "location": "Chittagong",
-        "image": "https://images.unsplash.com/photo-1535241749838-299277b6305f?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+        "img1" : "https://images.unsplash.com/photo-1535241749838-299277b6305f?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
+        "img2": "https://as2.ftcdn.net/v2/jpg/04/89/05/63/1000_F_489056350_P6T927bJW4k6xe4xFLrufU272FXqXvbg.jpg",
+        "img3": "https://i.pinimg.com/564x/c4/c2/53/c4c253eee027c0e89d16faa825563d88.jpg",
+        "img4": "https://www.kimballstock.com/pix/ani/p/09/rab-01-gr0364-01p.jpg"
+        }
       },
       {
       
@@ -29,7 +46,12 @@
         "type": "dog",
         "category": "rescued",
         "location": "Dhaka",
-        "image": "https://images.unsplash.com/photo-1491604612772-6853927639ef?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": { 
+        "img1": "https://images.unsplash.com/photo-1491604612772-6853927639ef?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "img2": "https://i.pinimg.com/originals/04/33/81/0433811c52873d92651b40747f68df2f.jpg",
+        "img3": "https://pbs.twimg.com/media/ELF4eTUX0AAPr3-.jpg",
+        "img4": "https://pbs.twimg.com/media/ELF4bGQXYAAA-pc.jpg:large"
+      }
       },
       {
      
@@ -37,7 +59,11 @@
         "type": "cat",
         "category": "for adoption",
         "location": "Dhaka",
-        "image": "https://images.unsplash.com/photo-1518288774672-b94e808873ff?q=80&w=1338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images" : {
+        "img1": "https://images.unsplash.com/photo-1518288774672-b94e808873ff?q=80&w=1338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "img2": "https://media.istockphoto.com/id/950927814/photo/pure-white-cat-with-odd-eyes.jpg?s=612x612&w=0&k=20&c=tP3m8HRYTfsuA5lFwy7BIBRcyTDXsgNPh_jCk8Spx4I=",
+        "img3": "https://res.cloudinary.com/petrescue/image/upload/b_auto:predominant,c_pad,f_auto,h_648,w_648/ow2qefl0zm1gqkiqag6v.jpg",
+        "img4": "https://i.pinimg.com/550x/55/ab/43/55ab43f10c7f87ec602d4ac7b5037137.jpg"}
       },
       {
      
@@ -45,7 +71,12 @@
         "type": "dog",
         "category": "fostering home",
         "location": "Dhaka",
-        "image": "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1262&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+          "img1": "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1262&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "img2": "https://images.squarespace-cdn.com/content/v1/622c24454face56d0a222475/531ebd3e-b5e2-4e3c-a509-2e31b4b564b7/duluth_mn_pet_photographer15.jpg",
+        "img3": "https://d10j3mvrs1suex.cloudfront.net/s:bzglfiles/u/614312/9553b89329a0f444cab6856c475d37b413df3a13/original/37048.jpg/!!/b:W1sic2l6ZSIsInBob3RvIl1d/meta:eyJzcmNCdWNrZXQiOiJiemdsZmlsZXMifQ==.jpg",
+        "img4": "https://images.unsplash.com/photo-1617640040092-00c8d82807d3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw="
+        }
       },
       {
       
@@ -53,7 +84,12 @@
         "type": "cat",
         "category": "rescued",
         "location": "Cumilla",
-        "image": "https://images.unsplash.com/photo-1503777119540-ce54b422baff?q=80&w=1286&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+          "img1": "https://images.unsplash.com/photo-1503777119540-ce54b422baff?q=80&w=1286&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "img2": "https://i.guim.co.uk/img/media/8a13052d4db7dcd508af948e5db7b04598e03190/0_294_5616_3370/master/5616.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=f7309c867722dc2d4873688045b799ea",
+        "img3": "https://res.cloudinary.com/petrescue/image/upload/c_crop,g_custom/v1619665116/sb8guaf4gs2dvi5hkqfo.jpg",
+        "img4": "https://media.istockphoto.com/id/1226974816/photo/curious-calico-cat-walking-outside.jpg?s=612x612&w=0&k=20&c=Es5gXaKBvxoQiXGSpgPyAG4u6XwHx5mA0PQQOVIPSSk="
+        }
       },
       {
        
@@ -61,7 +97,12 @@
         "type": "dog",
         "category": "for adoption",
         "location": "Chittagong",
-        "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+          "img1": "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "img2": "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
+          "img3" : "https://www.arthipo.com/image/cache/catalog/poster/animals/panimal11-alert-pug-puppy-resim-poster-kanvas-photo-1000x1000w.webp",
+          "img4" : "https://images.unsplash.com/photo-1534942642400-39e0b996f73f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
       },
       {
         
@@ -69,7 +110,12 @@
         "type": "hamster",
         "category": "fostering home",
         "location": "Chittagong",
-        "image": "https://images.unsplash.com/photo-1655527291171-73c4677c3281?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+          "img1" : "https://images.unsplash.com/photo-1655527291171-73c4677c3281?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "img2" : "https://images.unsplash.com/photo-1658938821225-4f8dfa868e59?q=80&w=1041&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "img3": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*IhdGIzBVLP86ZqXy",
+          "img4" : "https://cdn.create.vista.com/api/media/small/89037292/stock-photo-guinea-pig-on-a-green-background"
+        }
       },
       {
        
@@ -77,9 +123,16 @@
         "type": "cat",
         "category": "rescued",
         "location": "Dhaka",
-        "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "images": {
+          "img1" : "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "img2" : "https://static.wixstatic.com/media/ca30c1_9655a145263149748db8e55f5215cdc4~mv2.jpeg/v1/fill/w_640,h_480,fp_0.51_0.35,q_80,usm_0.66_1.00_0.01,enc_auto/ca30c1_9655a145263149748db8e55f5215cdc4~mv2.jpeg",
+          "img3" : "https://www.kassiabi.ee/wp-content/uploads/2018/12/galeriiv90854.jpg",
+          "img4" : "https://www.kassiabi.ee/wp-content/uploads/2018/12/DSC06013-1024x683.jpg"
+        } 
       }
-    ]
+ ]
+      
+    
 
   
   

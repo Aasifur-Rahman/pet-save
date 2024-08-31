@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const PetsCard = ({ pet }) => {
-  const { _id, name, type, category, image } = pet;
+  const { _id, name, type, category, images } = pet;
 
   return (
     <div>
@@ -13,7 +13,7 @@ const PetsCard = ({ pet }) => {
         <figure>
           <img
             className=" h-64 w-full object-cover  object-center"
-            src={image}
+            src={images.img1}
             alt="pets"
           />
         </figure>
