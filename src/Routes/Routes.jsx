@@ -7,6 +7,7 @@ import SignUp from "../components/SignUp/SignUp";
 import AllPets from "../components/AllPets/AllPets";
 import Pets from "../components/AllPets/Pets/Pets";
 import LostPet from "../components/AllPets/LostPet/LostPet";
+import AdoptionPost from "../components/AdoptionPost/AdoptionPost";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/lostpet",
         element: <LostPet></LostPet>,
+      },
+      {
+        path: "/adoptionpost",
+        element: <AdoptionPost></AdoptionPost>,
       },
     ],
   },

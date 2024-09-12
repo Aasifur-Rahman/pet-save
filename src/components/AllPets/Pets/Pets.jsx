@@ -5,7 +5,7 @@ import { useState } from "react";
 const Pets = () => {
   const pet = useLoaderData();
   const { name, type, category, location, images } = pet;
-  const [activeImg, setActiveImg] = useState(images.img2);
+  const [activeImg, setActiveImg] = useState(images.img1);
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Pets = () => {
           <h3 className="mt-2 ml-1 ">{category}</h3>
         </div>
         <div className="lg:flex md:flex flex w-full  justify-around mt-4">
-          <div className="w-1/2">
+          <div className="w-1/2 relative">
             <img
               className="  rounded-lg h-full w-full  object-cover  aspect-square  "
               src={activeImg}
@@ -26,6 +26,7 @@ const Pets = () => {
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 items-center ">
             <img
+              id="slide1"
               className="w-36 h-full object-cover  rounded-lg"
               src={images.img1}
               alt="other photos"

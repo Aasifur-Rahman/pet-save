@@ -46,9 +46,6 @@ const Menu = () => {
                       <li>
                         <Link>Rescued Dogs</Link>
                       </li>
-                      <li>
-                        <Link>Lost Dogs</Link>
-                      </li>
                     </ul>
                   </details>
                 </li>
@@ -63,9 +60,6 @@ const Menu = () => {
                       </li>
                       <li>
                         <Link>Rescued {"Cat's"}</Link>
-                      </li>
-                      <li>
-                        <Link>Lost {"Cat's"}</Link>
                       </li>
                     </ul>
                   </details>
@@ -94,14 +88,14 @@ const Menu = () => {
                 <li className="w-1/6">
                   <details>
                     <summary>
-                      <MdPets className="text-xl"></MdPets> Post Mission
+                      <MdPets className="text-xl"></MdPets> Adoption & Lost Pet
                     </summary>
                     <ul>
                       <li>
-                        <Link>Lost Pet</Link>
+                        <Link to="/adoptionpost">Adoption post</Link>
                       </li>
                       <li>
-                        <Link>Injured Animal</Link>
+                        <Link to="/lostpet">Lost Pet</Link>
                       </li>
                     </ul>
                   </details>
@@ -133,9 +127,6 @@ const Menu = () => {
                   <li>
                     <Link>Rescued Dogs</Link>
                   </li>
-                  <li>
-                    <Link>Lost Dogs</Link>
-                  </li>
                 </ul>
               </details>
             </li>
@@ -150,9 +141,6 @@ const Menu = () => {
                   </li>
                   <li>
                     <Link>Rescued {"Cat's"}</Link>
-                  </li>
-                  <li>
-                    <Link>Lost {"Cat's"}</Link>
                   </li>
                 </ul>
               </details>
@@ -179,25 +167,25 @@ const Menu = () => {
                 </ul>
               </details>
             </li>
+
+            <li className="w-full">
+              <details>
+                <summary>
+                  <MdPets className="text-xl"></MdPets> Adoption & Lost Pet
+                </summary>
+                <ul>
+                  <li>
+                    <Link to="/adoptionpost">Adoption post</Link>
+                  </li>
+                  <li>
+                    <Link to="/lostpet">Lost Pet</Link>
+                  </li>
+                </ul>
+              </details>
+            </li>
+
             <li>
               <Link to="/allpets">{"All Pet's"}</Link>
-            </li>
-            <li>
-              <li className="w-full">
-                <details>
-                  <summary>
-                    <MdPets className="text-xl"></MdPets> Post Mission
-                  </summary>
-                  <ul>
-                    <li>
-                      <Link to="/lostpet">Lost Pet</Link>
-                    </li>
-                    <li>
-                      <Link to="/injuredAnimal">Injured Animal</Link>
-                    </li>
-                  </ul>
-                </details>
-              </li>
             </li>
           </ul>
         </div>

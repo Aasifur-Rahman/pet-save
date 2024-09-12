@@ -9,6 +9,7 @@ import useTheme from "../hooks/useTheme";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
+  // console.log(user.photoURL);
 
   const { theme, setTheme } = useTheme();
 
