@@ -13,7 +13,7 @@ const SearchPet = ({ setSearch }) => {
 
         <div className="flex   md:gap-10 lg:gap-20   w-2/3 mx-auto justify-evenly ">
           <div className=" ml-2 flex justify-center w-full items-center gap-2">
-            <Link to="/dogs" className="flex gap-2 items-center">
+            <Link to="/findADog" className="flex gap-2 items-center">
               <FaDog className="text-2xl"></FaDog>
               <h1 className="lg:block md:block hidden">Find a Dog</h1>
             </Link>

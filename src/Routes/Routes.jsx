@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Login from "../components/Login/Login";
-import Home from "../components/Home/Home";
+import Login from "../Pages/Login/Login";
+import Home from "../Pages/Home/Home";
 import Root from "../Layout/Root";
-import SignUp from "../components/SignUp/SignUp";
-import AllPets from "../components/AllPets/AllPets";
-import Pets from "../components/AllPets/Pets/Pets";
-import LostPet from "../components/AllPets/LostPet/LostPet";
-import AdoptionPost from "../components/AdoptionPost/AdoptionPost";
+import SignUp from "../Pages/SignUp/SignUp";
+import AllPets from "../Pages/AllPets/AllPets";
+import Pets from "../Pages/AllPets/Pets/Pets";
+import LostPet from "../Pages/AllPets/LostPet/LostPet";
+import FosteringHome from "../Pages/AllPets/FosteringHome/FosteringHome";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -39,11 +40,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/lostpet",
-        element: <LostPet></LostPet>,
+        element: (
+          <PrivateRoute>
+            <LostPet></LostPet>
+          </PrivateRoute>
+        ),
       },
       {
-        path: "/adoptionpost",
-        element: <AdoptionPost></AdoptionPost>,
+        path: "/fosteringHome",
+        element: (
+          <PrivateRoute>
+            <FosteringHome></FosteringHome>
+          </PrivateRoute>
+        ),
       },
     ],
   },

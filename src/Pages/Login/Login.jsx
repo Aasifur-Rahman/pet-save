@@ -3,9 +3,13 @@ import catImg from "../../assets/Images/—Pngtree—a blue and white cat_580397
 
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { userLogIn, googleSignIn } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,6 +20,20 @@ const Login = () => {
     userLogIn(email, password)
       .then((result) => {
         console.log(result.user);
+        if (result.user) {
+          Swal.fire({
+            position: "center",
+            imageUrl:
+              "https://i.pinimg.com/originals/95/92/4b/95924b59120f5bd3ac5db9c69cf9c26a.gif",
+            imageWidth: "200px",
+            background: "#E8D6CB",
+            title: "Welcome back, Furry",
+
+            showConfirmButton: false,
+            timer: 50000,
+          });
+          navigate(location?.state ? location?.state : "/");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -26,6 +44,20 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         console.log(result.user);
+        if (result.user) {
+          Swal.fire({
+            position: "center",
+            imageUrl:
+              "https://i.pinimg.com/originals/95/92/4b/95924b59120f5bd3ac5db9c69cf9c26a.gif",
+            imageWidth: "200px",
+            background: "#E8D6CB",
+            title: "Welcome back, Furry",
+
+            showConfirmButton: false,
+            timer: 50000,
+          });
+          navigate(location?.state ? location?.state : "/");
+        }
       })
       .catch((error) => {
         console.log(error.message);

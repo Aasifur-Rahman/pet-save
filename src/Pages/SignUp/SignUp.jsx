@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../../Shared/NavBar";
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, updateUser, googleSignIn } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -20,6 +23,20 @@ const SignUp = () => {
         console.log(result.user);
         // updateProfile
         updateUser(name);
+        if (result.user) {
+          Swal.fire({
+            position: "center",
+            imageUrl:
+              "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
+            imageWidth: "200px",
+            background: "#E8D6CB",
+            title: "Account created successfully",
+
+            showConfirmButton: false,
+            timer: 50000,
+          });
+          navigate(location?.state ? location?.state : "/");
+        }
       })
       .catch((error) => {
         console.log(error.message);
@@ -29,7 +46,20 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
+        if (result.user) {
+          Swal.fire({
+            position: "center",
+            imageUrl:
+              "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
+            imageWidth: "200px",
+            background: "#E8D6CB",
+            title: "Account created successfully",
+
+            showConfirmButton: false,
+            timer: 50000,
+          });
+          navigate(location?.state ? location?.state : "/");
+        }
       })
       .catch((error) => {
         console.log(error.message);

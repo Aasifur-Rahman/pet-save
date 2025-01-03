@@ -1,76 +1,108 @@
-import NavBar from "../../Shared/NavBar";
-import Footer from "../../Shared/Footer";
+import NavBar from "../../../Shared/NavBar";
+import Footer from "../../../Shared/Footer";
 
-const AdoptionPost = () => {
-  const handleAdoptionPost = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const petName = form.petName.value;
-    const petType = form.petType.value;
-    const petNature = form.petNature.value;
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
-    const breed = form.breed.value;
-    const sex = form.sex.value;
-    const friendly = form.friendly.value;
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-    const childFriendly = form.childFriendly.value;
-    const catFriendly = form.catFriendly.value;
-    const pottyTrained = form.pottyTrained.value;
-    const location = form.location.value;
+const FosteringHome = () => {
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const { register, handleSubmit, reset } = useForm();
 
-    const description = form.description.value;
-    const imgUpload = form.imgUpload.value;
+  const onSubmit = async (data) => {
+    const imageFiles = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFiles, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
 
-    const desexed = form.desexed.checked;
-    const vaccinated = form.vaccinated.checked;
-    const microChipped = form.microChipped.checked;
-    const allWormed = form.allWormed.checked;
-    const fleaTreated = form.fleaTreated.checked;
-    const heartWormed = form.heartWormed.checked;
-
-    const medicalNotes = {
-      desexed,
-      vaccinated,
-      microChipped,
-      allWormed,
-      fleaTreated,
-      heartWormed,
-    };
-    console.log(medicalNotes);
-
-    console.log(
-      petName,
-      petType,
-      location,
-      breed,
-      friendly,
-      sex,
-      childFriendly,
-      petNature,
-      imgUpload,
-      pottyTrained,
-      description,
-      medicalNotes,
-      catFriendly
-    );
+    if (res.data.success) {
+      const petDetails = {
+        email: data.email,
+        category: data.category,
+        petsName: data.petName,
+        petType: data.petType,
+        breedType: data.typeofBreed,
+        petAge: data.petAge,
+        friendly: data.friendly,
+        petsNature: data.petsNature,
+        childFriendly: data.childFriendly,
+        catFriendly: data.catFriendly,
+        pottyTrained: data.pottyTrained,
+        location: data.location,
+        medicalNotes: {
+          desexed: data.desexed,
+          vaccinated: data.vaccinated,
+          microChipped: data.microChipped,
+          allWormed: data.allWormed,
+          fleaTreated: data.fleaTreated,
+          heartWormTreated: data.heartWormTreated,
+        },
+        description: data.description,
+        image: res.data.data.display_url,
+        status: "pending",
+      };
+      console.log(petDetails);
+      const fosterRes = await axiosPublic.post(`/user/fosterPost`, petDetails);
+      if (fosterRes.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Foster post was successful`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
   };
   return (
     <div>
       <NavBar></NavBar>
       <div className="mt-10">
         <form
-          onSubmit={handleAdoptionPost}
+          onSubmit={handleSubmit(onSubmit)}
           className="max-w-screen-lg mx-auto mb-10"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 justify-items-center">
             <div className="w-3/5 relative">
-              <label className="pl-2 ">{"Pet's Name"}</label>
+              <label htmlFor="petType" className="pl-2 ">
+                User Email
+              </label>
+              <input
+                defaultValue={user.email}
+                disabled
+                className="input input-bordered w-full mb-4"
+                placeholder="Email"
+                {...register("email", { required: true })}
+              />
+            </div>
+            <div className="w-3/5 relative">
+              <label className="pl-2 ">{"Category"}</label>
               <input
                 type="text"
-                name="petName"
+                disabled
                 className="  input input-bordered  w-full max-w-xs mt-2"
                 required
-                placeholder=" "
+                defaultValue="Fostering Home"
+                placeholder="Fostering Home"
+                {...register("category", { required: true })}
+              />
+            </div>
+            <div className="w-3/5 relative">
+              <label htmlFor="petType" className="pl-2 ">
+                {"Pet's"} Name
+              </label>
+              <input
+                className="input input-bordered w-full mb-4"
+                placeholder="Pet's Name"
+                {...register("petName", { required: true })}
               />
             </div>
 
@@ -79,8 +111,8 @@ const AdoptionPost = () => {
                 Type of pet
               </label>
               <select
-                name="petType"
                 className="select select-bordered  w-full max-w-xs mt-2"
+                {...register("petType", { required: true })}
               >
                 <option disabled defaultValue>
                   Type of Pet
@@ -96,22 +128,33 @@ const AdoptionPost = () => {
                 Type of Breed
               </label>
               <input
-                type="text"
-                name="breed"
-                className="input input-bordered w-full max-w-xs mt-2"
+                className="input input-bordered w-full mb-4"
+                placeholder="Breed Type"
+                {...register("typeofBreed", { required: true })}
               />
             </div>
 
             <div className="w-3/5">
-              <label htmlFor="sex" className="pl-2 ">
-                Sex
+              <label htmlFor="petAge" className="pl-2 ">
+                Age of your pet
+              </label>
+              <input
+                type="text"
+                className="input input-bordered w-full max-w-xs mt-2"
+                {...register("petAge", { required: true })}
+              />
+            </div>
+
+            <div className="w-3/5">
+              <label htmlFor="gender" className="pl-2 ">
+                Gender
               </label>
               <select
-                name="sex"
                 className="select select-bordered  w-full max-w-xs mt-2"
+                {...register("gender", { required: true })}
               >
                 <option disabled defaultValue>
-                  Sex
+                  Gender
                 </option>
                 <option>Male</option>
                 <option>Female</option>
@@ -123,8 +166,8 @@ const AdoptionPost = () => {
                 Is your pet friendly?
               </label>
               <select
-                name="friendly"
                 className="select select-bordered  w-full max-w-xs mt-2"
+                {...register("friendly", { required: true })}
               >
                 <option disabled defaultValue>
                   Is your pet friendly?
@@ -138,9 +181,9 @@ const AdoptionPost = () => {
                 Your {"Pet's"} Nature
               </label>
               <input
-                name="petNature"
                 type="text"
                 className="input input-bordered w-full max-w-xs mt-2"
+                {...register("petsNature", { required: true })}
               />
             </div>
 
@@ -149,8 +192,8 @@ const AdoptionPost = () => {
                 Is your pet child friendly?
               </label>
               <select
-                name="childFriendly"
                 className="select select-bordered  w-full max-w-xs mt-2"
+                {...register("childFriendly", { required: true })}
               >
                 <option disabled defaultValue>
                   Is your pet child friendly?
@@ -164,8 +207,8 @@ const AdoptionPost = () => {
                 Is your pet cat friendly
               </label>
               <select
-                name="catFriendly"
                 className="select select-bordered  w-full max-w-xs mt-2"
+                {...register("catFriendly", { required: true })}
               >
                 <option disabled defaultValue>
                   Is your pet cat friendly?
@@ -182,6 +225,7 @@ const AdoptionPost = () => {
               <select
                 name="pottyTrained"
                 className="select select-bordered  w-full max-w-xs mt-2"
+                {...register("pottyTrained", { required: true })}
               >
                 <option disabled defaultValue>
                   Is your pet potty trained?
@@ -197,10 +241,8 @@ const AdoptionPost = () => {
                 Location to adopt your pet
               </label>
               <input
-                type="text"
-                name="location"
                 className="input input-bordered w-full max-w-xs mt-2"
-                required
+                {...register("location", { required: true })}
               />
             </div>
           </div>
@@ -212,8 +254,8 @@ const AdoptionPost = () => {
                 <span className="label-text mr-2">Desexed </span>
                 <input
                   type="checkbox"
-                  name="desexed"
                   className="checkbox checkbox-primary"
+                  {...register("desexed")}
                 />
               </label>
             </div>
@@ -222,7 +264,7 @@ const AdoptionPost = () => {
                 <span className="label-text mr-2">Vaccinated</span>
                 <input
                   type="checkbox"
-                  name="vaccinated"
+                  {...register("vaccinated")}
                   className="checkbox checkbox-primary"
                 />
               </label>
@@ -232,7 +274,7 @@ const AdoptionPost = () => {
                 <span className="label-text mr-1">Micro-chipped</span>
                 <input
                   type="checkbox"
-                  name="microChipped"
+                  {...register("microChipped")}
                   className="checkbox checkbox-primary"
                 />
               </label>
@@ -242,7 +284,7 @@ const AdoptionPost = () => {
                 <span className="label-text mr-2">All wormed</span>
                 <input
                   type="checkbox"
-                  name="allWormed"
+                  {...register("allWormed")}
                   className="checkbox checkbox-primary"
                 />
               </label>
@@ -252,7 +294,7 @@ const AdoptionPost = () => {
                 <span className="label-text mr-2">Flea treated</span>
                 <input
                   type="checkbox"
-                  name="fleaTreated"
+                  {...register("fleaTreated")}
                   className="checkbox checkbox-primary"
                 />
               </label>
@@ -262,7 +304,7 @@ const AdoptionPost = () => {
                 <span className="label-text mr-2">Heart worm treated</span>
                 <input
                   type="checkbox"
-                  name="heartWormed"
+                  {...register("heartWormTreated")}
                   className="checkbox checkbox-primary"
                 />
               </label>
@@ -271,9 +313,9 @@ const AdoptionPost = () => {
 
           <div className="flex justify-center mt-8">
             <textarea
-              name="description"
               placeholder="Description"
               className=" textarea textarea-bordered rounded-lg w-5/6 h-32"
+              {...register("description", { required: true })}
             ></textarea>
           </div>
 
@@ -283,9 +325,9 @@ const AdoptionPost = () => {
             </h4>
             <div className=" mt-10 flex justify-center">
               <input
+                {...register("image", { required: true })}
                 type="file"
-                name="imgUpload"
-                className="file-input file-input-bordered w-full max-w-xs"
+                className="file-input w-full max-w-xs"
               />
             </div>
           </div>
@@ -302,4 +344,4 @@ const AdoptionPost = () => {
   );
 };
 
-export default AdoptionPost;
+export default FosteringHome;

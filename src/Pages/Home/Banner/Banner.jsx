@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import bannerimg from "../../../assets/Images/—Pngtree—cute dogs peeking cartoon_15020940.png";
+import useAuth from "../../../hooks/useAuth";
 const Banner = () => {
+  const { user } = useAuth();
   return (
     <div>
       <div className="bg-primary w-full h-96 rounded-lg relative flex justify-center items-center">
@@ -14,7 +17,11 @@ const Banner = () => {
           <h1 className="text-secondary text-2xl md:text-4xl lg:text-5xl text-center w-2/3 md:lg:w-3/4 lg:w-3/4">
             This is Pet Save We save animals that are consider as {"pet's"}
           </h1>
-          <button className="btn text-primary ">Register Now</button>
+          {!user && (
+            <Link to="/signup" className="btn text-primary ">
+              Register Now
+            </Link>
+          )}
         </div>
       </div>
     </div>

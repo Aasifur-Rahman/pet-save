@@ -9,7 +9,8 @@ import useTheme from "../hooks/useTheme";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
-  // console.log(user.photoURL);
+
+  console.log(user);
 
   const { theme, setTheme } = useTheme();
 
@@ -29,9 +30,18 @@ const NavBar = () => {
     <>
       {user ? (
         <>
-          <div className="flex justify-end gap-2">
-            <img className="w-1/4 rounded-full" src={user?.photoURL} alt="" />
-
+          <div className="flex justify-end gap-2 items-center">
+            <img
+              className="w-1/6 rounded-full"
+              src={user?.photoURL}
+              alt="user Photo"
+            />
+            <Link to="/user" className="hover:underline">
+              <h5>
+                {user?.displayName}
+                {"'s"} Profile
+              </h5>
+            </Link>
             <button className="flex items-center  " onClick={handleSignOut}>
               <FaSignOutAlt className="ml-1 text-2xl" />
             </button>

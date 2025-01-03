@@ -41,7 +41,7 @@ const Menu = () => {
                     </summary>
                     <ul className="w-full">
                       <li>
-                        <Link>For Adoption</Link>
+                        <Link>For Fostering Home</Link>
                       </li>
                       <li>
                         <Link>Rescued Dogs</Link>
@@ -56,7 +56,7 @@ const Menu = () => {
                     </summary>
                     <ul>
                       <li>
-                        <Link>For Adoption</Link>
+                        <Link>For Fostering Home</Link>
                       </li>
                       <li>
                         <Link>Rescued {"Cat's"}</Link>
@@ -85,14 +85,15 @@ const Menu = () => {
                     </ul>
                   </details>
                 </li>
-                <li className="w-1/6">
+                <li className="w-1/4">
                   <details>
                     <summary>
-                      <MdPets className="text-xl"></MdPets> Adoption & Lost Pet
+                      <MdPets className="text-xl"></MdPets> Fostering Home &
+                      Lost Pet
                     </summary>
                     <ul>
                       <li>
-                        <Link to="/adoptionpost">Adoption post</Link>
+                        <Link to="/fosteringHome">Fostering Home</Link>
                       </li>
                       <li>
                         <Link to="/lostpet">Lost Pet</Link>
@@ -122,7 +123,7 @@ const Menu = () => {
                 </summary>
                 <ul>
                   <li>
-                    <Link>For Adoption</Link>
+                    <Link>For Fostering Home</Link>
                   </li>
                   <li>
                     <Link>Rescued Dogs</Link>
@@ -137,7 +138,7 @@ const Menu = () => {
                 </summary>
                 <ul>
                   <li>
-                    <Link>For Adoption</Link>
+                    <Link>For Fostering Home</Link>
                   </li>
                   <li>
                     <Link>Rescued {"Cat's"}</Link>
@@ -171,11 +172,12 @@ const Menu = () => {
             <li className="w-full">
               <details>
                 <summary>
-                  <MdPets className="text-xl"></MdPets> Adoption & Lost Pet
+                  <MdPets className="text-xl"></MdPets> Fostering Home & Lost
+                  Pet
                 </summary>
                 <ul>
                   <li>
-                    <Link to="/adoptionpost">Adoption post</Link>
+                    <Link to="/fosteringHome">Fostering Home</Link>
                   </li>
                   <li>
                     <Link to="/lostpet">Lost Pet</Link>
