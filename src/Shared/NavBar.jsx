@@ -6,6 +6,7 @@ import lightlogo from "../assets/Logo/Pet save logo light.png";
 import { FaSignOutAlt } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import useTheme from "../hooks/useTheme";
+import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -31,17 +32,27 @@ const NavBar = () => {
       {user ? (
         <>
           <div className="flex justify-end gap-2 items-center">
-            <img
-              className="w-1/6 rounded-full"
-              src={user?.photoURL}
-              alt="user Photo"
-            />
-            <Link to="/user" className="hover:underline">
-              <h5>
-                {user?.displayName}
-                {"'s"} Profile
-              </h5>
-            </Link>
+            {user?.photoURL ? (
+              <>
+                <img
+                  className="w-1/6 rounded-full"
+                  src={user?.photoURL}
+                  alt="user Photo"
+                />
+              </>
+            ) : (
+              <img
+                className="w-1/12 rounded-full"
+                src={
+                  "https://www.shutterstock.com/image-vector/cute-cartoon-cat-profile-avatar-600nw-2432356437.jpg"
+                }
+                alt="user Photo"
+              />
+            )}
+            <ProfileMenu
+              userName={user.displayName}
+              userPhoto={user?.photoURL}
+            ></ProfileMenu>
             <button className="flex items-center  " onClick={handleSignOut}>
               <FaSignOutAlt className="ml-1 text-2xl" />
             </button>

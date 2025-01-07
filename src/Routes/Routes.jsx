@@ -9,6 +9,7 @@ import Pets from "../Pages/AllPets/Pets/Pets";
 import LostPet from "../Pages/AllPets/LostPet/LostPet";
 import FosteringHome from "../Pages/AllPets/FosteringHome/FosteringHome";
 import PrivateRoute from "./PrivateRoute";
+import Profile from "../Pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <FosteringHome></FosteringHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
           </PrivateRoute>
         ),
       },

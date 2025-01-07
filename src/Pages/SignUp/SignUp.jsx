@@ -5,8 +5,10 @@ import catImg from "../../assets/Images/—Pngtree—a blue and white cat_580397
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUser, googleSignIn } = useAuth();
 
   const navigate = useNavigate();
@@ -17,30 +19,41 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photoURL = form.photo.value;
 
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        // updateProfile
-        updateUser(name);
-        if (result.user) {
-          Swal.fire({
-            position: "center",
-            imageUrl:
-              "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
-            imageWidth: "200px",
-            background: "#E8D6CB",
-            title: "Account created successfully",
+    createUser(email, password).then((result) => {
+      console.log(result.user);
+      // updateProfile
+      updateUser(name).then(() => {
+        const userInfo = {
+          name: name,
+          email: email,
+          image: photoURL,
+        };
+        axiosPublic
+          .post("/users", userInfo)
+          .then((res) => {
+            console.log(res.data.insertedId);
+            if (res.data.insertedId) {
+              Swal.fire({
+                position: "center",
+                imageUrl:
+                  "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
+                imageWidth: "200px",
+                background: "#E8D6CB",
+                title: "Account created successfully",
 
-            showConfirmButton: false,
-            timer: 50000,
+                showConfirmButton: false,
+                timer: 50000,
+              });
+              navigate("/");
+            }
+          })
+          .catch((error) => {
+            console.log(error.message);
           });
-          navigate(location?.state ? location?.state : "/");
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
       });
+    });
   };
 
   const handleGoogleSignIn = () => {
@@ -93,12 +106,23 @@ const SignUp = () => {
                     <form onSubmit={handleSignUp} className="card-body">
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">Email</span>
+                          <span className="label-text">Name</span>
                         </label>
                         <input
                           type="text"
                           name="name"
                           placeholder="Your Name"
+                          className="input input-bordered focus:bg-primary focus:text-secondary "
+                        />
+                      </div>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Photo URL</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="photo"
+                          placeholder="Photo URL here"
                           className="input input-bordered focus:bg-primary focus:text-secondary "
                         />
                       </div>
@@ -141,7 +165,7 @@ const SignUp = () => {
                         </div>
                       </div>
                       <div className="form-control mt-3">
-                        <button className="btn btn-primary">Login</button>
+                        <button className="btn btn-primary">Sign Up</button>
                       </div>
                     </form>
                   </div>

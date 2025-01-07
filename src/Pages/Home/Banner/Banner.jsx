@@ -14,7 +14,7 @@ const Banner = () => {
           />
         </div>
         <div className="flex flex-col justify-center items-center gap-6 absolute lg:relative md:relative ">
-          <h1 className="text-secondary text-2xl md:text-4xl lg:text-5xl text-center w-2/3 md:lg:w-3/4 lg:w-3/4">
+          <h1 className="text-secondary text-2xl md:text-4xl lg:text-5xl text-center w-2/3 md:lg:w-3/4 lg:w-3/4 uppercase font-bold">
             This is Pet Save We save animals that are consider as {"pet's"}
           </h1>
           {!user && (

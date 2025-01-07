@@ -1,5 +1,7 @@
 import { FaDog, FaCat } from "react-icons/fa6";
 import { MdPets } from "react-icons/md";
+import { GiGoat } from "react-icons/gi";
+
 import { Link } from "react-router-dom";
 const Menu = () => {
   return (
@@ -35,55 +37,25 @@ const Menu = () => {
               <ul className="menu menu-horizontal w-full gap-4 justify-center">
                 {/* Navbar menu content here */}
                 <li className="w-1/6">
-                  <details>
-                    <summary>
-                      <FaDog className="text-xl"></FaDog> Dogs
-                    </summary>
-                    <ul className="w-full">
-                      <li>
-                        <Link>For Fostering Home</Link>
-                      </li>
-                      <li>
-                        <Link>Rescued Dogs</Link>
-                      </li>
-                    </ul>
-                  </details>
+                  <summary>
+                    <FaDog className="text-xl"></FaDog> Dogs
+                  </summary>
                 </li>
                 <li className="w-1/6">
-                  <details>
-                    <summary>
-                      <FaCat className="text-xl"></FaCat> {"Cat's"}
-                    </summary>
-                    <ul>
-                      <li>
-                        <Link>For Fostering Home</Link>
-                      </li>
-                      <li>
-                        <Link>Rescued {"Cat's"}</Link>
-                      </li>
-                    </ul>
-                  </details>
+                  <summary>
+                    <FaCat className="text-xl"></FaCat> {"Cat's"}
+                  </summary>
                 </li>
                 <li className="w-1/6">
-                  <details>
-                    <summary>
-                      <MdPets className="text-xl"></MdPets> Other {"Pet's"}
-                    </summary>
-                    <ul>
-                      <li>
-                        <Link>Birds</Link>
-                      </li>
-                      <li>
-                        <Link>Horse</Link>
-                      </li>
-                      <li>
-                        <Link>Goat</Link>
-                      </li>
-                      <li>
-                        <Link>Lamb</Link>
-                      </li>
-                    </ul>
-                  </details>
+                  <summary>
+                    <MdPets className="text-xl"></MdPets> Other {"Pet's"}
+                  </summary>
+                </li>
+                <li className="w-1/6 flex">
+                  <summary>
+                    <GiGoat className="text-xl"></GiGoat>
+                    <Link to="/allpets">{"All Pet's"}</Link>
+                  </summary>
                 </li>
                 <li className="w-1/4">
                   <details>
@@ -101,9 +73,6 @@ const Menu = () => {
                     </ul>
                   </details>
                 </li>
-                <li className="w-1/6">
-                  <Link to="/allpets">{"All Pet's"}</Link>
-                </li>
               </ul>
             </div>
           </div>
@@ -117,56 +86,26 @@ const Menu = () => {
           <ul className="menu bg-base-200 min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <li>
-              <details>
-                <summary>
-                  <FaDog className="text-xl"></FaDog> Dogs
-                </summary>
-                <ul>
-                  <li>
-                    <Link>For Fostering Home</Link>
-                  </li>
-                  <li>
-                    <Link>Rescued Dogs</Link>
-                  </li>
-                </ul>
-              </details>
+              <summary>
+                <FaDog className="text-xl"></FaDog> Dogs
+              </summary>
             </li>
             <li>
-              <details>
-                <summary>
-                  <FaCat className="text-xl"></FaCat> {"Cat's"}
-                </summary>
-                <ul>
-                  <li>
-                    <Link>For Fostering Home</Link>
-                  </li>
-                  <li>
-                    <Link>Rescued {"Cat's"}</Link>
-                  </li>
-                </ul>
-              </details>
+              <summary>
+                <FaCat className="text-xl"></FaCat> {"Cat's"}
+              </summary>
             </li>
             <li>
-              <details>
-                <summary>
-                  {" "}
-                  <MdPets className="text-xl"></MdPets>Other {"Pet's"}
-                </summary>
-                <ul>
-                  <li>
-                    <Link>Birds</Link>
-                  </li>
-                  <li>
-                    <Link>Horse</Link>
-                  </li>
-                  <li>
-                    <Link>Goat</Link>
-                  </li>
-                  <li>
-                    <Link>Lamb</Link>
-                  </li>
-                </ul>
-              </details>
+              <summary>
+                {" "}
+                <MdPets className="text-xl"></MdPets>Other {"Pet's"}
+              </summary>
+            </li>
+            <li className="flex">
+              <summary>
+                <GiGoat></GiGoat>
+                <Link to="/allpets">{"All Pet's"}</Link>
+              </summary>
             </li>
 
             <li className="w-full">
@@ -184,10 +123,6 @@ const Menu = () => {
                   </li>
                 </ul>
               </details>
-            </li>
-
-            <li>
-              <Link to="/allpets">{"All Pet's"}</Link>
             </li>
           </ul>
         </div>
