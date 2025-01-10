@@ -10,7 +10,7 @@ const Profile = () => {
   };
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    console.log(JSON.stringify(data));
   };
 
   return (
@@ -29,26 +29,83 @@ const Profile = () => {
             </div>
           </div>
           <div className="mt-6">
-            <button onClick={handleEdit} className="btn btn-primary px-7 mr-5">
-              Edit
-            </button>
+            {isEditable ? (
+              <button
+                onClick={() => {
+                  setIsEditable(false);
+                }}
+                className="btn btn-circle btn-primary  mr-5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            ) : (
+              <button
+                onClick={handleEdit}
+                className="btn btn-primary px-7 mr-5"
+              >
+                Edit
+              </button>
+            )}
           </div>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            disabled={!isEditable}
-            placeholder="name"
-            {...register("name")}
-          />
-          <input placeholder="nickName" {...register("name")} />
-          <select {...register("gender")}>
-            <option value="female">female</option>
-            <option value="male">male</option>
-            <option value="other">other</option>
-          </select>
-          <input placeholder="country" {...register("country")} />
-          <input value="Save" type="submit" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-9 w-11/12 mt-10 mx-auto">
+            <input
+              className="rounded-lg h-12 input input-primary"
+              disabled={!isEditable}
+              placeholder="Your Name"
+              {...register("name")}
+            />
+            <input
+              className="rounded-lg h-12 input input-primary"
+              placeholder="Nick Name"
+              disabled={!isEditable}
+              {...register("nickName")}
+            />
+            <select
+              disabled={!isEditable}
+              className="rounded-lg  select select-primary"
+              {...register("gender")}
+            >
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+            <input
+              disabled={!isEditable}
+              className="rounded-lg h-12 input input-primary"
+              placeholder="Country"
+              {...register("country")}
+            />
+            <input
+              disabled={!isEditable}
+              className="rounded-lg h-12 input input-primary"
+              placeholder="Language"
+              {...register("language")}
+            />
+          </div>
+          <div className="w-11/12 mx-auto mt-10">
+            <input
+              disabled={!isEditable}
+              className="input bg-primary text-secondary w-full mx-auto"
+              value="Save"
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>

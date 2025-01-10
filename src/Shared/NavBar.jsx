@@ -53,6 +53,7 @@ const NavBar = () => {
               userName={user.displayName}
               userPhoto={user?.photoURL}
             ></ProfileMenu>
+
             <button className="flex items-center  " onClick={handleSignOut}>
               <FaSignOutAlt className="ml-1 text-2xl" />
             </button>
