@@ -1,10 +1,24 @@
 import { useForm } from "react-hook-form";
 import NavBar from "../../Shared/NavBar";
 import { useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../hooks/useAuth";
 
 const Profile = () => {
   const { register, handleSubmit } = useForm();
   const [isEditable, setIsEditable] = useState(false);
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+
+  const { data: userDetails } = useQuery({
+    queryKey: "userDetails",
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/user/${user.email}`);
+      return res.userDetails;
+    },
+  });
+
   const handleEdit = () => {
     setIsEditable(true);
   };
