@@ -11,8 +11,6 @@ import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
 const NavBar = () => {
   const { user, logOut } = useAuth();
 
-  console.log(user);
-
   const { theme, setTheme } = useTheme();
 
   const handleToggle = (e) => {
