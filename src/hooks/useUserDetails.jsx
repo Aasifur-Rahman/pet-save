@@ -4,17 +4,20 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useUserDetails = () => {
   const { user } = useAuth();
+  console.log(user.email);
   const axiosSecure = useAxiosSecure();
 
-  const { data: userDetails, refetch } = useQuery({
-    queryKey: ["userDetails"],
+  const { data: userDetails } = useQuery({
+    queryKey: ["userDetails", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users?email=${user.email}`);
-      return res.data[0];
+      const res = await axiosSecure.get(`/users/${user.email}`);
+
+      return res.data.userDetails[0];
     },
+    enabled: !!user.email,
   });
 
-  return [userDetails, refetch];
+  return [userDetails];
 };
 
 export default useUserDetails;

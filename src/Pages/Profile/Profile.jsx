@@ -6,7 +6,7 @@ import useUserDetails from "../../hooks/useUserDetails";
 const Profile = () => {
   const { register, handleSubmit } = useForm();
   const [isEditable, setIsEditable] = useState(false);
-  const [userDetails, refetch] = useUserDetails();
+  const [userDetails] = useUserDetails();
   console.log(userDetails);
 
   const handleEdit = () => {
