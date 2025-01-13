@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import NavBar from "../../Shared/NavBar";
 import { useState } from "react";
 import useUserDetails from "../../hooks/useUserDetails";
+import { CiEdit } from "react-icons/ci";
 
 const Profile = () => {
   const { register, handleSubmit } = useForm();
@@ -21,91 +22,143 @@ const Profile = () => {
     <div>
       <NavBar></NavBar>
       <div className="max-w-screen-xl mx-auto">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center  mt-10 ml-5">
-            <div className="avatar  items-center  ">
-              <div className="w-24 rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center  mt-10 ml-5">
+              <div className="relative">
+                <div hidden={!isEditable}>
+                  {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                  <div className="absolute z-10 top-16 right-2">
+                    <button
+                      onClick={() =>
+                        document.getElementById("my_modal_4").showModal()
+                      }
+                    >
+                      <CiEdit className="text-2xl" />
+                    </button>
+                  </div>
+                  <dialog id="my_modal_4" className="modal">
+                    <div className="modal-box w-10/12 h-1/2 max-w-5xl">
+                      <input
+                        type="file"
+                        className="file-input file-input-bordered w-full max-w-xs"
+                      />
+                      <div className="modal-action">
+                        <form method="dialog">
+                          {/* if there is a button, it will close the modal */}
+                          <button className="btn">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
+                </div>
+                <div className="avatar  items-center  ">
+                  <div className="w-24 rounded-full">
+                    <img
+                      src={
+                        userDetails?.image
+                          ? userDetails?.image
+                          : "https://www.shutterstock.com/image-vector/cute-cartoon-cat-profile-avatar-600nw-2432356437.jpg"
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h5 className="ml-5  ">{userDetails?.name}</h5>
+                <h5 className="ml-5 mt-4 ">{userDetails?.email}</h5>
               </div>
             </div>
-            <div>
-              <h5 className="ml-5">{userDetails?.name}</h5>
-              <h5 className="ml-5 mt-4">{userDetails?.email}</h5>
+            <div className="mt-6">
+              {isEditable ? (
+                <button
+                  onClick={() => {
+                    setIsEditable(false);
+                  }}
+                  className="btn btn-circle btn-primary  mr-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              ) : (
+                <button
+                  onClick={handleEdit}
+                  className="btn btn-primary px-7 mr-5"
+                >
+                  Edit
+                </button>
+              )}
             </div>
           </div>
-          <div className="mt-6">
-            {isEditable ? (
-              <button
-                onClick={() => {
-                  setIsEditable(false);
-                }}
-                className="btn btn-circle btn-primary  mr-5"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            ) : (
-              <button
-                onClick={handleEdit}
-                className="btn btn-primary px-7 mr-5"
-              >
-                Edit
-              </button>
-            )}
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit(onSubmit)}>
           {isEditable && (
             <>
               <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-9 w-11/12 mt-10 mx-auto">
-                <input
-                  className="rounded-lg h-12 input input-primary"
-                  defaultValue={userDetails.name}
-                  disabled={!isEditable}
-                  {...register("name")}
-                />
-                <input
-                  className="rounded-lg h-12 input input-primary"
-                  placeholder="Nick Name"
-                  disabled={!isEditable}
-                  {...register("nickName")}
-                />
-                <select
-                  disabled={!isEditable}
-                  className="rounded-lg  select select-primary"
-                  {...register("gender")}
-                >
-                  <option value="female">Female</option>
-                  <option value="male">Male</option>
-                  <option value="other">Other</option>
-                </select>
-                <input
-                  disabled={!isEditable}
-                  className="rounded-lg h-12 input input-primary"
-                  placeholder="Country"
-                  {...register("country")}
-                />
-                <input
-                  disabled={!isEditable}
-                  className="rounded-lg h-12 input input-primary"
-                  placeholder="Language"
-                  {...register("language")}
-                />
+                <div className=" flex flex-col ">
+                  <label htmlFor="name">Your Name</label>
+                  <input
+                    className="rounded-lg h-12 input input-primary mt-2"
+                    defaultValue={userDetails.name}
+                    disabled={!isEditable}
+                    {...register("name")}
+                  />
+                </div>
+                <div className=" flex flex-col ">
+                  <label htmlFor="name">Your Nickname</label>
+                  <input
+                    className="rounded-lg h-12 input input-primary mt-2"
+                    placeholder="Nick Name"
+                    disabled={!isEditable}
+                    {...register("nickName")}
+                  />
+                </div>
+                <div className=" flex flex-col ">
+                  <label htmlFor="name">Gender</label>
+                  <select
+                    disabled={!isEditable}
+                    className="rounded-lg  select select-primary mt-2"
+                    {...register("gender")}
+                  >
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div className=" flex flex-col ">
+                  <label htmlFor="name">Country</label>
+                  <input
+                    disabled={!isEditable}
+                    className="rounded-lg h-12 input input-primary mt-2"
+                    placeholder="Country"
+                    {...register("country")}
+                  />
+                </div>
+
+                <div className=" flex flex-col ">
+                  <label htmlFor="name">Your Language</label>
+                  <input
+                    disabled={!isEditable}
+                    className="rounded-lg h-12 input input-primary mt-2"
+                    placeholder="Language"
+                    {...register("language")}
+                  />
+                </div>
               </div>
               <div className="w-11/12 mx-auto mt-10">
+                <label htmlFor="name">Your Name</label>
                 <input
                   disabled={!isEditable}
                   className="input bg-primary text-secondary w-full mx-auto"
