@@ -4,18 +4,57 @@ import { useState } from "react";
 import useUserDetails from "../../hooks/useUserDetails";
 import { CiEdit } from "react-icons/ci";
 
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const Profile = () => {
   const { register, handleSubmit } = useForm();
   const [isEditable, setIsEditable] = useState(false);
-  const [userDetails] = useUserDetails();
-  console.log(userDetails);
+  const [userDetails, refetch] = useUserDetails();
+
+  console.log(userDetails._id);
+
+  const axiosPublic = useAxiosPublic();
 
   const handleEdit = () => {
     setIsEditable(true);
   };
 
-  const onSubmit = (data) => {
-    console.log(JSON.stringify(data));
+  const onSubmit = async (data) => {
+    const imageFiles = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFiles, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    const userUpdate = {
+      name: data.name,
+      nickName: data.nickName,
+      gender: data.gender,
+      country: data.country,
+      language: data.language,
+      image: res.data.data.display_url,
+    };
+    console.log(userUpdate);
+
+    const updateUser = await axiosPublic.patch(
+      `/users/${userDetails._id}`,
+      userUpdate
+    );
+    if (updateUser.data.modifiedCount > 0) {
+      refetch();
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `Updated Profile`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (
@@ -38,14 +77,18 @@ const Profile = () => {
                     </button>
                   </div>
                   <dialog id="my_modal_4" className="modal">
-                    <div className="modal-box w-10/12 h-1/2 max-w-5xl">
-                      <input
-                        type="file"
-                        className="file-input file-input-bordered w-full max-w-xs"
-                      />
+                    <div className="modal-box w-10/12 h-1/2 max-w-2xl">
+                      <div className="flex flex-col items-start justify-start">
+                        <input
+                          {...register("image")}
+                          type="file"
+                          className="file-input file-input-bordered file-input-sm  max-w-xs"
+                        />
+                      </div>
                       <div className="modal-action">
                         <form method="dialog">
                           {/* if there is a button, it will close the modal */}
+
                           <button className="btn">Close</button>
                         </form>
                       </div>
@@ -107,16 +150,16 @@ const Profile = () => {
             <>
               <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-9 w-11/12 mt-10 mx-auto">
                 <div className=" flex flex-col ">
-                  <label htmlFor="name">Your Name</label>
+                  <label>Your Name</label>
                   <input
                     className="rounded-lg h-12 input input-primary mt-2"
-                    defaultValue={userDetails.name}
+                    defaultValue={userDetails?.name}
                     disabled={!isEditable}
                     {...register("name")}
                   />
                 </div>
                 <div className=" flex flex-col ">
-                  <label htmlFor="name">Your Nickname</label>
+                  <label>Your Nickname</label>
                   <input
                     className="rounded-lg h-12 input input-primary mt-2"
                     placeholder="Nick Name"
@@ -125,7 +168,7 @@ const Profile = () => {
                   />
                 </div>
                 <div className=" flex flex-col ">
-                  <label htmlFor="name">Gender</label>
+                  <label>Gender</label>
                   <select
                     disabled={!isEditable}
                     className="rounded-lg  select select-primary mt-2"
@@ -138,7 +181,7 @@ const Profile = () => {
                 </div>
 
                 <div className=" flex flex-col ">
-                  <label htmlFor="name">Country</label>
+                  <label>Country</label>
                   <input
                     disabled={!isEditable}
                     className="rounded-lg h-12 input input-primary mt-2"
@@ -148,7 +191,7 @@ const Profile = () => {
                 </div>
 
                 <div className=" flex flex-col ">
-                  <label htmlFor="name">Your Language</label>
+                  <label>Your Language</label>
                   <input
                     disabled={!isEditable}
                     className="rounded-lg h-12 input input-primary mt-2"
@@ -158,7 +201,6 @@ const Profile = () => {
                 </div>
               </div>
               <div className="w-11/12 mx-auto mt-10">
-                <label htmlFor="name">Your Name</label>
                 <input
                   disabled={!isEditable}
                   className="input bg-primary text-secondary w-full mx-auto"
