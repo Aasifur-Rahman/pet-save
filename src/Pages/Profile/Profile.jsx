@@ -14,8 +14,8 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Profile = () => {
   const { register, handleSubmit } = useForm();
   const [isEditable, setIsEditable] = useState(false);
-  const [{ userDetails, refetch }] = useUserDetails();
-  console.log(userDetails);
+  const [userDetails, refetch] = useUserDetails();
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
@@ -40,13 +40,17 @@ const Profile = () => {
       image: res.data.data.display_url,
     };
     console.log(userUpdate);
+    if (!userDetails?._id) {
+      console.error("User ID is not available yet");
+      return;
+    }
 
     const updateUser = await axiosSecure.patch(
       `/users/${userDetails._id}`,
       userUpdate
     );
+
     if (updateUser.data.modifiedCount > 0) {
-      refetch();
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -55,6 +59,7 @@ const Profile = () => {
         timer: 1500,
       });
     }
+    refetch();
   };
 
   return (
@@ -161,6 +166,7 @@ const Profile = () => {
                 <div className=" flex flex-col ">
                   <label>Your Nickname</label>
                   <input
+                    defaultValue={userDetails?.nickName}
                     className="rounded-lg h-12 input input-primary mt-2"
                     placeholder="Nick Name"
                     disabled={!isEditable}
@@ -170,6 +176,7 @@ const Profile = () => {
                 <div className=" flex flex-col ">
                   <label>Gender</label>
                   <select
+                    defaultValue={userDetails?.gender}
                     disabled={!isEditable}
                     className="rounded-lg  select select-primary mt-2"
                     {...register("gender")}
@@ -183,6 +190,7 @@ const Profile = () => {
                 <div className=" flex flex-col ">
                   <label>Country</label>
                   <input
+                    defaultValue={userDetails?.country}
                     disabled={!isEditable}
                     className="rounded-lg h-12 input input-primary mt-2"
                     placeholder="Country"
@@ -193,6 +201,7 @@ const Profile = () => {
                 <div className=" flex flex-col ">
                   <label>Your Language</label>
                   <input
+                    defaultValue={userDetails?.language}
                     disabled={!isEditable}
                     className="rounded-lg h-12 input input-primary mt-2"
                     placeholder="Language"

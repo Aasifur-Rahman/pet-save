@@ -49,7 +49,7 @@ const FosteringHome = () => {
         status: "pending",
       };
       console.log(petDetails);
-      const fosterRes = await axiosPublic.post(`/user/fosterPost`, petDetails);
+      const fosterRes = await axiosPublic.post("/user/fosterPost", petDetails);
       if (fosterRes.data.insertedId) {
         reset();
         Swal.fire({

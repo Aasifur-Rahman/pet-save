@@ -7,9 +7,11 @@ import { FaSignOutAlt } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import useTheme from "../hooks/useTheme";
 import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
+import useUserDetails from "../hooks/useUserDetails";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
+  const [userDetails] = useUserDetails();
 
   const { theme, setTheme } = useTheme();
 
@@ -30,14 +32,17 @@ const NavBar = () => {
       {user ? (
         <>
           <div className="flex justify-end gap-2 items-center">
-            {user?.photoURL ? (
-              <>
-                <img
-                  className="w-1/6 rounded-full"
-                  src={user?.photoURL}
-                  alt="user Photo"
-                />
-              </>
+            {userDetails?.image || user?.photoURL ? (
+              <div className="avatar placeholder">
+                <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                  {/* <span className="text-xs">UI</span> */}
+                  <img
+                    className=" w-1/12 rounded-full"
+                    src={userDetails?.image || user?.photoURL}
+                    alt="user Photo"
+                  />
+                </div>
+              </div>
             ) : (
               <img
                 className="w-1/12 rounded-full"
@@ -48,8 +53,8 @@ const NavBar = () => {
               />
             )}
             <ProfileMenu
-              userName={user.displayName}
-              userPhoto={user?.photoURL}
+              userName={userDetails?.name || user?.displayName}
+              userPhoto={userDetails?.image || user?.photoURL}
             ></ProfileMenu>
 
             <button className="flex items-center  " onClick={handleSignOut}>

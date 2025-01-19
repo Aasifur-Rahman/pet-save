@@ -10,6 +10,7 @@ import LostPet from "../Pages/AllPets/LostPet/LostPet";
 import FosteringHome from "../Pages/AllPets/FosteringHome/FosteringHome";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
+import PendingFosterHome from "../Pages/PendingPosts/PendingFosterHome/PendingFosterHome";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/pets/${params.id}`),
       },
+      // user related routes
       {
         path: "/lostpet",
         element: (
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <FosteringHome></FosteringHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/user/pendingFosterPost",
+        element: (
+          <PrivateRoute>
+            <PendingFosterHome></PendingFosterHome>
           </PrivateRoute>
         ),
       },

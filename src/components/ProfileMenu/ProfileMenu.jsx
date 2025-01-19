@@ -8,7 +8,7 @@ const ProfileMenu = ({ userName, userPhoto }) => {
   };
   return (
     <div>
-      <div className="drawer z-50 drawer-end">
+      <div className="drawer z-20 drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           {/* Page content here */}
@@ -40,7 +40,7 @@ const ProfileMenu = ({ userName, userPhoto }) => {
             <li className="mt-4 mr-1">
               <Link
                 className="uppercase border border-primary"
-                to="/user/fosterPost"
+                to="/user/pendingFosterPost"
               >
                 Foster Posts
               </Link>
