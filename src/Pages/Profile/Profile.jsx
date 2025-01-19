@@ -6,6 +6,7 @@ import { CiEdit } from "react-icons/ci";
 
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -13,11 +14,10 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Profile = () => {
   const { register, handleSubmit } = useForm();
   const [isEditable, setIsEditable] = useState(false);
-  const [userDetails, refetch] = useUserDetails();
-
-  console.log(userDetails._id);
-
+  const [{ userDetails, refetch }] = useUserDetails();
+  console.log(userDetails);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const handleEdit = () => {
     setIsEditable(true);
@@ -41,7 +41,7 @@ const Profile = () => {
     };
     console.log(userUpdate);
 
-    const updateUser = await axiosPublic.patch(
+    const updateUser = await axiosSecure.patch(
       `/users/${userDetails._id}`,
       userUpdate
     );
@@ -109,8 +109,8 @@ const Profile = () => {
               </div>
 
               <div>
-                <h5 className="ml-5  ">{userDetails?.name}</h5>
-                <h5 className="ml-5 mt-4 ">{userDetails?.email}</h5>
+                <h5 className="ml-5  ">{userDetails?.name} </h5>
+                <h5 className="ml-5 mt-4 ">{userDetails?.email} </h5>
               </div>
             </div>
             <div className="mt-6">

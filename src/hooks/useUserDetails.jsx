@@ -1,22 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useUserDetails = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const axiosSecure = useAxiosSecure();
-
-  const { data: userDetails = [], refetch } = useQuery({
-    queryKey: ["userDetails", user.email],
+  const { data: userDetails = [], isPending } = useQuery({
+    queryKey: ["userDetails"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/${user.email}`);
-      return res.data.userDetails[0];
+      console.log(res.data.userDetails);
+      return res.data;
     },
     enabled: !!user.email,
   });
-  console.log(userDetails);
-  return [userDetails, refetch];
+  return [userDetails, isPending];
 };
 
 export default useUserDetails;
