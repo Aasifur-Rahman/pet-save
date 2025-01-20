@@ -44,13 +44,17 @@ const NavBar = () => {
                 </div>
               </div>
             ) : (
-              <img
-                className="w-1/12 rounded-full"
-                src={
-                  "https://www.shutterstock.com/image-vector/cute-cartoon-cat-profile-avatar-600nw-2432356437.jpg"
-                }
-                alt="user Photo"
-              />
+              <div className="avatar placeholder">
+                <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                  <img
+                    className="w-1/12 rounded-full"
+                    src={
+                      "https://www.shutterstock.com/image-vector/cute-cartoon-cat-profile-avatar-600nw-2432356437.jpg"
+                    }
+                    alt="user Photo"
+                  />
+                </div>
+              </div>
             )}
             <ProfileMenu
               userName={userDetails?.name || user?.displayName}
