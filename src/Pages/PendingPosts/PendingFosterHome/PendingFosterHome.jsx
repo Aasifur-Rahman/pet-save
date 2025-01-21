@@ -11,7 +11,6 @@ const PendingFosterHome = () => {
     queryKey: ["fosterPosts"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/fosterPost/${user.email}`);
-      console.log(res.data.fosterPost);
       return res.data;
     },
   });
@@ -30,7 +29,8 @@ const PendingFosterHome = () => {
               <tr>
                 <th>Numbers</th>
                 <th>Name</th>
-                <th>Job</th>
+                <th>Category</th>
+                <th>Age</th>
                 <th>Breed</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -38,7 +38,7 @@ const PendingFosterHome = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {fosterPosts.map((fosterPost, index) => {
+              {fosterPosts.map((fosterPost, index) => (
                 <tr key={fosterPost._id}>
                   <td>{index + 1}</td>
                   <td>
@@ -46,31 +46,34 @@ const PendingFosterHome = () => {
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
                           <img
-                            src={fosterPost.images}
+                            src={fosterPost.image}
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">Hart Hagerty</div>
-                        <div className="text-sm opacity-50">United States</div>
+                        <div className="font-bold">{fosterPost.petsName}</div>
+                        <div className="text-sm opacity-50">
+                          {fosterPost.location}
+                        </div>
                       </div>
                     </div>
                   </td>
                   <td>
-                    Zemlak, Daniel and Leannon
+                    {fosterPost.category}
                     <br />
                     <span className="badge badge-ghost badge-sm">
-                      Desktop Support Technician
+                      from: {fosterPost.email}
                     </span>
                   </td>
-                  <td>Purple</td>
+                  <td>{fosterPost.petAge}</td>
+                  <td>{fosterPost.breedType}</td>
                   <td>pending</td>
                   <th>
                     <button className="btn btn-ghost btn-xs">Delete</button>
                   </th>
-                </tr>;
-              })}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
