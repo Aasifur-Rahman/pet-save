@@ -100,7 +100,19 @@ const PendingFosterHome = () => {
                       </td>
                       <td>{fosterPost.petAge}</td>
                       <td>{fosterPost.breedType}</td>
-                      <td>pending</td>
+                      <td
+                        className={`${
+                          fosterPost.status === "pending"
+                            ? "text-yellow-500"
+                            : fosterPost.status === "rejected"
+                            ? "text-red-500"
+                            : fosterPost.status === "approved"
+                            ? "text-green-500"
+                            : ""
+                        }`}
+                      >
+                        {fosterPost.status}
+                      </td>
                       <th>
                         <button
                           onClick={() => handleDeletePost(`${fosterPost._id}`)}

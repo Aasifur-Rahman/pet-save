@@ -1,39 +1,56 @@
 import NavBar from "../../../Shared/NavBar";
-import Footer from "../../../Shared/Footer";
+
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const LostPet = () => {
-  const handleLostPost = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const firstName = form.firstName.value;
-    const lastName = form.lastName.value;
-    const email = form.email.value;
-    const address = form.address.value;
-    const lastSeen = form.lastSeen.value;
-    const typeofPet = form.typeofPet.value;
-    const typeofBreed = form.typeofBreed.value;
-    const sex = form.sex.value;
-    const petName = form.petName.value;
-    const petNature = form.petNature.value;
-    const MicroChip = form.MicroChip.value;
-    const responseofName = form.responseofName.value;
-    const imgUpload = form.imgUpload.value;
-
-    console.log(
-      firstName,
-      lastName,
-      email,
-      address,
-      lastSeen,
-      typeofPet,
-      typeofBreed,
-      sex,
-      petName,
-      petNature,
-      MicroChip,
-      responseofName,
-      imgUpload
-    );
+  const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    const imageFiles = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFiles, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      const lostPetDetails = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        address: data.address,
+        lastSeen: data.lastSeen,
+        typeofPet: data.typeofPet,
+        typeofBreed: data.typeofBreed,
+        sex: data.sex,
+        petName: data.petName,
+        petNature: data.petNature,
+        microChip: data.microChip,
+        respondsToName: data.respondsToName,
+        image: res.data.data.display_url,
+      };
+      console.log(lostPetDetails);
+      const lostPetRes = await axiosPublic.post(
+        "/user/lostPost",
+        lostPetDetails
+      );
+      if (lostPetRes.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Foster post was successful`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
   };
 
   return (
@@ -45,18 +62,21 @@ const LostPet = () => {
           Details
         </h1>
       </div>
-      <form onSubmit={handleLostPost} className="max-w-screen-lg mx-auto mb-10">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="max-w-screen-lg mx-auto mb-10"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
           <input
             type="text"
             placeholder="Your first name"
-            name="firstName"
+            {...register("firstName")}
             className="input input-bordered  w-full max-w-xs"
             required
           />
           <input
             type="text"
-            name="lastName"
+            {...register("lastName")}
             placeholder="Your last name"
             className="input input-bordered  w-full max-w-xs"
             required
@@ -64,25 +84,28 @@ const LostPet = () => {
 
           <input
             type="Email"
-            name="email"
-            placeholder="Your Email Address"
+            {...register("email")}
+            defaultValue={user.email}
+            disabled
             className="input input-bordered w-full max-w-xs"
             required
           />
           <input
             type="text"
             name="address"
+            {...register("address")}
             placeholder="Your Home Address "
             className="input input-bordered w-full max-w-xs"
           />
           <input
             type="text"
             name="lastSeen"
+            {...register("lastSeen")}
             placeholder="Last Place you've Seen your pet"
             className="input input-bordered w-full max-w-xs"
           />
           <select
-            name="typeofPet"
+            {...register("typeofPet")}
             className="select select-bordered  w-full max-w-xs"
           >
             <option disabled selected>
@@ -96,34 +119,35 @@ const LostPet = () => {
           <input
             type="text"
             name="typeofBreed"
+            {...register("typeofBreed")}
             placeholder="Type of Breed"
             className="input input-bordered w-full max-w-xs"
           />
           <select
-            name="sex"
+            {...register("gender")}
             className="select select-bordered  w-full max-w-xs"
           >
             <option disabled selected>
-              Sex
+              Gender
             </option>
             <option>Male</option>
             <option>Female</option>
             <option>Neutered</option>
           </select>
           <input
-            name="petName"
+            {...register("petName")}
             type="text"
             placeholder="Your Pet's Name"
             className="input input-bordered w-full max-w-xs"
           />
           <input
-            name="petNature"
+            {...register("petNature")}
             type="text"
             placeholder="Your Pet's Nature How he Behaves"
             className="input input-bordered w-full max-w-xs"
           />
           <select
-            name="MicroChip"
+            {...register("microchip")}
             className="select select-bordered  w-full max-w-xs"
           >
             <option disabled selected>
@@ -133,7 +157,7 @@ const LostPet = () => {
             <option>No</option>
           </select>
           <select
-            name="responseofName"
+            {...register("respondsToName")}
             className="select select-bordered  w-full max-w-xs"
           >
             <option disabled selected>
@@ -151,19 +175,20 @@ const LostPet = () => {
           <div className=" mt-10 flex justify-center">
             <input
               type="file"
-              name="imgUpload"
+              {...register("image", { required: true })}
               className="file-input file-input-bordered w-full max-w-xs"
             />
           </div>
         </div>
         <div className="mt-10 mb-20 flex justify-center">
-          <button className="px-14 py-4 rounded-full text-center bg-primary text-secondary font-semibold text-xl">
+          <button
+            type="submit"
+            className="px-14 py-4 rounded-full text-center bg-primary text-secondary font-semibold text-xl"
+          >
             Post
           </button>
         </div>
       </form>
-
-      <Footer></Footer>
     </div>
   );
 };
