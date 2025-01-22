@@ -2,18 +2,46 @@ import { useQuery } from "@tanstack/react-query";
 import NavBar from "../../../Shared/NavBar";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const PendingFosterHome = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: fosterPosts = [] } = useQuery({
+  const { data: fosterPosts = [], refetch } = useQuery({
     queryKey: ["fosterPosts"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/fosterPost/${user.email}`);
       return res.data;
     },
   });
+
+  const handleDeletePost = (fosterPost) => {
+    console.log(fosterPost);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/user/fosterPost/${fosterPost}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   console.log(fosterPosts);
   return (
@@ -38,42 +66,55 @@ const PendingFosterHome = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {fosterPosts.map((fosterPost, index) => (
-                <tr key={fosterPost._id}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src={fosterPost.image}
-                            alt="Avatar Tailwind CSS Component"
-                          />
+              {fosterPosts ? (
+                <>
+                  {fosterPosts.map((fosterPost, index) => (
+                    <tr key={fosterPost._id}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <div className="flex items-center gap-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle h-12 w-12">
+                              <img
+                                src={fosterPost.image}
+                                alt="Avatar Tailwind CSS Component"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-bold">
+                              {fosterPost.petsName}
+                            </div>
+                            <div className="text-sm opacity-50">
+                              {fosterPost.location}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">{fosterPost.petsName}</div>
-                        <div className="text-sm opacity-50">
-                          {fosterPost.location}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {fosterPost.category}
-                    <br />
-                    <span className="badge badge-ghost badge-sm">
-                      from: {fosterPost.email}
-                    </span>
-                  </td>
-                  <td>{fosterPost.petAge}</td>
-                  <td>{fosterPost.breedType}</td>
-                  <td>pending</td>
-                  <th>
-                    <button className="btn btn-ghost btn-xs">Delete</button>
-                  </th>
-                </tr>
-              ))}
+                      </td>
+                      <td>
+                        {fosterPost.category}
+                        <br />
+                        <span className="badge badge-ghost badge-sm">
+                          from: {fosterPost.email}
+                        </span>
+                      </td>
+                      <td>{fosterPost.petAge}</td>
+                      <td>{fosterPost.breedType}</td>
+                      <td>pending</td>
+                      <th>
+                        <button
+                          onClick={() => handleDeletePost(`${fosterPost._id}`)}
+                          className="btn btn-ghost btn-xs"
+                        >
+                          Delete
+                        </button>
+                      </th>
+                    </tr>
+                  ))}
+                </>
+              ) : (
+                <p>No results found</p>
+              )}
             </tbody>
           </table>
         </div>
