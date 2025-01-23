@@ -26,6 +26,7 @@ const LostPet = () => {
         email: data.email,
         category: data.category,
         address: data.address,
+        petAge: data.age,
         lastSeen: data.lastSeen,
         typeofPet: data.typeofPet,
         typeofBreed: data.typeofBreed,
@@ -36,6 +37,7 @@ const LostPet = () => {
         respondsToName: data.respondsToName,
         vaccinated: data.vaccinated,
         image: res.data.data.display_url,
+        status: "pending",
       };
 
       const lostPetRes = await axiosPublic.post(
@@ -70,6 +72,24 @@ const LostPet = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
           <input
+            type="Email"
+            {...register("email")}
+            defaultValue={user.email}
+            disabled
+            className="input input-bordered w-full max-w-xs"
+            required
+          />
+          <input
+            type="text"
+            name="category"
+            {...register("category")}
+            placeholder="Lost Pet"
+            defaultValue="Lost Pet"
+            disabled
+            className="input input-bordered w-full max-w-xs"
+          />
+
+          <input
             type="text"
             placeholder="Your first name"
             {...register("firstName")}
@@ -85,14 +105,6 @@ const LostPet = () => {
           />
 
           <input
-            type="Email"
-            {...register("email")}
-            defaultValue={user.email}
-            disabled
-            className="input input-bordered w-full max-w-xs"
-            required
-          />
-          <input
             type="text"
             name="address"
             {...register("address")}
@@ -103,19 +115,18 @@ const LostPet = () => {
           <input
             type="text"
             name="lastSeen"
-            {...register("lastSeen")}
-            placeholder="Last Place you've Seen your pet"
+            {...register("age")}
+            placeholder="Pet's Age"
             className="input input-bordered w-full max-w-xs"
           />
           <input
             type="text"
-            name="category"
-            {...register("category")}
-            placeholder="Lost Pet"
-            defaultValue="Lost Pet"
-            disabled
+            name="lastSeen"
+            {...register("lastSeen")}
+            placeholder="Last Place you've Seen your pet"
             className="input input-bordered w-full max-w-xs"
           />
+
           <select
             {...register("typeofPet")}
             className="select select-bordered  w-full max-w-xs"

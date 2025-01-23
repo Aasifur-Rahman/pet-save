@@ -2,18 +2,45 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import NavBar from "../../../Shared/NavBar";
+import Swal from "sweetalert2";
 
 const PendingLostPosts = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: lostPets } = useQuery({
+  const { data: lostPets, refetch } = useQuery({
     queryKey: ["lostPets"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/lostPost/${user.email}`);
       return res.data;
     },
   });
+
+  const handleDeletePost = (lostPostId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/user/lostPost/${lostPostId}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -27,11 +54,11 @@ const PendingLostPosts = () => {
             <thead>
               <tr>
                 <th>Numbers</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Age</th>
-                <th>Breed</th>
+                <th>{"Pet"} Name</th>
+                <th>{"Parent Name"}</th>
+                <th>Address</th>
                 <th>Status</th>
+                <th>Info</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -53,43 +80,53 @@ const PendingLostPosts = () => {
                             </div>
                           </div>
                           <div>
-                            <div className="font-bold">{lostPet.petsName}</div>
+                            <div className="font-bold">{lostPet.petName}</div>
                             <div className="text-sm opacity-50">
-                              {lostPet.location}
+                              {lostPet.typeofBreed}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td>
-                        {lostPet.category}
+                        {lostPet?.firstName} {lostPet?.lastName}
                         <br />
                         <span className="badge badge-ghost badge-sm">
                           from: {lostPet.email}
                         </span>
                       </td>
-                      <td>{lostPet.petAge}</td>
-                      <td>{lostPet.breedType}</td>
+
+                      <td>{lostPet.address}</td>
                       <td
                         className={`${
                           lostPet.status === "pending"
-                            ? "text-yellow-500"
+                            ? "text-yellow-500 capitalize"
                             : lostPet.status === "rejected"
-                            ? "text-red-500"
+                            ? "text-red-500 capitalize"
                             : lostPet.status === "approved"
-                            ? "text-green-500"
+                            ? "text-green-500 capitalize"
                             : ""
                         }`}
                       >
                         {lostPet.status}
                       </td>
                       <th>
-                        <button className="btn btn-ghost btn-xs">Delete</button>
+                        <button className="btn btn-ghost btn-xs">
+                          Details
+                        </button>
+                      </th>
+                      <th>
+                        <button
+                          onClick={() => handleDeletePost(`${lostPet._id}`)}
+                          className="btn btn-ghost btn-xs"
+                        >
+                          Delete
+                        </button>
                       </th>
                     </tr>
                   ))}
                 </>
               ) : (
-                <p>No results found</p>
+                <span>No results found</span>
               )}
             </tbody>
           </table>

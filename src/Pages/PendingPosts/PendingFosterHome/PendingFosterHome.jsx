@@ -103,11 +103,11 @@ const PendingFosterHome = () => {
                       <td
                         className={`${
                           fosterPost.status === "pending"
-                            ? "text-yellow-500"
+                            ? "text-yellow-500 capitalize"
                             : fosterPost.status === "rejected"
-                            ? "text-red-500"
+                            ? "text-red-500 capitalize"
                             : fosterPost.status === "approved"
-                            ? "text-green-500"
+                            ? "text-green-500 capitalize"
                             : ""
                         }`}
                       >
