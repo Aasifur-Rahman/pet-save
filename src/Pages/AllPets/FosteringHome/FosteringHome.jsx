@@ -327,7 +327,7 @@ const FosteringHome = () => {
               <input
                 {...register("image", { required: true })}
                 type="file"
-                className="file-input w-full max-w-xs"
+                className="file-input file-input-primary w-full max-w-xs"
               />
             </div>
           </div>

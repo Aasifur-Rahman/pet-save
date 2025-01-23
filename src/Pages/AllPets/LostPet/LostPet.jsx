@@ -24,6 +24,7 @@ const LostPet = () => {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
+        category: data.category,
         address: data.address,
         lastSeen: data.lastSeen,
         typeofPet: data.typeofPet,
@@ -33,9 +34,10 @@ const LostPet = () => {
         petNature: data.petNature,
         microChip: data.microChip,
         respondsToName: data.respondsToName,
+        vaccinated: data.vaccinated,
         image: res.data.data.display_url,
       };
-      console.log(lostPetDetails);
+
       const lostPetRes = await axiosPublic.post(
         "/user/lostPost",
         lostPetDetails
@@ -45,7 +47,7 @@ const LostPet = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `Foster post was successful`,
+          title: `Lost Post was successful`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -97,11 +99,21 @@ const LostPet = () => {
             placeholder="Your Home Address "
             className="input input-bordered w-full max-w-xs"
           />
+
           <input
             type="text"
             name="lastSeen"
             {...register("lastSeen")}
             placeholder="Last Place you've Seen your pet"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <input
+            type="text"
+            name="category"
+            {...register("category")}
+            placeholder="Lost Pet"
+            defaultValue="Lost Pet"
+            disabled
             className="input input-bordered w-full max-w-xs"
           />
           <select
@@ -166,6 +178,16 @@ const LostPet = () => {
             <option>Yes</option>
             <option>No</option>
           </select>
+          <select
+            {...register("vaccinated")}
+            className="select select-bordered  w-full max-w-xs"
+          >
+            <option disabled selected>
+              Vaccinated?
+            </option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
         </div>
 
         <div className="mt-12">
@@ -176,7 +198,7 @@ const LostPet = () => {
             <input
               type="file"
               {...register("image", { required: true })}
-              className="file-input file-input-bordered w-full max-w-xs"
+              className="file-input file-input-primary file-input-bordered w-full max-w-xs"
             />
           </div>
         </div>

@@ -48,7 +48,7 @@ const ProfileMenu = ({ userName, userPhoto }) => {
             <li className="mt-4 mr-1">
               <Link
                 className="uppercase border border-primary"
-                to="/user/lostPost"
+                to="/user/pendingLostPost"
               >
                 Lost Pet Posts
               </Link>

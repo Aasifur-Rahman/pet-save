@@ -11,6 +11,7 @@ import FosteringHome from "../Pages/AllPets/FosteringHome/FosteringHome";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
 import PendingFosterHome from "../Pages/PendingPosts/PendingFosterHome/PendingFosterHome";
+import PendingLostPosts from "../Pages/PendingPosts/PendingLostPosts/PendingLostPosts";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PendingFosterHome></PendingFosterHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/user/pendingLostPost",
+        element: (
+          <PrivateRoute>
+            <PendingLostPosts></PendingLostPosts>
           </PrivateRoute>
         ),
       },
