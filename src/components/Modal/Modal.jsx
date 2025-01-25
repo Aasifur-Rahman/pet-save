@@ -33,12 +33,12 @@ const Modal = ({
           </form>
           <div className="mt-5 flex flex-col  w-11/12 mx-auto">
             <img
-              className=" w-2/3 mx-auto rounded-full mb-2"
+              className=" w-3/4 mx-auto rounded-t-full mb-2"
               src={photo}
               alt=""
             />
             {/* Basic details */}
-            <div className="w-5/6 mt-2 mx-auto  grid grid-cols-3  gap-2 items-center">
+            <div className="w-5/6 mt-2 mx-auto  grid grid-cols-3  gap-1 items-center">
               <div>
                 <p className="text-gray-500 font-mono">Meet</p>
                 <h3 className="font-bold text-md ">{name} </h3>
@@ -120,7 +120,13 @@ const Modal = ({
                 <p className="text-gray-500 font-mono text-center mt-2">
                   Description
                 </p>
-                <ReadMore text={description} maxLength={132}></ReadMore>
+                {description.length < 121 ? (
+                  description
+                ) : (
+                  <p>
+                    <ReadMore text={description} maxLength={121}></ReadMore>
+                  </p>
+                )}
               </div>
             </div>
           </div>

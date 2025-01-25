@@ -10,9 +10,8 @@ const ReadMore = ({ text, maxLength }) => {
 
   return (
     <div>
-      <p>{isExpanded ? text : `${text.slice(0, maxLength)}`}</p>
-
       <p>
+        {isExpanded ? text : `${text.slice(0, maxLength)}`}{" "}
         <button className="text-gray-600 underline" onClick={handleReadMore}>
           Read More
         </button>
