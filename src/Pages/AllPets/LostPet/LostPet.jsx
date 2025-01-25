@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -11,7 +12,8 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const LostPet = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
     const imageFiles = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFiles, {
@@ -45,7 +47,6 @@ const LostPet = () => {
         lostPetDetails
       );
       if (lostPetRes.data.insertedId) {
-        reset();
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -53,6 +54,8 @@ const LostPet = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
+        navigate("/user/pendingLostPost");
       }
     }
   };

@@ -58,8 +58,8 @@ const Profile = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      refetch();
     }
-    refetch();
   };
 
   return (
@@ -71,7 +71,6 @@ const Profile = () => {
             <div className="flex items-center  mt-10 ml-5">
               <div className="relative">
                 <div hidden={!isEditable}>
-                  {/* You can open the modal using document.getElementById('ID').showModal() method */}
                   <div className="absolute z-10 top-16 right-2">
                     <button
                       onClick={() =>

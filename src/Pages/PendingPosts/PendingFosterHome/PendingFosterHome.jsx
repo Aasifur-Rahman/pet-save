@@ -3,6 +3,7 @@ import NavBar from "../../../Shared/NavBar";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import Modal from "../../../components/Modal/Modal";
 
 const PendingFosterHome = () => {
   const axiosSecure = useAxiosSecure();
@@ -58,9 +59,9 @@ const PendingFosterHome = () => {
                 <th>Numbers</th>
                 <th>Name</th>
                 <th>Category</th>
-                <th>Age</th>
                 <th>Breed</th>
                 <th>Status</th>
+                <th>Info</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -98,7 +99,7 @@ const PendingFosterHome = () => {
                           from: {fosterPost.email}
                         </span>
                       </td>
-                      <td>{fosterPost.petAge}</td>
+
                       <td>{fosterPost.breedType}</td>
                       <td
                         className={`${
@@ -113,6 +114,23 @@ const PendingFosterHome = () => {
                       >
                         {fosterPost.status}
                       </td>
+                      <th>
+                        <Modal
+                          photo={fosterPost.image}
+                          name={fosterPost.petsName}
+                          location={fosterPost.location}
+                          category={fosterPost.category}
+                          breed={fosterPost.breedType}
+                          age={fosterPost.petAge}
+                          medicalNotes={fosterPost.medicalNotes}
+                          description={fosterPost.description}
+                          nature={fosterPost.petsNature}
+                          friendly={fosterPost.friendly}
+                          childFriendly={fosterPost.childFriendly}
+                          catFriendly={fosterPost.catFriendly}
+                          pottyTrained={fosterPost.pottyTrained}
+                        ></Modal>
+                      </th>
                       <th>
                         <button
                           onClick={() => handleDeletePost(`${fosterPost._id}`)}
