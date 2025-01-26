@@ -11,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <AnimatedGifLoader
-        src={"https://s6.ezgif.com/tmp/ezgif-6-0a58b30949.gif"}
+        src={"https://i.ibb.co.com/2ZpgvFc/output-onlinegiftools.gif"}
         alt={"cat running"}
       ></AnimatedGifLoader>
     );

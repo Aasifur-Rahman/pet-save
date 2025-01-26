@@ -3,7 +3,7 @@ import NavBar from "../../../Shared/NavBar";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
-import Modal from "../../../components/Modal/Modal";
+import Modal from "../../../components/FosterModal/FosterModal";
 
 const PendingFosterHome = () => {
   const axiosSecure = useAxiosSecure();

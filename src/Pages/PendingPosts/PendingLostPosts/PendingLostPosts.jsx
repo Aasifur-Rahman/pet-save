@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import NavBar from "../../../Shared/NavBar";
 import Swal from "sweetalert2";
+import LostPetModal from "../../../components/LostPetModal/LostPetModal";
 
 const PendingLostPosts = () => {
   const axiosSecure = useAxiosSecure();
@@ -110,9 +111,16 @@ const PendingLostPosts = () => {
                         {lostPet.status}
                       </td>
                       <th>
-                        <button className="btn btn-ghost btn-xs">
-                          Details
-                        </button>
+                        <LostPetModal
+                          parentName={
+                            lostPet.firstName + " " + lostPet.lastName
+                          }
+                          photo={lostPet.image}
+                          category={lostPet.category}
+                          address={lostPet.address}
+                          petName={lostPet.petName}
+                          typeofBreed={lostPet.typeofBreed}
+                        ></LostPetModal>
                       </th>
                       <th>
                         <button
@@ -126,7 +134,7 @@ const PendingLostPosts = () => {
                   ))}
                 </>
               ) : (
-                <span>No results found</span>
+                <span className="text-center">No results found</span>
               )}
             </tbody>
           </table>
