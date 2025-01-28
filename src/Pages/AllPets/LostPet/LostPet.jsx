@@ -38,6 +38,7 @@ const LostPet = () => {
         microChip: data.microChip,
         respondsToName: data.respondsToName,
         vaccinated: data.vaccinated,
+        reward: data.reward,
         image: res.data.data.display_url,
         status: "pending",
       };
@@ -170,6 +171,12 @@ const LostPet = () => {
             {...register("petNature")}
             type="text"
             placeholder="Your Pet's Nature How he Behaves"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <input
+            {...register("reward")}
+            type="number"
+            placeholder="Reward for finding your pet"
             className="input input-bordered w-full max-w-xs"
           />
           <select

@@ -112,6 +112,7 @@ const PendingLostPosts = () => {
                       </td>
                       <th>
                         <LostPetModal
+                          id={lostPet._id}
                           parentName={
                             lostPet.firstName + " " + lostPet.lastName
                           }
@@ -120,6 +121,13 @@ const PendingLostPosts = () => {
                           address={lostPet.address}
                           petName={lostPet.petName}
                           typeofBreed={lostPet.typeofBreed}
+                          reward={lostPet?.reward}
+                          age={lostPet.petAge}
+                          lastSeen={lostPet.lastSeen}
+                          typeofPet={lostPet.typeofPet}
+                          nature={lostPet.petNature}
+                          vaccinated={lostPet.vaccinated}
+                          resToName={lostPet.respondsToName}
                         ></LostPetModal>
                       </th>
                       <th>

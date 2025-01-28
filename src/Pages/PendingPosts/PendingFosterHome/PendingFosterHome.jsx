@@ -116,6 +116,7 @@ const PendingFosterHome = () => {
                       </td>
                       <th>
                         <Modal
+                          id={fosterPost._id}
                           photo={fosterPost.image}
                           name={fosterPost.petsName}
                           location={fosterPost.location}

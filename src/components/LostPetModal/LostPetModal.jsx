@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 const LostPetModal = ({
+  id,
   photo,
   parentName,
   category,
@@ -13,92 +14,74 @@ const LostPetModal = ({
   nature,
   resToName,
   vaccinated,
+  reward,
 }) => {
   return (
     <div className="max-w-screen-lg ">
       <button
         className="btn btn-ghost btn-xs"
-        onClick={() => document.getElementById("my_modal_3").showModal()}
+        onClick={() => document.getElementById(`my_modal_${id}`).showModal()}
       >
         Details
       </button>
-      <dialog id="my_modal_3" className="modal overflow-hidden">
-        <div className="modal-box bg-primary text-secondary  h-5/6">
+      <dialog id={`my_modal_${id}`} className="modal overflow-hidden">
+        <div className="modal-box   h-5/6">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
-          <div className="mt-5 flex flex-col  w-11/12 mx-auto">
-            <img
-              className=" w-3/4 mx-auto rounded-t-full mb-2"
-              src={photo}
-              alt=""
-            />
-            {/* Basic details */}
-            <div className="w-5/6 mt-2 mx-auto  grid grid-cols-3  gap-1 items-center">
-              <div>
-                <p className="text-gray-500 font-mono">Meet</p>
-                <h3 className="font-bold text-md ">{parentName} </h3>
+          <div className=" p-4 rounded-lg">
+            <div className="flex gap-4">
+              <div className="flex-1 p-4 rounded-lg">
+                <img src={photo} alt="Lost Dog" className="w-full rounded-lg" />
               </div>
-              <div>
-                <p className="text-gray-500 font-mono ">From</p>
-                <h3 className="font-bold text-md  capitalize">{address}</h3>
+              <div className="flex-1 bg-primary p-4 rounded-lg text-center">
+                <h1 className="text-6xl font-bold text-black">{category}</h1>
               </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2"></p>
-                <h3 className="font-bold text-md mt-2 capitalize">
-                  {typeofBreed}
-                </h3>
+            </div>
+
+            <div className="flex gap-4 mt-4">
+              <div className="bg-red-800 p-10 rounded-lg text-center text-white font-bold">
+                <p className="text-2xl">Reward</p>
+                <h2 className="text-4xl">${reward}</h2>
               </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">
-                  {petName}
-                  {"'s"} age
-                </p>
-                <h3 className="font-bold text-md mt-2 capitalize">{age}</h3>
+              <div className="flex-1 bg-gray-900 p-4 rounded-lg">
+                <div className="mt-1 ml-2 text-xs font-mono ">
+                  <p>Name: {petName}</p>
+                  <p>Age: {age}</p>
+                  <p>Type: {typeofPet}</p>
+                  <p>Breed: {typeofBreed}</p>
+                  <p>Nature: {nature}</p>
+                  <p>Vaccinated: {vaccinated}</p>
+                  <p>Response to Name: {resToName}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2"></p>
-                <h3 className="font-bold text-md mt-2 capitalize">{nature}</h3>
-              </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">Category</p>
-                <h3 className="font-bold text-md mt-2 capitalize">
-                  {category}
-                </h3>
-              </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">is Friendly</p>
-                <h3 className="font-bold text-md mt-2 capitalize">{}</h3>
-              </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">
-                  is Child Friendly
-                </p>
-                <h3 className="font-bold text-md mt-2 capitalize">
+            </div>
+
+            <div className="bg-primary p-4 rounded-lg mt-4">
+              <h2 className="text-2xl font-bold text-black text-center">
+                Have You Seen Him?
+              </h2>
+              <p className="text-gray-600 text-center mt-2">
+                A dog is missing of{" "}
+                <span className="text-red-800 font-bold underline">
+                  {parentName}
+                </span>{" "}
+                in the{" "}
+                <span className="text-red-800 font-bold underline ">
+                  {address}
+                </span>
+                . If anyone has seen this dog or knows of its whereabouts,
+                please contact the owner immediately. It was last seen at{" "}
+                <span className=" text-red-800 font-bold underline">
                   {lastSeen}
-                </h3>
-              </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">is Cat Friendly</p>
-                <h3 className="font-bold text-md mt-2 capitalize">
-                  {typeofPet}
-                </h3>
-              </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">Potty Trained</p>
-                <h3 className="font-bold text-md mt-2 capitalize">
-                  {resToName}
-                </h3>
-              </div>
-              <div>
-                <p className="text-gray-500 font-mono mt-2">Potty Trained</p>
-                <h3 className="font-bold text-md mt-2 capitalize">
-                  {vaccinated}
-                </h3>
-              </div>
+                </span>{" "}
+                .The dog was missed so much by his family and they really wanted
+                to bring him back home safe and sound. Your help in{" "}
+              </p>
+              ```
             </div>
           </div>
         </div>
@@ -108,6 +91,7 @@ const LostPetModal = ({
 };
 
 LostPetModal.propTypes = {
+  id: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   parentName: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
@@ -120,6 +104,7 @@ LostPetModal.propTypes = {
   nature: PropTypes.string.isRequired,
   resToName: PropTypes.string.isRequired,
   vaccinated: PropTypes.bool.isRequired,
+  reward: PropTypes.number,
 };
 
 export default LostPetModal;
