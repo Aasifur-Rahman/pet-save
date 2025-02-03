@@ -13,6 +13,9 @@ import Profile from "../Pages/Profile/Profile";
 import PendingFosterHome from "../Pages/PendingPosts/PendingFosterHome/PendingFosterHome";
 import PendingLostPosts from "../Pages/PendingPosts/PendingLostPosts/PendingLostPosts";
 
+import Dogs from "../Pages/AllPets/Dogs/Dogs";
+import Cats from "../Pages/AllPets/Cats/Cats";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +44,16 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/pets/${params.id}`),
       },
+
+      {
+        path: "/pets/dogs",
+        element: <Dogs></Dogs>,
+      },
+      {
+        path: "/pets/cats",
+        element: <Cats></Cats>,
+      },
+
       // user related routes
       {
         path: "/lostpet",

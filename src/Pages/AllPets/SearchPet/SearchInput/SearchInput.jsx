@@ -9,7 +9,7 @@ const SearchInput = ({ setSearch }) => {
         type="text"
         name=""
         id=""
-        placeholder="Enter pet type"
+        placeholder="Enter pet's name"
       />
     </div>
   );

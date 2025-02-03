@@ -38,17 +38,20 @@ const Menu = () => {
                 {/* Navbar menu content here */}
                 <li className="w-1/6">
                   <summary>
-                    <FaDog className="text-xl"></FaDog> Dogs
+                    <FaDog className="text-xl"></FaDog>{" "}
+                    <Link to="/pets/dogs">Dogs</Link>
                   </summary>
                 </li>
                 <li className="w-1/6">
                   <summary>
-                    <FaCat className="text-xl"></FaCat> {"Cat's"}
+                    <FaCat className="text-xl"></FaCat>{" "}
+                    <Link to="/pets/cats">{"Cat's"}</Link>
                   </summary>
                 </li>
                 <li className="w-1/6">
                   <summary>
-                    <MdPets className="text-xl"></MdPets> Other {"Pet's"}
+                    <MdPets className="text-xl"></MdPets>{" "}
+                    <Link to="/pets/others">Other {"Pet's"}</Link>
                   </summary>
                 </li>
                 <li className="w-1/6 flex">
@@ -87,18 +90,21 @@ const Menu = () => {
             {/* Sidebar content here */}
             <li>
               <summary>
-                <FaDog className="text-xl"></FaDog> Dogs
+                <FaDog className="text-xl"></FaDog>{" "}
+                <Link to="/pets/dogs">Dogs</Link>
               </summary>
             </li>
             <li>
               <summary>
-                <FaCat className="text-xl"></FaCat> {"Cat's"}
+                <FaCat className="text-xl"></FaCat>{" "}
+                <Link to="/pets/cats">{"Cat's"}</Link>
               </summary>
             </li>
             <li>
               <summary>
                 {" "}
-                <MdPets className="text-xl"></MdPets>Other {"Pet's"}
+                <MdPets className="text-xl"></MdPets>{" "}
+                <Link to="/pets/others">Other {"Pet's"}</Link>
               </summary>
             </li>
             <li className="flex">
