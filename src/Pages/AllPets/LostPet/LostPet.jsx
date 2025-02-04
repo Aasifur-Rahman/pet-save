@@ -1,5 +1,3 @@
-import NavBar from "../../../Shared/NavBar";
-
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
@@ -63,7 +61,6 @@ const LostPet = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
       <div className="mt-5 mb-10">
         <h1 className="text-3xl text-center font-semibold">
           Enter Your Information Along With Your Lost Pet Information and

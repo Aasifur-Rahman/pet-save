@@ -1,6 +1,6 @@
 import PetsCard from "../../../components/PetsCard/PetsCard";
 import useAllPets from "../../../hooks/useAllPets";
-import NavBar from "../../../Shared/NavBar";
+
 import SearchBar from "../SearchPet/SearchBar";
 
 const Dogs = () => {
@@ -9,9 +9,6 @@ const Dogs = () => {
   console.log(filteredDogs);
   return (
     <div>
-      <div>
-        <NavBar></NavBar>
-      </div>
       <div className="mt-8">
         <SearchBar></SearchBar>
       </div>

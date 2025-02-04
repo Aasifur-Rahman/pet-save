@@ -1,4 +1,3 @@
-import NavBar from "../../../Shared/NavBar";
 import Footer from "../../../Shared/Footer";
 
 import { useForm } from "react-hook-form";
@@ -66,7 +65,6 @@ const FosteringHome = () => {
   };
   return (
     <div>
-      <NavBar></NavBar>
       <div className="mt-10">
         <form
           onSubmit={handleSubmit(onSubmit)}

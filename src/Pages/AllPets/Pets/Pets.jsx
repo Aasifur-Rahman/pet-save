@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import NavBar from "../../../Shared/NavBar";
+
 import { useState } from "react";
 
 const Pets = () => {
@@ -9,8 +9,6 @@ const Pets = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
-
       <div className="lg:max-w-screen-xl max-w-screen-lg mx-auto">
         <div className="mt-10  ml-4 ">
           <h1 className="text-6xl  ">{petName}</h1>

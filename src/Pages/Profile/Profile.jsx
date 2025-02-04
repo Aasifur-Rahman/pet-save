@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import NavBar from "../../Shared/NavBar";
+
 import { useState } from "react";
 import useUserDetails from "../../hooks/useUserDetails";
 import { CiEdit } from "react-icons/ci";
@@ -64,7 +64,6 @@ const Profile = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
       <div className="max-w-screen-xl mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex justify-between items-center">

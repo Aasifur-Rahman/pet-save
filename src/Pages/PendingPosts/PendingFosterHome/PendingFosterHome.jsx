@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import NavBar from "../../../Shared/NavBar";
+
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -47,9 +47,6 @@ const PendingFosterHome = () => {
   console.log(fosterPosts);
   return (
     <div>
-      <div>
-        <NavBar></NavBar>
-      </div>
       <div className="max-w-screen-xl mx-auto mt-10">
         <div className="overflow-x-auto">
           <table className="table">

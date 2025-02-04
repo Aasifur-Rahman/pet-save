@@ -1,4 +1,3 @@
-import NavBar from "../../Shared/NavBar";
 import PetsCard from "../../components/PetsCard/PetsCard";
 import useAllPets from "../../hooks/useAllPets";
 
@@ -8,17 +7,10 @@ import { useState } from "react";
 
 const AllPets = () => {
   const [pets] = useAllPets();
-
-  // const forAdoption = pets.filter((pet) => pet.category === "adoption");
-  // const fosteringHome = pets.filter((pet) => pet.category === "Fostering Home");
-  // const rescuedPet = pets.filter((pet) => pet.category === "rescued");
-
   const [search, setSearch] = useState("");
 
   return (
     <div>
-      <NavBar></NavBar>
-
       <h1 className="text-3xl text-center mt-5  mb-5">All pets</h1>
 
       <SearchBar setSearch={setSearch}></SearchBar>

@@ -1,14 +1,26 @@
 import findDoggo from "../../../assets/Images/finddoggo.png";
 import findCat from "../../../assets/Images/findcat.png";
 import findOthers from "../../../assets/Images/findothers.png";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 const PetListMenu = () => {
   return (
     <div className="">
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-center lg:mt-40 md:mt-28 mt-8 gap-6 ">
-        <div className=" w-full flex flex-col justify-center items-center">
+        <motion.div
+          initial={{
+            x: -200,
+          }}
+          animate={{
+            x: 2,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className=" w-full flex flex-col justify-center items-center"
+        >
           <div className="w-2/3 rounded-xl hover:scale-125 transition-all ease-in-out  ">
-            <Link>
+            <Link to="/pets/dogs">
               <div>
                 <img className="mx-auto" width={180} src={findDoggo} alt="" />
               </div>
@@ -16,26 +28,41 @@ const PetListMenu = () => {
           </div>
 
           <h1 className="mx-auto text-xl font-semibold">Find a Dog</h1>
-        </div>
+        </motion.div>
 
-        <div className=" w-full flex flex-col justify-center items-center">
+        <motion.div
+          animate={{ scale: [0.4, 1], ease: "circInOut" }}
+          transition={{ duration: 1 }}
+          className=" w-full flex flex-col justify-center items-center"
+        >
           <div className="w-2/3 rounded-xl hover:scale-125 transition-all ease-in-out  ">
-            <Link>
+            <Link to="/pets/cats">
               <img className="mx-auto" width={200} src={findCat} alt="" />
             </Link>
           </div>
 
           <h1 className="mx-auto text-xl font-semibold">Find a Cat</h1>
-        </div>
+        </motion.div>
 
-        <div className=" w-full flex flex-col justify-center items-center">
+        <motion.div
+          initial={{
+            x: 200,
+          }}
+          animate={{
+            x: 2,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className=" w-full flex flex-col justify-center items-center"
+        >
           <div className="w-2/3 rounded-xl hover:scale-125 transition-all ease-in-out  ">
-            <Link>
+            <Link to="/pets/others">
               <img className="mx-auto" width={200} src={findOthers} alt="" />
             </Link>
           </div>
           <h1 className="mx-auto text-xl font-semibold">Find Other Animals</h1>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

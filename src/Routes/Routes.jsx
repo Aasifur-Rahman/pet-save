@@ -15,6 +15,7 @@ import PendingLostPosts from "../Pages/PendingPosts/PendingLostPosts/PendingLost
 
 import Dogs from "../Pages/AllPets/Dogs/Dogs";
 import Cats from "../Pages/AllPets/Cats/Cats";
+import Others from "../Pages/AllPets/Others/Others";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/pets/cats",
         element: <Cats></Cats>,
+      },
+      {
+        path: "/pets/others",
+        element: <Others></Others>,
       },
 
       // user related routes

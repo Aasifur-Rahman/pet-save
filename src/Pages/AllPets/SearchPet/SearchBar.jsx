@@ -13,32 +13,20 @@ const SearchBar = ({ setSearch }) => {
 
         <div className="flex   md:gap-10 lg:gap-20   w-2/3 mx-auto justify-evenly ">
           <div className=" ml-2 flex justify-center w-full items-center gap-2">
-            <Link
-              to="/pets"
-              state={{ type: "dog" }}
-              className="flex gap-2 items-center"
-            >
+            <Link to="/pets/dogs" className="flex gap-2 items-center">
               <FaDog className="text-2xl"></FaDog>
               <h1 className="lg:block md:block hidden">Find a Dog</h1>
             </Link>
           </div>
 
           <div className="flex justify-center w-full items-center gap-2">
-            <Link
-              to="/pets"
-              state={{ type: "cat" }}
-              className="flex items-center gap-2 "
-            >
+            <Link to="/pets/cats" className="flex items-center gap-2 ">
               <FaCat className="text-2xl"></FaCat>
               <h1 className="lg:block md:block hidden ">Find a Cat</h1>
             </Link>
           </div>
           <div className="flex justify-center w-full items-center gap-2">
-            <Link
-              to="/pets"
-              state={{ type: "others" }}
-              className="flex items-center gap-2 "
-            >
+            <Link to="/pets/others" className="flex items-center gap-2 ">
               <MdPets className="text-2xl"></MdPets>
               <h1 className="lg:block md:block hidden ">Others</h1>
             </Link>

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import NavBar from "../../Shared/NavBar";
+
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 
 import { FcGoogle } from "react-icons/fc";
@@ -81,7 +81,6 @@ const SignUp = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
       <div>
         <div>
           <div className="hero bg-base-300 text-primary  mx-auto">

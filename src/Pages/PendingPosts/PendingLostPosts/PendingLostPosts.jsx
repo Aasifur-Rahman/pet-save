@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import NavBar from "../../../Shared/NavBar";
+
 import Swal from "sweetalert2";
 import LostPetModal from "../../../components/LostPetModal/LostPetModal";
 
@@ -45,9 +45,6 @@ const PendingLostPosts = () => {
 
   return (
     <div>
-      <div>
-        <NavBar></NavBar>
-      </div>
       <div className="max-w-screen-xl mx-auto mt-10">
         <div className="overflow-x-auto">
           <table className="table">

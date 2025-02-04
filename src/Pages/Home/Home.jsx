@@ -1,4 +1,3 @@
-import NavBar from "../../Shared/NavBar";
 import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import HowItWorks from "./HowItWorks/HowItWorks";
@@ -8,7 +7,6 @@ import PetListMenu from "./PetListMenu/PetListMenu";
 const Home = () => {
   return (
     <div>
-      <NavBar></NavBar>
       <Banner></Banner>
       <div>
         <PetListMenu></PetListMenu>
