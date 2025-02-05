@@ -10,8 +10,10 @@ const PetListMenu = () => {
         <motion.div
           initial={{
             x: -200,
+            opacity: -20,
           }}
           animate={{
+            opacity: 100,
             x: 2,
           }}
           transition={{
@@ -31,7 +33,8 @@ const PetListMenu = () => {
         </motion.div>
 
         <motion.div
-          animate={{ scale: [0.4, 1], ease: "circInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ scale: [0.4, 1], ease: "circInOut", opacity: 100 }}
           transition={{ duration: 1 }}
           className=" w-full flex flex-col justify-center items-center"
         >
@@ -47,9 +50,11 @@ const PetListMenu = () => {
         <motion.div
           initial={{
             x: 200,
+            opacity: 0,
           }}
           animate={{
             x: 2,
+            opacity: 100,
           }}
           transition={{
             duration: 1,

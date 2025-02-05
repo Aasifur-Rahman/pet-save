@@ -7,7 +7,9 @@ import PetListMenu from "./PetListMenu/PetListMenu";
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
+      <Banner
+        text={"This is Pet Save We save animals that are consider as pet's"}
+      ></Banner>
       <div>
         <PetListMenu></PetListMenu>
       </div>
