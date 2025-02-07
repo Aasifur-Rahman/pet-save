@@ -2,14 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 
-import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUser, updateUser, googleSignIn } = useAuth();
+  const { createUser, updateUser } = useAuth();
 
   const navigate = useNavigate();
 
@@ -54,29 +54,6 @@ const SignUp = () => {
           });
       });
     });
-  };
-
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        if (result.user) {
-          Swal.fire({
-            position: "center",
-            imageUrl:
-              "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
-            imageWidth: "200px",
-            background: "#E8D6CB",
-            title: "Account created successfully",
-
-            showConfirmButton: false,
-            timer: 50000,
-          });
-          navigate(location?.state ? location?.state : "/");
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
   };
 
   return (
@@ -156,12 +133,7 @@ const SignUp = () => {
                             </Link>
                           </p>
                         </label>
-                        <div className="flex justify-center items-center mt-3">
-                          <FcGoogle
-                            onClick={handleGoogleSignIn}
-                            className="text-3xl lg:text-4xl "
-                          />
-                        </div>
+                        <SocialLogin></SocialLogin>
                       </div>
                       <div className="form-control mt-3">
                         <button className="btn btn-primary">Sign Up</button>

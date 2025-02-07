@@ -32,7 +32,7 @@ const NavBar = () => {
       {user ? (
         <>
           <div className="flex justify-end gap-2 items-center">
-            {userDetails?.image || user?.photoURL ? (
+            {user?.photoURL || userDetails?.image ? (
               <div className="avatar placeholder">
                 <div className="bg-neutral text-neutral-content w-8 rounded-full">
                   {/* <span className="text-xs">UI</span> */}

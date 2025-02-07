@@ -1,12 +1,12 @@
 import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 
-import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
-  const { userLogIn, googleSignIn } = useAuth();
+  const { userLogIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -36,30 +36,6 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
-  };
-
-  const handleGoogleLogIn = () => {
-    googleSignIn()
-      .then((result) => {
-        console.log(result.user);
-        if (result.user) {
-          Swal.fire({
-            position: "center",
-            imageUrl:
-              "https://i.pinimg.com/originals/95/92/4b/95924b59120f5bd3ac5db9c69cf9c26a.gif",
-            imageWidth: "200px",
-            background: "#E8D6CB",
-            title: "Welcome back, Furry",
-
-            showConfirmButton: false,
-            timer: 50000,
-          });
-          navigate(location?.state ? location?.state : "/");
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
       });
   };
 
@@ -114,12 +90,7 @@ const Login = () => {
                           Forgot password?
                         </a>
                       </label>
-                      <div className="flex justify-center items-center mt-3">
-                        <FcGoogle
-                          onClick={handleGoogleLogIn}
-                          className="text-3xl lg:text-4xl "
-                        />
-                      </div>
+                      <SocialLogin></SocialLogin>
                     </div>
                     <div className="form-control mt-6">
                       <button className="btn btn-primary">Login</button>

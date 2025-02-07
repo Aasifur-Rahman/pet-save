@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 const PetListMenu = () => {
   return (
     <div className="">
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-center lg:mt-40 md:mt-28 mt-8 gap-6 ">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 100 }}
+        className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-center lg:mt-40 md:mt-28 mt-8 gap-6 "
+      >
         <motion.div
           initial={{
             x: -200,
@@ -68,7 +72,7 @@ const PetListMenu = () => {
           </div>
           <h1 className="mx-auto text-xl font-semibold">Find Other Animals</h1>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };

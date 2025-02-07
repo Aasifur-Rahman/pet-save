@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion, stagger } from "framer-motion";
+import { motion } from "framer-motion";
 import bannerimg from "../../../assets/Images/—Pngtree—cute dogs peeking cartoon_15020940.png";
 import useAuth from "../../../hooks/useAuth";
 const Banner = () => {
