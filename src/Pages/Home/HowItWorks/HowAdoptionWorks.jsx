@@ -1,23 +1,54 @@
+import { motion } from "framer-motion";
+
 import petAdoptionImg from "../../../assets/Images/pet_adoption4S.png";
 const HowAdoptionWorks = () => {
   return (
     <div className="max-w-screen-lg mx-auto">
       <div className="lg:flex md:flex justify-center items-center gap-10">
-        <div className="">
+        <motion.div
+          initial={{ opacity: 0, x: -200 }}
+          whileInView={{ opacity: 1, x: 2 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className=""
+        >
           <img
             className="w-full  hover:scale-105 transition-all ease-in-out rounded-xl hover:rounded-xl"
             src={petAdoptionImg}
             alt=""
           />
-        </div>
+        </motion.div>
         <div className="lg:w-1/2 md:1/2  ">
-          <h5 className="text-2xl font-semibold mt-10 mb-5 text-center  ">
+          <motion.h5
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-2xl font-semibold mt-10 mb-5 text-center  "
+          >
             Adoption
-          </h5>
+          </motion.h5>
           <ul className="timeline timeline-vertical">
             <li>
-              <div className="timeline-start timeline-box">Find Your Pet</div>
-              <div className="timeline-middle">
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                transition={{ duration: 1 }}
+                whileInView={{ opacity: 1, x: 2 }}
+                viewport={{ once: true }}
+                className="timeline-start timeline-box"
+              >
+                Find Your Pet
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -30,14 +61,32 @@ const HowAdoptionWorks = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
               <hr />
             </li>
 
             <li>
               <hr className="py-10" />
-              <div className="timeline-end timeline-box ">Know Your Pet</div>
-              <div className="timeline-middle">
+              <motion.div
+                initial={{ x: 200, opacity: 0 }}
+                transition={{ duration: 1 }}
+                whileInView={{ opacity: 1, x: 2 }}
+                viewport={{ once: true }}
+                className="timeline-end timeline-box "
+              >
+                Know Your Pet
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -51,16 +100,32 @@ const HowAdoptionWorks = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
               <hr />
             </li>
 
             <li>
               <hr />
-              <div className="timeline-start timeline-box">
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, x: 2 }}
+                className="timeline-start timeline-box"
+              >
                 Take Your Pet Home
-              </div>
-              <div className="timeline-middle">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -73,7 +138,7 @@ const HowAdoptionWorks = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
             </li>
           </ul>
         </div>

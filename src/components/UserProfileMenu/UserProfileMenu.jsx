@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-const ProfileMenu = ({ userName, userPhoto }) => {
+const UserProfileMenu = ({ userName, userPhoto }) => {
   const { logOut } = useAuth();
   const handleSignOut = () => {
     logOut();
@@ -73,9 +73,9 @@ const ProfileMenu = ({ userName, userPhoto }) => {
   );
 };
 
-export default ProfileMenu;
+export default UserProfileMenu;
 
-ProfileMenu.propTypes = {
+UserProfileMenu.propTypes = {
   userName: PropTypes.string,
   userPhoto: PropTypes.string,
 };

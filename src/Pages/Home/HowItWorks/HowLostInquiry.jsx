@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import lostinquiryImg from "../../../assets/Images/Lost inquiry.png";
 const HowLostInquiry = () => {
   return (
@@ -9,8 +10,26 @@ const HowLostInquiry = () => {
           </h5>
           <ul className="timeline timeline-vertical">
             <li>
-              <div className="timeline-start timeline-box ">Create account</div>
-              <div className="timeline-middle">
+              <motion.div
+                initial={{ x: -200, opacity: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                whileInView={{ opacity: 1, x: 2 }}
+                className="timeline-start timeline-box "
+              >
+                Create account
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -23,12 +42,22 @@ const HowLostInquiry = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
               <hr />
             </li>
             <li>
               <hr />
-              <div className="timeline-middle">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -41,16 +70,40 @@ const HowLostInquiry = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
-              <div className="timeline-end timeline-box">Login</div>
+              </motion.div>
+              <motion.div
+                initial={{ x: 200, opacity: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                whileInView={{ opacity: 1, x: 2 }}
+                className="timeline-end timeline-box"
+              >
+                Login
+              </motion.div>
               <hr />
             </li>
             <li>
               <hr className="py-4" />
-              <div className="timeline-start timeline-box ">
+              <motion.div
+                initial={{ x: -200, opacity: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                whileInView={{ opacity: 1, x: 2 }}
+                className="timeline-start timeline-box "
+              >
                 Lost Pet Inquiry
-              </div>
-              <div className="timeline-middle">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -63,12 +116,22 @@ const HowLostInquiry = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
               <hr />
             </li>
             <li>
               <hr />
-              <div className="timeline-middle">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -81,18 +144,40 @@ const HowLostInquiry = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
-              <div className="timeline-end timeline-box">
+              </motion.div>
+              <motion.div
+                initial={{ x: 100, opacity: 0 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, x: 2 }}
+                className="timeline-end timeline-box"
+              >
                 Add Information of The Pet
-              </div>
+              </motion.div>
               <hr />
             </li>
             <li>
               <hr />
-              <div className="timeline-start timeline-box ">
+              <motion.div
+                initial={{ x: -200, opacity: 0 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, x: 2 }}
+                className="timeline-start timeline-box "
+              >
                 Await for Approval
-              </div>
-              <div className="timeline-middle">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="timeline-middle"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -105,17 +190,23 @@ const HowLostInquiry = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </motion.div>
             </li>
           </ul>
         </div>
-        <div className="w-full flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, x: 200 }}
+          whileInView={{ opacity: 1, x: 2 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="w-full flex justify-center"
+        >
           <img
             className="w-3/4 hover:scale-105 transition-all ease-in-out "
             src={lostinquiryImg}
             alt=""
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import lightlogo from "../assets/Logo/Pet save logo light.png";
 import { FaSignOutAlt } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import useTheme from "../hooks/useTheme";
-import ProfileMenu from "../components/ProfileMenu/ProfileMenu";
+import UserProfileMenu from "../components/UserProfileMenu/UserProfileMenu";
 import useUserDetails from "../hooks/useUserDetails";
 
 const NavBar = () => {
@@ -56,10 +56,10 @@ const NavBar = () => {
                 </div>
               </div>
             )}
-            <ProfileMenu
+            <UserProfileMenu
               userName={userDetails?.name || user?.displayName}
               userPhoto={userDetails?.image || user?.photoURL}
-            ></ProfileMenu>
+            ></UserProfileMenu>
 
             <button className="flex items-center  " onClick={handleSignOut}>
               <FaSignOutAlt className="ml-1 text-2xl" />

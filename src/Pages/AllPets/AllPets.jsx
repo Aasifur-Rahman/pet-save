@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import PetsCard from "../../components/PetsCard/PetsCard";
 import useAllPets from "../../hooks/useAllPets";
 
@@ -24,7 +25,13 @@ const AllPets = () => {
                 : pet.name.toLowerCase().includes(search);
             })
             .map((pet) => (
-              <PetsCard key={pet._id} pet={pet}></PetsCard>
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 1 }}
+                key={pet._id}
+              >
+                <PetsCard pet={pet}></PetsCard>
+              </motion.div>
             ))}
         </div>
       </div>
