@@ -8,20 +8,13 @@ import useAuth from "../hooks/useAuth";
 import useTheme from "../hooks/useTheme";
 import UserProfileMenu from "../components/UserProfileMenu/UserProfileMenu";
 import useUserDetails from "../hooks/useUserDetails";
+import ToggleTheme from "../Features/ToggleTheme/ToggleTheme";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
   const [userDetails] = useUserDetails();
 
-  const { theme, setTheme } = useTheme();
-
-  const handleToggle = (e) => {
-    if (e.target.checked) {
-      setTheme("myDarkTheme");
-    } else {
-      setTheme("mytheme");
-    }
-  };
+  const { theme } = useTheme();
 
   const handleSignOut = () => {
     logOut();
@@ -32,7 +25,7 @@ const NavBar = () => {
       {user ? (
         <>
           <div className="flex justify-end gap-2 items-center">
-            {user?.photoURL || userDetails?.image ? (
+            {userDetails?.image || user?.photoURL ? (
               <div className="avatar placeholder">
                 <div className="bg-neutral text-neutral-content w-8 rounded-full">
                   {/* <span className="text-xs">UI</span> */}
@@ -93,15 +86,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="flex flex-row-reverse mt-2 ">
-            <div>
-              <input
-                checked={theme === "mytheme" ? false : true}
-                onChange={handleToggle}
-                type="checkbox"
-                value="synthwave"
-                className="toggle theme-controller mt-1"
-              />
-            </div>
+            <ToggleTheme></ToggleTheme>
             <ul className="menu menu-horizontal px-4">{navLinks}</ul>
           </div>
         </div>

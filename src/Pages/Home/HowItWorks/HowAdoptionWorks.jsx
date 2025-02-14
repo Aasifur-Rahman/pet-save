@@ -10,7 +10,7 @@ const HowAdoptionWorks = () => {
           whileInView={{ opacity: 1, x: 2 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className=""
+          className="w-1/2"
         >
           <img
             className="w-full  hover:scale-105 transition-all ease-in-out rounded-xl hover:rounded-xl"

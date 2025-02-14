@@ -1,5 +1,3 @@
-import catImg from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
-
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -57,7 +55,11 @@ const Login = () => {
               <div className="lg:flex md:flex items-center justify-around">
                 <div>
                   <div>
-                    <img className="w-full" src={catImg} alt="" />
+                    <img
+                      className="w-full"
+                      src="https://ibb.co.com/qMYPtg21"
+                      alt=""
+                    />
                   </div>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

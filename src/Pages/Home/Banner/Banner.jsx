@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import bannerimg from "../../../assets/Images/—Pngtree—cute dogs peeking cartoon_15020940.png";
 import useAuth from "../../../hooks/useAuth";
 const Banner = () => {
+  const texts = "Give Every Pet a Second Chance – Adopt, Rescue, Love!";
+
   const { user } = useAuth();
   return (
     <div>
@@ -26,16 +28,22 @@ const Banner = () => {
           />
         </motion.div>
         <div className="flex flex-col justify-center items-center gap-6 absolute lg:relative md:relative ">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 100,
-            }}
-            transition={{ duration: 1 }}
-            className="text-secondary text-2xl md:text-4xl lg:text-5xl text-center w-2/3 md:lg:w-3/4 lg:w-3/4 uppercase font-bold"
-          >
-            This is Pet Save We save animals that are consider as {"pet's"}
-          </motion.h1>
+          <h1 className="text-secondary text-2xl md:text-4xl lg:text-5xl text-start w-2/3 md:lg:w-3/4 lg:w-3/4  font-bold">
+            {texts.split("").map((text, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+
+                  delay: index * 0.1,
+                }}
+              >
+                {text}
+              </motion.span>
+            ))}
+          </h1>
           {!user && (
             <Link to="/signup" className="btn text-primary ">
               Register Now

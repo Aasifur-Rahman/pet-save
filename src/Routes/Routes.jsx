@@ -16,6 +16,9 @@ import PendingLostPosts from "../Pages/PendingPosts/PendingLostPosts/PendingLost
 import Dogs from "../Pages/AllPets/Dogs/Dogs";
 import Cats from "../Pages/AllPets/Cats/Cats";
 import Others from "../Pages/AllPets/Others/Others";
+import Dashboard from "../Layout/Dashboard";
+import AdminRoute from "./AdminRoute";
+import AddAllPets from "../Pages/Dashboard/AddAllPets/AddAllPets";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +101,24 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Profile></Profile>
           </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <AdminRoute>
+        <Dashboard></Dashboard>
+      </AdminRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/addAllPets",
+        element: (
+          <AdminRoute>
+            <AddAllPets></AddAllPets>
+          </AdminRoute>
         ),
       },
     ],

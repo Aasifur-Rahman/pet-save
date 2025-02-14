@@ -11,10 +11,10 @@ const HowLostInquiry = () => {
           <ul className="timeline timeline-vertical">
             <li>
               <motion.div
-                initial={{ x: -200, opacity: 0 }}
-                viewport={{ once: true }}
+                initial={{ x: -100, opacity: 0 }}
                 transition={{ duration: 1 }}
-                whileInView={{ opacity: 1, x: 2 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 className="timeline-start timeline-box "
               >
                 Create account
@@ -72,7 +72,7 @@ const HowLostInquiry = () => {
                 </svg>
               </motion.div>
               <motion.div
-                initial={{ x: 200, opacity: 0 }}
+                initial={{ x: 100, opacity: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
                 whileInView={{ opacity: 1, x: 2 }}
@@ -85,7 +85,7 @@ const HowLostInquiry = () => {
             <li>
               <hr className="py-4" />
               <motion.div
-                initial={{ x: -200, opacity: 0 }}
+                initial={{ x: -100, opacity: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
                 whileInView={{ opacity: 1, x: 2 }}
@@ -159,7 +159,7 @@ const HowLostInquiry = () => {
             <li>
               <hr />
               <motion.div
-                initial={{ x: -200, opacity: 0 }}
+                initial={{ x: -100, opacity: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
                 whileInView={{ opacity: 1, x: 2 }}
@@ -195,17 +195,13 @@ const HowLostInquiry = () => {
           </ul>
         </div>
         <motion.div
-          initial={{ opacity: 0, x: 200 }}
+          initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 2 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
           className="w-full flex justify-center"
         >
-          <img
-            className="w-3/4 hover:scale-105 transition-all ease-in-out "
-            src={lostinquiryImg}
-            alt=""
-          />
+          <img className="w-3/4  " src={lostinquiryImg} alt="" />
         </motion.div>
       </div>
     </div>

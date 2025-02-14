@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 const PetListMenu = () => {
   return (
-    <div className="">
+    <div className=" ">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 100 }}
-        className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-center lg:mt-40 md:mt-28 mt-8 gap-6 "
+        className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-center lg:mt-40 md:mt-28 mt-8 gap-6 "
       >
         <motion.div
           initial={{
