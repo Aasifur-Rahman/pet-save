@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-
+import imgSignCover from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
   const { createUser, updateUser } = useAuth();
@@ -73,11 +73,7 @@ const SignUp = () => {
                 <div className="lg:flex md:flex items-center justify-around">
                   <div>
                     <div>
-                      <img
-                        className="w-full"
-                        src="https://ibb.co.com/qMYPtg21"
-                        alt=""
-                      />
+                      <img className="w-full" src={imgSignCover} alt="" />
                     </div>
                   </div>
                   <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

@@ -19,6 +19,9 @@ import Others from "../Pages/AllPets/Others/Others";
 import Dashboard from "../Layout/Dashboard";
 import AdminRoute from "./AdminRoute";
 import AddAllPets from "../Pages/Dashboard/AddAllPets/AddAllPets";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import ManagePets from "../Pages/Dashboard/ManagePets/ManagePets";
 
 const router = createBrowserRouter([
   {
@@ -114,10 +117,34 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "/dashboard/adminHome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
         path: "/dashboard/addAllPets",
         element: (
           <AdminRoute>
             <AddAllPets></AddAllPets>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/managePets",
+        element: (
+          <AdminRoute>
+            <ManagePets></ManagePets>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
           </AdminRoute>
         ),
       },

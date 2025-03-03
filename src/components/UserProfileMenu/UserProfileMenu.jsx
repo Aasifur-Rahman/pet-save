@@ -44,7 +44,7 @@ const UserProfileMenu = ({ userName, userPhoto }) => {
               <li className="mt-4 mr-1">
                 <Link
                   className="uppercase border border-primary"
-                  to="/dashboard"
+                  to="/dashboard/adminHome"
                 >
                   Dashboard
                 </Link>

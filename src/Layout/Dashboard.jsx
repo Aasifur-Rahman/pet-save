@@ -6,13 +6,22 @@ import lightlogo from "../assets/Logo/Pet save logo light.png";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import ToggleTheme from "../Features/ToggleTheme/ToggleTheme";
 import useTheme from "../hooks/useTheme";
+import { FaUsers } from "react-icons/fa";
+import { GiGoat } from "react-icons/gi";
+import { motion } from "framer-motion";
+import { SiManageiq } from "react-icons/si";
 
 const Dashboard = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="flex">
-      <nav className="lg:w-44 md:w-44 w-1/5 min-h-screen bg-secondary shadow-md">
+    <motion.div
+      initial={{ x: -200 }}
+      animate={{ x: 0 }}
+      transition={{ duration: 1 }}
+      className="flex"
+    >
+      <div className="lg:w-44 md:w-44 w-1/5 min-h-screen bg-secondary shadow-md">
         <div className="flex justify-around items-center mt-5 mb-2 ">
           <Link to="/">
             {theme === "myDarkTheme" ? (
@@ -25,13 +34,16 @@ const Dashboard = () => {
         </div>
         <hr />
         <ul className="menu text-primary lg:menu-vertical rounded-r-lg mt-2 uppercase font-semibold font-mono">
-          <li>
-            <NavLink className="lg:w-full md:w-full w-2/3s" to="/dashboard">
+          <motion.li whileHover={{ scale: 1.1 }}>
+            <NavLink
+              className="lg:w-full md:w-full w-2/3 "
+              to="/dashboard/AdminHome"
+            >
               <MdDashboard className="text-lg"></MdDashboard>
-              <span className="lg:block md:block hidden"> Dashboard</span>
+              <span className="lg:block md:block hidden">Dashboard</span>
             </NavLink>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
               className="lg:w-full md:w-full w-2/3 mt-2"
               to="/dashboard/addAllPets"
@@ -39,8 +51,17 @@ const Dashboard = () => {
               <BiAddToQueue className="text-lg"></BiAddToQueue>
               <span className="lg:block md:block hidden">Add All Pets</span>
             </NavLink>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
+            <NavLink
+              className="lg:w-full md:w-full w-2/3 mt-2"
+              to="/dashboard/managePets"
+            >
+              <SiManageiq></SiManageiq>
+              <span className="lg:block md:block hidden">Manage Pets</span>
+            </NavLink>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
               className="lg:w-full md:w-full w-2/3 mt-2"
               to="/dashboard/managePosts"
@@ -48,26 +69,35 @@ const Dashboard = () => {
               <BsPostcard className="text-lg"></BsPostcard>
               <span className="lg:block md:block hidden"> Manage Posts</span>
             </NavLink>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
+            <NavLink
+              className="lg:w-full md:w-full w-2/3 mt-2"
+              to="/dashboard/manageUsers"
+            >
+              <FaUsers className="text-lg"></FaUsers>
+              <span className="lg:block md:block hidden"> Manage Users</span>
+            </NavLink>
+          </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink className="lg:w-full md:w-full w-2/3 mt-2" to="/">
-              <BiHome className="text-lg text-center "></BiHome>
+              <BiHome className="text-lg  "></BiHome>
               <span className="lg:block md:block hidden">Home</span>
             </NavLink>
-          </li>
-          <li>
-            <a>
-              Stats
-              <span className="badge badge-xs badge-info"></span>
-            </a>
-          </li>
+          </motion.li>
+          <motion.li className="" whileHover={{ scale: 1.1 }}>
+            <Link to={"/allPets"}>
+              {" "}
+              <GiGoat className="text-lg "></GiGoat>All Pets
+            </Link>
+          </motion.li>
         </ul>
-      </nav>
+      </div>
 
       <div className="flex-1">
         <Outlet></Outlet>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

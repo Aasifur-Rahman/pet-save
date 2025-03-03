@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CiLocationOn } from "react-icons/ci";
 
 const PetsCard = ({ pet }) => {
-  const { _id, name, type, category, images, location } = pet;
+  const { _id, name, type, category, images, image, location } = pet;
 
   return (
     <div>
@@ -14,7 +14,7 @@ const PetsCard = ({ pet }) => {
         <figure>
           <img
             className=" h-64 w-full object-cover  object-center"
-            src={images.img1}
+            src={images?.img1 || image}
             alt="pets"
           />
         </figure>

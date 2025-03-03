@@ -1,6 +1,7 @@
 import { FaDog, FaCat } from "react-icons/fa6";
 import { MdPets } from "react-icons/md";
 import { GiGoat } from "react-icons/gi";
+import { motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
 const Menu = () => {
@@ -36,46 +37,53 @@ const Menu = () => {
             <div className="hidden flex-none lg:block w-full ">
               <ul className="menu menu-horizontal w-full gap-4 justify-center">
                 {/* Navbar menu content here */}
-                <li className="w-1/6">
-                  <summary>
-                    <FaDog className="text-xl"></FaDog>{" "}
-                    <Link to="/pets/dogs">Dogs</Link>
-                  </summary>
-                </li>
-                <li className="w-1/6">
-                  <summary>
-                    <FaCat className="text-xl"></FaCat>{" "}
-                    <Link to="/pets/cats">{"Cat's"}</Link>
-                  </summary>
-                </li>
-                <li className="w-1/6">
-                  <summary>
-                    <MdPets className="text-xl"></MdPets>{" "}
-                    <Link to="/pets/others">Other {"Pet's"}</Link>
-                  </summary>
-                </li>
-                <li className="w-1/6 flex">
-                  <summary>
-                    <GiGoat className="text-xl"></GiGoat>
-                    <Link to="/allpets">{"All Pet's"}</Link>
-                  </summary>
-                </li>
-                <li className="w-1/4">
+                <Link className="w-1/6" to="/pets/dogs">
+                  <motion.li whileHover={{ scale: 1.1 }}>
+                    <summary>
+                      <FaDog className="text-xl"></FaDog> Dogs
+                    </summary>
+                  </motion.li>
+                </Link>
+                <Link className="w-1/6" to="/pets/cats">
+                  <motion.li whileHover={{ scale: 1.1 }}>
+                    <summary>
+                      <FaCat className="text-xl"></FaCat> {"Cat's"}
+                    </summary>
+                  </motion.li>
+                </Link>
+                <Link className="w-1/6" to="/pets/others">
+                  <motion.li whileHover={{ scale: 1.1 }}>
+                    <summary>
+                      <MdPets className="text-xl"></MdPets> Other {"Pet's"}
+                    </summary>
+                  </motion.li>
+                </Link>
+
+                <Link className="w-1/6 " to="/allpets">
+                  <motion.li whileHover={{ scale: 1.1 }}>
+                    <summary>
+                      <GiGoat className="text-xl"></GiGoat>
+                      {"All Pet's"}
+                    </summary>
+                  </motion.li>
+                </Link>
+
+                <motion.li whileHover={{ scale: 1.1 }} className="w-1/4">
                   <details>
                     <summary>
                       <MdPets className="text-xl"></MdPets> Fostering Home &
                       Lost Pet
                     </summary>
                     <ul>
-                      <li>
+                      <motion.li whileHover={{ scale: 1.1 }}>
                         <Link to="/fosteringHome">Fostering Home</Link>
-                      </li>
-                      <li>
+                      </motion.li>
+                      <motion.li whileHover={{ scale: 1.1 }}>
                         <Link to="/lostpet">Lost Pet</Link>
-                      </li>
+                      </motion.li>
                     </ul>
                   </details>
-                </li>
+                </motion.li>
               </ul>
             </div>
           </div>
@@ -88,48 +96,48 @@ const Menu = () => {
           ></label>
           <ul className="menu bg-base-200 min-h-full w-80 p-4">
             {/* Sidebar content here */}
-            <li>
+            <motion.li whileHover={{ scale: 1.1 }}>
               <summary>
                 <FaDog className="text-xl"></FaDog>{" "}
                 <Link to="/pets/dogs">Dogs</Link>
               </summary>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={{ scale: 1.1 }}>
               <summary>
                 <FaCat className="text-xl"></FaCat>{" "}
                 <Link to="/pets/cats">{"Cat's"}</Link>
               </summary>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={{ scale: 1.1 }}>
               <summary>
                 {" "}
                 <MdPets className="text-xl"></MdPets>{" "}
                 <Link to="/pets/others">Other {"Pet's"}</Link>
               </summary>
-            </li>
-            <li className="flex">
+            </motion.li>
+            <motion.li whileHover={{ scale: 1.1 }} className="flex">
               <summary>
                 <GiGoat></GiGoat>
                 <Link to="/allpets">{"All Pet's"}</Link>
               </summary>
-            </li>
+            </motion.li>
 
-            <li className="w-full">
+            <motion.li whileHover={{ scale: 1.1 }} className="w-full">
               <details>
                 <summary>
                   <MdPets className="text-xl"></MdPets> Fostering Home & Lost
                   Pet
                 </summary>
                 <ul>
-                  <li>
+                  <motion.li whileHover={{ scale: 1.1 }}>
                     <Link to="/fosteringHome">Fostering Home</Link>
-                  </li>
-                  <li>
+                  </motion.li>
+                  <motion.li whileHover={{ scale: 1.1 }}>
                     <Link to="/lostpet">Lost Pet</Link>
-                  </li>
+                  </motion.li>
                 </ul>
               </details>
-            </li>
+            </motion.li>
           </ul>
         </div>
       </div>

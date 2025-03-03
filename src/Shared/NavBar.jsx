@@ -13,6 +13,7 @@ import ToggleTheme from "../Features/ToggleTheme/ToggleTheme";
 const NavBar = () => {
   const { user, logOut } = useAuth();
   const [userDetails] = useUserDetails();
+  console.log(userDetails);
 
   const { theme } = useTheme();
 
