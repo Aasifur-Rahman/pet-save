@@ -30,7 +30,7 @@ const ChartStats = () => {
   }));
 
   return (
-    <div className="w-1/2 mx-auto mt-10">
+    <div className="w-full md:w-3/4 lg:w-2/4 mx-auto mt-10 ">
       <h2 className="text-xl font-bold text-center mb-4 text-primary">
         Pet Category Statistics
       </h2>

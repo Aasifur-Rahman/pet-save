@@ -20,7 +20,7 @@ const AllPets = () => {
         <div className="grid  gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center">
           {pets
             .filter((pet) => {
-              return search.toLowerCase === ""
+              return search.toLowerCase() === ""
                 ? pet
                 : pet.name.toLowerCase().includes(search);
             })

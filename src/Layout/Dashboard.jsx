@@ -72,25 +72,29 @@ const Dashboard = () => {
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
-              className="lg:w-full md:w-full w-2/3 mt-2"
+              className="lg:w-full md:w-full w-2/3 mt-2 mb-2"
               to="/dashboard/manageUsers"
             >
               <FaUsers className="text-lg"></FaUsers>
               <span className="lg:block md:block hidden"> Manage Users</span>
             </NavLink>
           </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }}>
-            <NavLink className="lg:w-full md:w-full w-2/3 mt-2" to="/">
-              <BiHome className="text-lg  "></BiHome>
-              <span className="lg:block md:block hidden">Home</span>
-            </NavLink>
-          </motion.li>
-          <motion.li className="" whileHover={{ scale: 1.1 }}>
-            <Link to={"/allPets"}>
-              {" "}
-              <GiGoat className="text-lg "></GiGoat>All Pets
-            </Link>
-          </motion.li>
+          <hr></hr>
+          <div className="mt-5s">
+            <motion.li whileHover={{ scale: 1.1 }}>
+              <NavLink className="lg:w-full md:w-full w-2/3 mt-2" to="/">
+                <BiHome className="text-lg  "></BiHome>
+                <span className="lg:block md:block hidden">Home</span>
+              </NavLink>
+            </motion.li>
+            <motion.li className="" whileHover={{ scale: 1.1 }}>
+              <Link to={"/allPets"}>
+                {" "}
+                <GiGoat className="text-lg "></GiGoat>{" "}
+                <span className="lg:block md:block hidden">All Pets</span>
+              </Link>
+            </motion.li>
+          </div>
         </ul>
       </div>
 

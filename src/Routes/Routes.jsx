@@ -22,6 +22,8 @@ import AddAllPets from "../Pages/Dashboard/AddAllPets/AddAllPets";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ManagePets from "../Pages/Dashboard/ManagePets/ManagePets";
+import UpdatePets from "../Pages/Dashboard/ManagePets/UpdatePets/UpdatePets";
+import ManagePosts from "../Pages/Dashboard/ManagePosts/ManagePosts";
 
 const router = createBrowserRouter([
   {
@@ -117,7 +119,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/adminHome",
+        path: "adminHome",
         element: (
           <AdminRoute>
             <AdminHome></AdminHome>
@@ -125,7 +127,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/addAllPets",
+        path: "addAllPets",
         element: (
           <AdminRoute>
             <AddAllPets></AddAllPets>
@@ -133,7 +135,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/managePets",
+        path: "managePets",
         element: (
           <AdminRoute>
             <ManagePets></ManagePets>
@@ -141,10 +143,29 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/manageUsers",
+        path: "updatePet/:id",
+        element: (
+          <AdminRoute>
+            <UpdatePets></UpdatePets>
+          </AdminRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/pets/${params.id}`),
+      },
+      {
+        path: "manageUsers",
         element: (
           <AdminRoute>
             <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "managePosts",
+        element: (
+          <AdminRoute>
+            <ManagePosts></ManagePosts>
           </AdminRoute>
         ),
       },

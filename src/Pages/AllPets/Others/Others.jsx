@@ -5,7 +5,7 @@ import SearchBar from "../SearchPet/SearchBar";
 
 const Others = () => {
   const [pets] = useAllPets();
-  const others = pets.filter((pet) => pet.type.toLowerCase() === "others");
+  const others = pets.filter((pet) => pet.type === "others");
   return (
     <div>
       <div className="mt-8">

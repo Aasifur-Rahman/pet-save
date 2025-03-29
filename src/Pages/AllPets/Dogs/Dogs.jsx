@@ -5,7 +5,7 @@ import SearchBar from "../SearchPet/SearchBar";
 
 const Dogs = () => {
   const [pets] = useAllPets();
-  const filteredDogs = pets.filter((pet) => pet.type.toLowerCase() === "dog");
+  const filteredDogs = pets.filter((pet) => pet.type === "dog");
   console.log(filteredDogs);
   return (
     <div>
