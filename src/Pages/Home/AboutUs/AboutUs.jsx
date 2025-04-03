@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AboutUs = () => {
   return (
     <div className="mt-28 w-3/4 mx-auto flex flex-col justify-center items-center gap-7">
@@ -20,9 +22,11 @@ const AboutUs = () => {
         </p>
       </div>
       <div>
-        <button className="btn btn-primary text-secondary mb-5">
-          Find out more
-        </button>
+        <Link to="/about">
+          <button className="btn btn-primary text-secondary mb-5">
+            Find out more
+          </button>
+        </Link>
       </div>
     </div>
   );

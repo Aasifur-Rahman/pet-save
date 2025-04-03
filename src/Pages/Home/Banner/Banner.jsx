@@ -22,7 +22,7 @@ const Banner = () => {
           className="bg-cover bg-center w-full h-full"
         >
           <img
-            className="absolute w-1/2 md:w-full  bottom-0  right-1/2 transform translate-y-1/3 md:right-[7%] lg:w-[80%] lg:right-[20%] "
+            className="absolute w-1/2 md:w-full  bottom-0  right-1/2 transform translate-y-1/3 md:right-[7%]  xl:w-[80%] xl-right-[20%] 2xl:w-[30%] 2xl:right-[60%]"
             src={bannerimg}
             alt="dog banner"
           />

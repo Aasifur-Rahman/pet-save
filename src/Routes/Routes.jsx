@@ -24,6 +24,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ManagePets from "../Pages/Dashboard/ManagePets/ManagePets";
 import UpdatePets from "../Pages/Dashboard/ManagePets/UpdatePets/UpdatePets";
 import ManagePosts from "../Pages/Dashboard/ManagePosts/ManagePosts";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
       },
       {
         path: "/login",
