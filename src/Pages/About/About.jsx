@@ -1,6 +1,6 @@
 import { MdOutlineGppGood, MdOutlineNoiseAware } from "react-icons/md";
 import aboutImg from "../../assets/Images/krista-mangulsone-9gz3wfHr65U-unsplash.jpg";
-
+import helping from "../../assets/Images/mira-kireeva-j8riV72oICI-unsplash.jpg";
 import useTheme from "../../hooks/useTheme";
 import { SiRescuetime } from "react-icons/si";
 import { FaSuitcaseMedical } from "react-icons/fa6";
@@ -42,21 +42,28 @@ const About = () => {
           </p>
         </div>
 
-        <div
-          className={`mt-5 p-5 lg:max-w-screen-md mx-auto ${
-            theme == "myDarkTheme" ? "text-primary" : "text-secondary"
-          } `}
-        >
-          <h1 className="text-4xl lg:text-center  font-mono mt-5 ">
-            How We Help
-          </h1>
-          <p className="font-mono mt-2  ">
-            We don’t just list pets for adoption—we ensure they find the right
-            homes. Our adoption process includes real-life interaction so
-            potential adopters can bond with their future pets before making a
-            commitment. Every pet is given proper care, vaccinations, and love
-            before joining a new family.
-          </p>
+        <div>
+          <div
+            className="-z-10 bg-cover bg-center h-80 flex items-center justify-center "
+            style={{ backgroundImage: `url(${helping})` }}
+          >
+            <div
+              className={`mt-5 p-5 lg:max-w-screen-md mx-auto ${
+                theme == "myDarkTheme" ? "text-primary" : "text-secondary"
+              } `}
+            >
+              <h1 className="text-4xl lg:text-center  font-mono mt-5 ">
+                How We Help
+              </h1>
+              <p className="font-mono mt-2  ">
+                We don’t just list pets for adoption—we ensure they find the
+                right homes. Our adoption process includes real-life interaction
+                so potential adopters can bond with their future pets before
+                making a commitment. Every pet is given proper care,
+                vaccinations, and love before joining a new family.
+              </p>
+            </div>
+          </div>
         </div>
         <div
           className={`p-10 lg:max-w-screen-md mx-auto ${
