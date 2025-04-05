@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { MdDoNotDisturbOn } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const ManagePosts = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,6 +23,36 @@ const ManagePosts = () => {
       return res.data;
     },
   });
+
+  const handleLostApprove = async (lostPetId) => {
+    const confirmApproval = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Approve it!",
+    });
+
+    if (confirmApproval.isConfirmed) {
+      const res = axiosSecure.patch(`/approve/lostpets/${lostPetId}`);
+      const { result } = (await res).data;
+      if (result.modifiedCount > 0) {
+        Swal.fire({
+          title: "Approved!",
+          text: "Lost Post is Approved.",
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to approve the lost post.",
+          icon: "error",
+        });
+      }
+    }
+  };
 
   return (
     <div className="mt-14">
@@ -86,7 +117,9 @@ const ManagePosts = () => {
                     <td>{lostPet.address}</td>
                     <td>{lostPet.email}</td>
                     <td>
-                      <button>
+                      <button
+                        onClick={() => handleLostApprove(`${lostPet._id}`)}
+                      >
                         {" "}
                         <IoCheckmarkCircleSharp className="font-bold text-xl" />
                       </button>
