@@ -23,8 +23,6 @@ const ManagePosts = () => {
     },
   });
 
-  console.log(pendingFosterPets);
-
   return (
     <div className="mt-14">
       <h1 className="text-3xl text-center mb-5">Pending Posts</h1>
