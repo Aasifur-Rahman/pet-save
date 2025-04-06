@@ -25,32 +25,40 @@ const ManagePosts = () => {
   });
 
   const handleLostApprove = async (lostPetId) => {
-    const confirmApproval = await Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Approve it!",
-    });
+    try {
+      const confirmApproval = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Approve it!",
+      });
 
-    if (confirmApproval.isConfirmed) {
-      const res = axiosSecure.patch(`/approve/lostpets/${lostPetId}`);
-      const { result } = (await res).data;
-      if (result.modifiedCount > 0) {
-        Swal.fire({
-          title: "Approved!",
-          text: "Lost Post is Approved.",
-          icon: "success",
-        });
-      } else {
-        Swal.fire({
-          title: "Error!",
-          text: "Failed to approve the lost post.",
-          icon: "error",
-        });
+      if (confirmApproval.isConfirmed) {
+        const res = await axiosSecure.patch(`/lostPets/${lostPetId}`);
+        const { result } = res.data;
+        if (result.modifiedCount > 0) {
+          Swal.fire({
+            title: "Approved!",
+            text: "Lost Post is Approved.",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Failed to approve the lost post.",
+            icon: "error",
+          });
+        }
       }
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to approve the lost post.",
+        icon: "error",
+      });
     }
   };
 
