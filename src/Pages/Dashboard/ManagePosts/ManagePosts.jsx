@@ -38,13 +38,15 @@ const ManagePosts = () => {
 
       if (confirmApproval.isConfirmed) {
         const res = await axiosSecure.patch(`/lostPets/${lostPetId}`);
-        const { result } = res.data;
-        if (result.modifiedCount > 0) {
-          Swal.fire({
-            title: "Approved!",
-            text: "Lost Post is Approved.",
-            icon: "success",
-          });
+        if (res.data && res.data.result) {
+          const { result } = res.data;
+          if (result.modifiedCount > 0) {
+            Swal.fire({
+              title: "Approved!",
+              text: "Lost Post is Approved.",
+              icon: "success",
+            });
+          }
         } else {
           Swal.fire({
             title: "Error!",
@@ -121,6 +123,7 @@ const ManagePosts = () => {
               <tbody>
                 {pendingLostPets?.map((lostPet) => (
                   <tr key={lostPet._id} className="hover">
+                    {console.log(lostPet._id)}
                     <th>{lostPet.petName}</th>
                     <td>{lostPet.address}</td>
                     <td>{lostPet.email}</td>
