@@ -1,5 +1,5 @@
 import useAuth from "../../hooks/useAuth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import imgLoginCover from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
@@ -85,9 +85,7 @@ const Login = () => {
                         required
                       />
                       <label className="label">
-                        <a href="#" className="label-text-alt link link-hover">
-                          Forgot password?
-                        </a>
+                        <Link to="/resetPassword">Forgot password?</Link>
                       </label>
                       <SocialLogin></SocialLogin>
                     </div>

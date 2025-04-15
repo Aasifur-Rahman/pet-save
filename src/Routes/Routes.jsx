@@ -25,6 +25,7 @@ import ManagePets from "../Pages/Dashboard/ManagePets/ManagePets";
 import UpdatePets from "../Pages/Dashboard/ManagePets/UpdatePets/UpdatePets";
 import ManagePosts from "../Pages/Dashboard/ManagePosts/ManagePosts";
 import About from "../Pages/About/About";
+import ForgotPassword from "../utils/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,12 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
+
+      {
+        path: "/resetPassword",
+        element: <ForgotPassword></ForgotPassword>,
+      },
+
       {
         path: "/signup",
         element: <SignUp></SignUp>,
