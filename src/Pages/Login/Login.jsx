@@ -3,8 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import imgLoginCover from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
+import { useState } from "react";
 
 const Login = () => {
+  const [error, setError] = useState("");
+
   const { userLogIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,6 +38,11 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        if (error.code == "auth/invalid-credential") {
+          setError("Invalid email or password.");
+        } else {
+          setError("Something went wrong. Please try again");
+        }
       });
   };
 
@@ -84,6 +92,11 @@ const Login = () => {
                         className="input input-bordered"
                         required
                       />
+                      {error && (
+                        <p className="text-yellow-400 mt-3 mb-3">
+                          ⚠️ Invalid email or password.
+                        </p>
+                      )}
                       <label className="label">
                         <Link to="/resetPassword">Forgot password?</Link>
                       </label>

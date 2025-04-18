@@ -5,8 +5,10 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import imgSignCover from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
+import { useState } from "react";
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
+  const [error, setError] = useState("");
   const { createUser, updateUser } = useAuth();
 
   const navigate = useNavigate();
@@ -19,39 +21,48 @@ const SignUp = () => {
     const password = form.password.value;
     const photoURL = form.photo.value;
 
-    createUser(email, password).then((result) => {
-      console.log(result.user);
-      // updateProfile
-      updateUser(name).then(() => {
-        const userInfo = {
-          name: name,
-          email: email,
-          image: photoURL,
-        };
-        axiosPublic
-          .post("/users", userInfo)
-          .then((res) => {
-            console.log(res.data.insertedId);
-            if (res.data.insertedId) {
-              Swal.fire({
-                position: "center",
-                imageUrl:
-                  "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
-                imageWidth: "200px",
-                background: "#E8D6CB",
-                title: "Account created successfully",
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        // updateProfile
+        updateUser(name).then(() => {
+          const userInfo = {
+            name: name,
+            email: email,
+            image: photoURL,
+          };
+          axiosPublic
+            .post("/users", userInfo)
+            .then((res) => {
+              console.log(res.data.insertedId);
+              if (res.data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  imageUrl:
+                    "https://i.ibb.co.com/XYWZ6bf/db0fc5b567a3600e43a4b8650df7986f.gif",
+                  imageWidth: "200px",
+                  background: "#E8D6CB",
+                  title: "Account created successfully",
 
-                showConfirmButton: false,
-                timer: 50000,
-              });
-              navigate("/");
-            }
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
+                  showConfirmButton: false,
+                  timer: 50000,
+                });
+                navigate("/");
+              }
+            })
+            .catch((error) => {
+              console.error("Axios error:", error);
+              setError("Something went wrong saving user data");
+            });
+        });
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          setError("Email already in use");
+        } else {
+          setError("Something went wrong");
+        }
       });
-    });
   };
 
   return (
@@ -123,6 +134,11 @@ const SignUp = () => {
                           className="input input-bordered"
                           required
                         />
+
+                        {error && (
+                          <p className="text-yellow-400 mt-3 mb-3">{error}</p>
+                        )}
+
                         <label className="label">
                           <p>
                             Already Have an Account?{" "}
