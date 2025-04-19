@@ -22,21 +22,23 @@ const Dashboard = () => {
       className="flex"
     >
       <div className="lg:w-44 md:w-44 w-1/5 min-h-screen bg-secondary shadow-md">
-        <div className="flex justify-around items-center mt-5 mb-2 ">
+        <div className="lg:flex lg:flex-row md:flex md:flex-row flex flex-col gap-4 justify-around items-center mt-5 mb-2 ">
           <Link to="/">
             {theme === "myDarkTheme" ? (
-              <img className="w-24" src={lightlogo} alt="" />
+              <img className="w-full lg:w-24 md:w-24" src={lightlogo} alt="" />
             ) : (
-              <img className="w-24" src={logo} alt="" />
+              <img className="w-full g:w-24 md:w-24" src={logo} alt="" />
             )}
           </Link>
-          <ToggleTheme></ToggleTheme>
+          <div>
+            <ToggleTheme></ToggleTheme>
+          </div>
         </div>
         <hr />
-        <ul className="menu text-primary lg:menu-vertical rounded-r-lg mt-2 uppercase font-semibold font-mono">
+        <ul className="menu text-primary lg:menu-vertical rounded-r-lg mt-2 uppercase font-semibold font-mono justify-center lg:items-start md:items-start items-center">
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
-              className="lg:w-full md:w-full w-2/3 "
+              className="lg:w-full md:w-full  "
               to="/dashboard/AdminHome"
             >
               <MdDashboard className="text-lg"></MdDashboard>
@@ -45,7 +47,7 @@ const Dashboard = () => {
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
-              className="lg:w-full md:w-full w-2/3 mt-2"
+              className="lg:w-full md:w-full  mt-2"
               to="/dashboard/addAllPets"
             >
               <BiAddToQueue className="text-lg"></BiAddToQueue>
@@ -54,7 +56,7 @@ const Dashboard = () => {
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
-              className="lg:w-full md:w-full w-2/3 mt-2"
+              className="lg:w-full md:w-full mt-2"
               to="/dashboard/managePets"
             >
               <SiManageiq></SiManageiq>
@@ -63,7 +65,7 @@ const Dashboard = () => {
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
-              className="lg:w-full md:w-full w-2/3 mt-2"
+              className="lg:w-full md:w-full mt-2"
               to="/dashboard/managePosts"
             >
               <BsPostcard className="text-lg"></BsPostcard>
@@ -72,7 +74,7 @@ const Dashboard = () => {
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink
-              className="lg:w-full md:w-full w-2/3 mt-2 mb-2"
+              className="lg:w-full md:w-full  mt-2 mb-2"
               to="/dashboard/manageUsers"
             >
               <FaUsers className="text-lg"></FaUsers>
@@ -82,7 +84,7 @@ const Dashboard = () => {
           <hr></hr>
           <div className="mt-5s">
             <motion.li whileHover={{ scale: 1.1 }}>
-              <NavLink className="lg:w-full md:w-full w-2/3 mt-2" to="/">
+              <NavLink className="lg:w-full md:w-full  mt-2" to="/">
                 <BiHome className="text-lg  "></BiHome>
                 <span className="lg:block md:block hidden">Home</span>
               </NavLink>

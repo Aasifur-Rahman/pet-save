@@ -3,9 +3,10 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 import Swal from "sweetalert2";
-import LostPetModal from "../../../components/LostPetModal/LostPetModal";
 
-const PendingLostPosts = () => {
+import LostPetCard from "../../../components/LostPetCard/LostPetCard";
+
+const UserLostPosts = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
@@ -46,6 +47,12 @@ const PendingLostPosts = () => {
   return (
     <div>
       <div className="max-w-screen-xl mx-auto mt-10">
+        <div>
+          <h3 className="text-5xl text-center font-bold font-mono mb-10">
+            {user.name}Lost Posts
+          </h3>
+        </div>
+
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -55,7 +62,7 @@ const PendingLostPosts = () => {
                 <th>{"Pet"} Name</th>
                 <th>{"Parent Name"}</th>
                 <th>Address</th>
-                <th>Status</th>
+
                 <th>Info</th>
                 <th>Action</th>
               </tr>
@@ -94,21 +101,9 @@ const PendingLostPosts = () => {
                       </td>
 
                       <td>{lostPet.address}</td>
-                      <td
-                        className={`${
-                          lostPet.status === "pending"
-                            ? "text-yellow-500 capitalize"
-                            : lostPet.status === "rejected"
-                            ? "text-red-500 capitalize"
-                            : lostPet.status === "approved"
-                            ? "text-green-500 capitalize"
-                            : ""
-                        }`}
-                      >
-                        {lostPet.status}
-                      </td>
+
                       <th>
-                        <LostPetModal
+                        <LostPetCard
                           id={lostPet._id}
                           parentName={
                             lostPet.firstName + " " + lostPet.lastName
@@ -125,7 +120,7 @@ const PendingLostPosts = () => {
                           nature={lostPet.petNature}
                           vaccinated={lostPet.vaccinated}
                           resToName={lostPet.respondsToName}
-                        ></LostPetModal>
+                        ></LostPetCard>
                       </th>
                       <th>
                         <button
@@ -149,4 +144,4 @@ const PendingLostPosts = () => {
   );
 };
 
-export default PendingLostPosts;
+export default UserLostPosts;

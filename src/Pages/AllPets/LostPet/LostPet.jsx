@@ -54,7 +54,7 @@ const LostPet = () => {
           timer: 1500,
         });
 
-        navigate("/user/pendingLostPost");
+        navigate("/user/lost-post");
       }
     }
   };

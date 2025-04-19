@@ -102,7 +102,7 @@ const UserProfileMenu = ({ userName, userPhoto }) => {
               <li className="mt-4 mr-1">
                 <Link
                   className="uppercase border border-primary"
-                  to="/user/pendingLostPost"
+                  to="/user/lostpost"
                 >
                   Lost Pet Posts
                 </Link>

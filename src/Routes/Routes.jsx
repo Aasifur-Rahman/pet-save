@@ -11,7 +11,6 @@ import FosteringHome from "../Pages/AllPets/FosteringHome/FosteringHome";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
 import PendingFosterHome from "../Pages/PendingPosts/PendingFosterHome/PendingFosterHome";
-import PendingLostPosts from "../Pages/PendingPosts/PendingLostPosts/PendingLostPosts";
 
 import Dogs from "../Pages/AllPets/Dogs/Dogs";
 import Cats from "../Pages/AllPets/Cats/Cats";
@@ -26,6 +25,7 @@ import UpdatePets from "../Pages/Dashboard/ManagePets/UpdatePets/UpdatePets";
 import ManagePosts from "../Pages/Dashboard/ManagePosts/ManagePosts";
 import About from "../Pages/About/About";
 import ForgotPassword from "../utils/ForgotPassword";
+import UserLostPosts from "../Pages/PendingPosts/UserLostPosts/UserLostPosts";
 
 const router = createBrowserRouter([
   {
@@ -105,10 +105,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/user/pendingLostPost",
+        path: "/user/lostpost",
         element: (
           <PrivateRoute>
-            <PendingLostPosts></PendingLostPosts>
+            <UserLostPosts></UserLostPosts>
           </PrivateRoute>
         ),
       },
