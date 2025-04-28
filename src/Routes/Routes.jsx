@@ -26,6 +26,7 @@ import ManagePosts from "../Pages/Dashboard/ManagePosts/ManagePosts";
 import About from "../Pages/About/About";
 import ForgotPassword from "../utils/ForgotPassword";
 import UserLostPosts from "../Pages/PendingPosts/UserLostPosts/UserLostPosts";
+import EditLost from "../Pages/PendingPosts/UserLostPosts/EditLost/EditLost";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/fosteringHome",
         element: (
@@ -111,6 +113,16 @@ const router = createBrowserRouter([
             <UserLostPosts></UserLostPosts>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/user/lostPet/:id",
+        element: (
+          <PrivateRoute>
+            <EditLost></EditLost>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) =>
+          await fetch(`http://localhost:5000/user/lostPet/${params.id}`),
       },
       {
         path: "/profile",

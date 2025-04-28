@@ -4,7 +4,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 import Swal from "sweetalert2";
 
-import LostPetCard from "../../../components/LostPetCard/LostPetCard";
+import LostPetDetails from "../../../components/LostPetDetails/LostPetDetails";
+import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
 
 const UserLostPosts = () => {
   const axiosSecure = useAxiosSecure();
@@ -53,16 +55,16 @@ const UserLostPosts = () => {
           </h3>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="table">
+        <div className="lg:overflow-x-auto md:overflow-x  overflow-x-hidden">
+          <table className="table items-center ">
             {/* head */}
             <thead>
               <tr>
-                <th>Numbers</th>
+                <th className="hidden md:table-cell">Numbers</th>
                 <th>{"Pet"} Name</th>
-                <th>{"Parent Name"}</th>
-                <th>Address</th>
-
+                <th className="hidden md:table-cell">{"Parent Name"}</th>
+                <th className="hidden md:table-cell ">Address</th>
+                <th>Edit</th>
                 <th>Info</th>
                 <th>Action</th>
               </tr>
@@ -73,7 +75,7 @@ const UserLostPosts = () => {
                 <>
                   {lostPets.map((lostPet, index) => (
                     <tr key={lostPet._id}>
-                      <td>{index + 1}</td>
+                      <td className="hidden md:table-cell ">{index + 1}</td>
                       <td>
                         <div className="flex items-center gap-3">
                           <div className="avatar">
@@ -92,7 +94,7 @@ const UserLostPosts = () => {
                           </div>
                         </div>
                       </td>
-                      <td>
+                      <td className="hidden md:table-cell ">
                         {lostPet?.firstName} {lostPet?.lastName}
                         <br />
                         <span className="badge badge-ghost badge-sm">
@@ -100,10 +102,17 @@ const UserLostPosts = () => {
                         </span>
                       </td>
 
-                      <td>{lostPet.address}</td>
+                      <td className="hidden md:table-cell ">
+                        {lostPet.address}
+                      </td>
 
                       <th>
-                        <LostPetCard
+                        <Link to={`/user/lostPet/${lostPet._id}`}>
+                          <FaEdit></FaEdit>
+                        </Link>
+                      </th>
+                      <th>
+                        <LostPetDetails
                           id={lostPet._id}
                           parentName={
                             lostPet.firstName + " " + lostPet.lastName
@@ -120,7 +129,7 @@ const UserLostPosts = () => {
                           nature={lostPet.petNature}
                           vaccinated={lostPet.vaccinated}
                           resToName={lostPet.respondsToName}
-                        ></LostPetCard>
+                        ></LostPetDetails>
                       </th>
                       <th>
                         <button
@@ -134,7 +143,7 @@ const UserLostPosts = () => {
                   ))}
                 </>
               ) : (
-                <span className="text-center">No results found</span>
+                <span className="text-center mt-10">No results found</span>
               )}
             </tbody>
           </table>

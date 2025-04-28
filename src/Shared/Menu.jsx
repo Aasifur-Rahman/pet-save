@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 const Menu = () => {
   return (
-    <div className="">
-      <div className="drawer z-10">
+    <div>
+      <div className="drawer z-10  ">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
-          <div className="navbar bg-base-200  w-full  ">
+          <div className="navbar bg-transparent lg:bg-base-200  w-full  ">
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"

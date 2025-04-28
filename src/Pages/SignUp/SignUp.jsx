@@ -45,7 +45,7 @@ const SignUp = () => {
                   title: "Account created successfully",
 
                   showConfirmButton: false,
-                  timer: 50000,
+                  timer: 5000,
                 });
                 navigate("/");
               }
@@ -87,7 +87,7 @@ const SignUp = () => {
                       <img className="w-full" src={imgSignCover} alt="" />
                     </div>
                   </div>
-                  <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                  <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
                     <form onSubmit={handleSignUp} className="card-body">
                       <div className="form-control">
                         <label className="label">

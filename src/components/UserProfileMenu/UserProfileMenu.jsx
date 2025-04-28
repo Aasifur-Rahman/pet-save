@@ -10,7 +10,7 @@ const UserProfileMenu = ({ userName, userPhoto }) => {
     logOut();
   };
   return (
-    <div>
+    <div className="lg:z-20">
       {isAdmin ? (
         <div className="drawer z-20 drawer-end">
           <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -18,7 +18,7 @@ const UserProfileMenu = ({ userName, userPhoto }) => {
             {/* Page content here */}
             <label
               htmlFor="my-drawer-4"
-              className="drawer-button hover:underline btn-secondary "
+              className="drawer-button hover:underline btn-secondary  z-10 "
             >
               {userName}
             </label>

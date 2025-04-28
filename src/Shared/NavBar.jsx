@@ -13,7 +13,8 @@ import ToggleTheme from "../Features/ToggleTheme/ToggleTheme";
 const NavBar = () => {
   const { user, logOut } = useAuth();
   const [userDetails] = useUserDetails();
-  console.log(userDetails);
+
+  console.log(userDetails?.image);
 
   const { theme } = useTheme();
 
@@ -32,7 +33,7 @@ const NavBar = () => {
                   {/* <span className="text-xs">UI</span> */}
                   <img
                     className=" w-1/12 rounded-full"
-                    src={userDetails?.image || user?.photoURL}
+                    src={userDetails?.image}
                     alt="user Photo"
                   />
                 </div>
