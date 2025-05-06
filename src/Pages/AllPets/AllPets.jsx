@@ -5,9 +5,11 @@ import useAllPets from "../../hooks/useAllPets";
 import SearchBar from "./SearchPet/SearchBar";
 
 import { useState } from "react";
+import useLostPets from "../../hooks/useLostPets";
 
 const AllPets = () => {
   const [pets] = useAllPets();
+  const [lostPets] = useLostPets();
   const [search, setSearch] = useState("");
 
   return (
@@ -18,11 +20,11 @@ const AllPets = () => {
 
       <div className="w-full mx-auto mt-10">
         <div className="grid  gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center">
-          {pets
-            .filter((pet) => {
+          {pets 
+            .filter((pet ) => {
               return search.toLowerCase() === ""
-                ? pet
-                : pet.name.toLowerCase().includes(search);
+                ? pet 
+                : pet.name.toLowerCase().includes(search) 
             })
             .map((pet) => (
               <motion.div

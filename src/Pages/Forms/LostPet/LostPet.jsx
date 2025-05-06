@@ -38,14 +38,15 @@ const LostPet = () => {
         vaccinated: data.vaccinated,
         reward: data.reward,
         image: res.data.data.display_url,
-        status: "pending",
       };
 
+      const postInAllPets = await axiosPublic.post("/pets", lostPetDetails);
       const lostPetRes = await axiosPublic.post(
         "/user/lostPost",
         lostPetDetails
       );
-      if (lostPetRes.data.insertedId) {
+
+      if (lostPetRes.data.insertedId && postInAllPets.data.insertedId) {
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -54,7 +55,7 @@ const LostPet = () => {
           timer: 1500,
         });
 
-        navigate("/user/lost-post");
+        navigate("/user/lostpost");
       }
     }
   };
@@ -114,7 +115,7 @@ const LostPet = () => {
           />
 
           <input
-            type="text"
+            type="number"
             name="lastSeen"
             {...register("age")}
             placeholder="Pet's Age"

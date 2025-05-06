@@ -20,30 +20,47 @@ const UserLostPosts = () => {
     },
   });
 
-  const handleDeletePost = (lostPostId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+  const handleDeletePost = async (lostPost) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+
       if (result.isConfirmed) {
-        axiosSecure.delete(`/user/lostPost/${lostPostId}`).then((res) => {
-          console.log(res.data);
-          if (res.data.deletedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-          }
-        });
+        // Deleting pet data
+        const pet = lostPost;
+        const petRes = await axiosSecure.delete(`/pet/${pet._id}`);
+
+        // Deleting lost post data after pet deletion
+        const lostRes = await axiosSecure.delete(
+          `/user/lostPost/${lostPost._id}`
+        );
+
+        // Check if both delete operations were successful
+        if (lostRes.data.deletedCount && petRes.data.deletedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
       }
-    });
+    } catch (error) {
+      // Handle any error that occurs during the request
+      console.error("Error deleting posts:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Something went wrong while deleting.",
+        icon: "error",
+      });
+    }
   };
 
   return (
@@ -133,7 +150,7 @@ const UserLostPosts = () => {
                       </th>
                       <th>
                         <button
-                          onClick={() => handleDeletePost(`${lostPet._id}`)}
+                          onClick={() => handleDeletePost(lostPet)}
                           className="btn btn-ghost btn-xs"
                         >
                           Delete
@@ -143,7 +160,10 @@ const UserLostPosts = () => {
                   ))}
                 </>
               ) : (
-                <span className="text-center mt-10">No results found</span>
+                <>
+                  {" "}
+                  <span className="text-center mt-10">No results found</span>
+                </>
               )}
             </tbody>
           </table>
