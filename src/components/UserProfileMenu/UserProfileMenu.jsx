@@ -18,7 +18,7 @@ const UserProfileMenu = ({ userName, userPhoto }) => {
             {/* Page content here */}
             <label
               htmlFor="my-drawer-4"
-              className="drawer-button hover:underline btn-secondary  z-10 "
+              className="drawer-button relative inline-block text-primary after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 after:origin-center hover:after:w-full hover:after:left-0 btn-secondary  z-10 "
             >
               {userName}
             </label>
@@ -68,7 +68,7 @@ const UserProfileMenu = ({ userName, userPhoto }) => {
             {/* Page content here */}
             <label
               htmlFor="my-drawer-4"
-              className="drawer-button hover:underline btn-secondary "
+              className="drawer-button  relative inline-block text-primary after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 after:origin-center hover:after:w-full hover:after:left-0 btn-secondary "
             >
               {userName}
             </label>

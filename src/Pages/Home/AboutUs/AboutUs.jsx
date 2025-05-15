@@ -2,23 +2,16 @@ import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
-    <div className="mt-28 w-3/4 mx-auto flex flex-col justify-center items-center gap-7">
+    <div className="mt-10 w-3/4 mx-auto flex flex-col justify-center items-center gap-7">
       <div>
         <h1 className="text-center text-4xl font-bold mb-4">Pet Save</h1>
         <h4 className="text-center text-3xl font-semibold mb-5 ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut atque hic
-          culpa?
+         Helping animals find loving homes and better lives. Can you be their hero?
         </h4>
         <p className="text-lg text-pretty">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore
-          saepe, quis iusto molestiae odit quas ratione magnam pariatur sint
-          modi, eveniet corrupti itaque libero ab iste dignissimos, quaerat
-          dicta id. Nostrum consequatur ipsum asperiores veniam tempora odio,
-          blanditiis commodi. Aspernatur, laborum unde a, quidem excepturi ipsa
-          necessitatibus labore nostrum voluptatum maiores eius fuga quae atque
-          consequuntur harum neque recusandae officiis quisquam! Reiciendis,
-          praesentium minus illum soluta quis voluptatibus, repellendus fugit
-          cupiditate, culpa alias blanditiis?
+          
+
+At Pet Save, we believe every animal deserves compassion and care. Each day, we rescue abandoned and vulnerable pets, providing them with shelter, food, and medical attention until they find their forever homes. Our mission is to reduce animal suffering and ensure no pet is left behind. With your support, we offer rehabilitation, foster placement, and adoption services tailored to each pet’s unique needs. From playful puppies to senior cats, every animal receives love and respect. Together, we can end neglect and give these loyal companions the life they truly deserve.
         </p>
       </div>
       <div>

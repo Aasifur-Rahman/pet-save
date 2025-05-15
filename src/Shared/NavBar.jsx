@@ -12,7 +12,7 @@ import ToggleTheme from "../Features/ToggleTheme/ToggleTheme";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
-  const [userDetails] = useUserDetails();
+  const [userDetails, refetch, loading] = useUserDetails();
 
   console.log(userDetails?.image);
 
@@ -20,7 +20,11 @@ const NavBar = () => {
 
   const handleSignOut = () => {
     logOut();
+    refetch()
   };
+
+  
+  
 
   const navLinks = (
     <>
@@ -52,8 +56,10 @@ const NavBar = () => {
               </div>
             )}
             <UserProfileMenu
-              userName={userDetails?.name || user?.displayName}
-              userPhoto={userDetails?.image || user?.photoURL}
+             
+            userPhoto={loading ? <span className="loading loading-ring loading-md"></span> :  user?.photoURL ||  userDetails?.image}
+              userName={loading ?  <span className="loading loading-dots loading-md"></span>  : userDetails?.name || user?.displayName }
+              
             ></UserProfileMenu>
 
             <button className="flex items-center  " onClick={handleSignOut}>

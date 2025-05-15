@@ -66,15 +66,15 @@ const About = () => {
           </div>
         </div>
         <div
-          className={`p-10 lg:max-w-screen-md mx-auto ${
-            theme == "myDarkTheme" ? "text-primary" : "text-secondary"
-          } `}
+          className={`p-10 lg:max-w-screen-md mx-auto  ${
+                theme == "myDarkTheme" ? "text-primary" : "text-secondary"
+              } `}
         >
           <h1 className="text-4xl   font-mono flex-col  content-center place-items-center   ">
-            <MdOutlineGppGood />
-            <h1 className="mt-2">Our Mission</h1>
+            <MdOutlineGppGood className="text-primary" />
+            <h1 className="mt-2 text-primary">Our Mission</h1>
           </h1>
-          <ul className="  space-y-5 mt-10  grid lg:grid-cols-4 md:grid-cols-4  content-center justify-center gap-5">
+          <ul className={`  space-y-5 mt-10  grid lg:grid-cols-4 md:grid-cols-4   content-center justify-center gap-5 text-primary`}>
             <li className="flex-col content-center place-items-center">
               <SiRescuetime className="text-2xl " />
               <p className="mt-2 text-center">

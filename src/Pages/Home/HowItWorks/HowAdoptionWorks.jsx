@@ -68,7 +68,7 @@ const HowAdoptionWorks = () => {
             <li>
               <hr className="py-10" />
               <motion.div
-                initial={{ x: 200, opacity: 0 }}
+                initial={{ x: 100, opacity: 0 }}
                 transition={{ duration: 1 }}
                 whileInView={{ opacity: 1, x: 2 }}
                 viewport={{ once: true }}

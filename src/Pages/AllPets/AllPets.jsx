@@ -5,11 +5,11 @@ import useAllPets from "../../hooks/useAllPets";
 import SearchBar from "./SearchPet/SearchBar";
 
 import { useState } from "react";
-import useLostPets from "../../hooks/useLostPets";
+
 
 const AllPets = () => {
   const [pets] = useAllPets();
-  const [lostPets] = useLostPets();
+  
   const [search, setSearch] = useState("");
 
   return (

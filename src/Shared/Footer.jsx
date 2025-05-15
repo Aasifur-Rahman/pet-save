@@ -2,9 +2,30 @@ import lightlogo from "../assets/Logo/Pet save logo.png";
 import logo from "../assets/Logo/Pet save logo light.png";
 
 import useTheme from "../hooks/useTheme";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 const Footer = () => {
   const { theme } = useTheme();
+
+
+  const sendNewsLetter = (e) => {
+    e.preventDefault()
+
+   const email = e.target.email.value 
+    
+   if(email){
+    Swal.fire({
+  title: "Thank you!",
+  text: " for subscription",
+  icon: "success"
+  
+} 
+ 
+);
+   } 
+  }
 
   return (
     <div>
@@ -16,12 +37,34 @@ const Footer = () => {
             ) : (
               <img className="w-32" src={logo} alt="" />
             )}
-            <p>
-              ACME Industries Ltd.
+        
+              <p>
+              Pet Save Ltd.
               <br />
-              Providing reliable tech since 1992
+              Providing reliable <br/> pet rescue and shelters  since 2021
             </p>
+            
           </aside>
+          <div>
+  <h3 className="font-bold mb-2">Stay Updated</h3>
+  <form onSubmit={sendNewsLetter} >
+    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs mb-2 text-primary" />
+  <button  className="btn btn-sm btn-primary"><input type="submit" value="Subscribe" /></button>
+  </form>
+</div>
+          <div>
+            
+        
+  <h3 className="font-bold mb-2">Quick Links</h3>
+  <ul className="space-y-4">
+    <li><Link href="/about" className="link link-hover">About Us</Link></li>
+    <li><Link href="/adopt" className="link link-hover">Adopt a Pet</Link></li>
+    <li><Link href="/donate" className="link link-hover">Donate</Link></li>
+    <li><Link href="/contact" className="link link-hover">Contact</Link></li>
+  </ul>
+
+
+          </div>
           <nav>
             <h6 className="footer-title">Social</h6>
             <div className="grid grid-flow-col gap-4">
@@ -58,7 +101,15 @@ const Footer = () => {
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
                 </svg>
               </a>
+              
             </div>
+            <div>
+  <h3 className="font-bold mb-2 mt-5">Contact</h3>
+  <p>Email: info@petsave.org</p>
+  <p>Phone: +880 123-456-789</p>
+  <p>Location: Dhaka, Bangladesh</p>
+</div>
+
           </nav>
         </div>
       </footer>

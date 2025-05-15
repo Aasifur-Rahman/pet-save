@@ -6,7 +6,7 @@ const useUserDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: userDetails = [0], refetch } = useQuery({
+  const { data: userDetails = [0], refetch, isPending : loading } = useQuery({
     queryKey: ["userDetails"],
     queryFn: async () => {
       if (!user?.email) return null;
@@ -15,7 +15,7 @@ const useUserDetails = () => {
     },
     // enabled: !!user.email,
   });
-  return [userDetails, refetch];
+  return [userDetails, refetch, loading];
 };
 
 export default useUserDetails;
