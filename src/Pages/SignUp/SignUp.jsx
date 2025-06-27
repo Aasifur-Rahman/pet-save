@@ -6,6 +6,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import imgSignCover from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 import { useState } from "react";
+import { motion } from "framer-motion";
+
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
   const [error, setError] = useState("");
@@ -69,27 +71,53 @@ const SignUp = () => {
     <div>
       <div>
         <div>
-          <div className="hero bg-base-300 text-primary  mx-auto">
+          <div className="grid w-full  place-items-center bg-cover  bg-base-200  pb-28  text-primary  mx-auto">
             <div className="hero-content  max-w-screen-lg  ">
               <div className="text-center flex flex-col ">
                 <div>
-                  <h1 className="text-5xl font-bold">Sign up here!</h1>
-                  <p className="py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                    assumenda excepturi exercitationem quasi. In deleniti eaque
-                    aut repudiandae et a id nisi.
-                  </p>
+                  <motion.h1
+                    initial={{ y: -50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 100 }}
+                    transition={{ duration: 1 }}
+                    className="text-5xl font-bold"
+                  >
+                    Sign up here!
+                  </motion.h1>
+                  <motion.p
+                    initial={{ y: -50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 100 }}
+                    transition={{ duration: 1.5 }}
+                    className="py-6"
+                  >
+                    Make a paw-sitive impact today! Create an account to start
+                    saving lives, connecting with loving animals, and being part
+                    of a community that truly cares.
+                  </motion.p>
                 </div>
 
                 <div className="lg:flex md:flex items-center justify-around">
                   <div>
-                    <div>
-                      <img className="w-full" src={imgSignCover} alt="" />
-                    </div>
+                    <motion.div
+                      initial={{ y: -100, opacity: 0 }}
+                      animate={{ y: 0, opacity: 100 }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <img className="w-5/6" src={imgSignCover} alt="" />
+                    </motion.div>
                   </div>
-                  <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
+                  <motion.div
+                    initial={{ y: -200, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl"
+                  >
                     <form onSubmit={handleSignUp} className="card-body">
-                      <div className="form-control">
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="form-control"
+                      >
                         <label className="label">
                           <span className="label-text">Name</span>
                         </label>
@@ -99,8 +127,13 @@ const SignUp = () => {
                           placeholder="Your Name"
                           className="input input-bordered focus:bg-primary focus:text-secondary "
                         />
-                      </div>
-                      <div className="form-control">
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="form-control"
+                      >
                         <label className="label">
                           <span className="label-text">Photo URL</span>
                         </label>
@@ -110,8 +143,13 @@ const SignUp = () => {
                           placeholder="Photo URL here"
                           className="input input-bordered focus:bg-primary focus:text-secondary "
                         />
-                      </div>
-                      <div className="form-control">
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="form-control"
+                      >
                         <label className="label">
                           <span className="label-text">Email</span>
                         </label>
@@ -122,8 +160,13 @@ const SignUp = () => {
                           className="input input-bordered focus:bg-primary focus:text-secondary "
                           required
                         />
-                      </div>
-                      <div className="form-control">
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                        className="form-control"
+                      >
                         <label className="label">
                           <span className="label-text">Password</span>
                         </label>
@@ -148,12 +191,17 @@ const SignUp = () => {
                           </p>
                         </label>
                         <SocialLogin></SocialLogin>
-                      </div>
-                      <div className="form-control mt-3">
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9, duration: 0.6 }}
+                        className="form-control mt-3"
+                      >
                         <button className="btn btn-primary">Sign Up</button>
-                      </div>
+                      </motion.div>
                     </form>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>

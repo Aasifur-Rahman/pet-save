@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import imgLoginCover from "../../assets/Images/—Pngtree—a blue and white cat_58039752222.png";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -49,27 +50,55 @@ const Login = () => {
   return (
     <div>
       <div>
-        <div className="hero bg-base-300 text-primary  mx-auto">
+        <div className=" grid w-full  place-items-center bg-cover  bg-base-200 py-10 pb-28  text-primary  mx-auto">
           <div className="hero-content  max-w-screen-lg  ">
             <div className="text-center flex flex-col ">
               <div>
-                <h1 className="text-5xl font-bold">Login now!</h1>
-                <p className="py-6">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
-                </p>
+                <motion.h1
+                  initial={{ y: -50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 100 }}
+                  transition={{ duration: 1 }}
+                  className="text-5xl font-bold"
+                >
+                  Login now!
+                </motion.h1>
+                <motion.p
+                  initial={{ y: -50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 100 }}
+                  transition={{ duration: 1.5 }}
+                  className="py-6"
+                >
+                  Log in to continue your journey of compassion—whether{" "}
+                  {" you're"}
+                  here to adopt, rescue, or simply care. Together, we make a
+                  difference for pets in need.
+                </motion.p>
               </div>
 
               <div className="lg:flex md:flex items-center justify-around">
                 <div>
-                  <div>
-                    <img className="w-full" src={imgLoginCover} alt="lazy" />
-                  </div>
+                  <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 100 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <img className="w-5/6" src={imgLoginCover} alt="lazy" />
+                  </motion.div>
                 </div>
-                <div className="card bg-base-100  mx-auto w-full max-w-sm shrink-0 shadow-2xl">
+                <motion.div
+                  initial={{ y: -200, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                  className="card bg-base-100  mx-auto w-full max-w-sm shrink-0 shadow-2xl"
+                >
                   <form onSubmit={handleLogin} className="card-body">
-                    <div className="form-control">
+                    {/* email */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.6 }}
+                      className="form-control"
+                    >
                       <label className="label">
                         <span className="label-text">Email</span>
                       </label>
@@ -80,8 +109,14 @@ const Login = () => {
                         className="input input-bordered focus:bg-primary focus:text-secondary "
                         required
                       />
-                    </div>
-                    <div className="form-control">
+                    </motion.div>
+                    {/* password */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.6 }}
+                      className="form-control"
+                    >
                       <label className="label">
                         <span className="label-text">Password</span>
                       </label>
@@ -101,12 +136,17 @@ const Login = () => {
                         <Link to="/resetPassword">Forgot password?</Link>
                       </label>
                       <SocialLogin></SocialLogin>
-                    </div>
-                    <div className="form-control mt-6">
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.9, duration: 0.6 }}
+                      className="form-control mt-6"
+                    >
                       <button className="btn btn-primary">Login</button>
-                    </div>
+                    </motion.div>
                   </form>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
