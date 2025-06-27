@@ -71,7 +71,7 @@ const SignUp = () => {
     <div>
       <div>
         <div>
-          <div className="grid w-full  place-items-center bg-cover  bg-base-200  pb-28  text-primary  mx-auto">
+          <div className="grid w-full  place-items-center bg-cover  bg-base-200  pb-6  text-primary  mx-auto">
             <div className="hero-content  max-w-screen-lg  ">
               <div className="text-center flex flex-col ">
                 <div>
