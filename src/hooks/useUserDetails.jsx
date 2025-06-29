@@ -6,7 +6,11 @@ const useUserDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: userDetails = [0], refetch, isPending : loading } = useQuery({
+  const {
+    data: userDetails = [0],
+    refetch,
+    isPending: loading,
+  } = useQuery({
     queryKey: ["userDetails"],
     queryFn: async () => {
       if (!user?.email) return null;

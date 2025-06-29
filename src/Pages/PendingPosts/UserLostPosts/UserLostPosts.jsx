@@ -34,16 +34,15 @@ const UserLostPosts = () => {
 
       if (result.isConfirmed) {
         // Deleting pet data
-        const pet = lostPost;
-        const petRes = await axiosSecure.delete(`/pet/${pet._id}`);
 
         // Deleting lost post data after pet deletion
         const lostRes = await axiosSecure.delete(
           `/user/lostPost/${lostPost._id}`
         );
 
+        const deletedCount = lostRes.data?.lostPetDeleted?.deletedCount;
         // Check if both delete operations were successful
-        if (lostRes.data.deletedCount && petRes.data.deletedCount > 0) {
+        if (deletedCount && deletedCount > 0) {
           refetch();
           Swal.fire({
             title: "Deleted!",

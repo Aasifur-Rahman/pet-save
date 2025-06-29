@@ -40,13 +40,14 @@ const LostPet = () => {
         image: res.data.data.display_url,
       };
 
-      const postInAllPets = await axiosPublic.post("/pets", lostPetDetails);
       const lostPetRes = await axiosPublic.post(
         "/user/lostPost",
         lostPetDetails
       );
 
-      if (lostPetRes.data.insertedId && postInAllPets.data.insertedId) {
+      const insertedId = lostPetRes.data.lostPetResult?.insertedId;
+
+      if (insertedId) {
         Swal.fire({
           position: "top-end",
           icon: "success",

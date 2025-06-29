@@ -29,12 +29,12 @@ const NavBar = () => {
             {userDetails?.image ? (
               <div className="avatar placeholder">
                 <div className="bg-neutral text-neutral-content w-8 rounded-full">
-                  {/* <span className="text-xs">UI</span> */}
                   <img
                     className=" w-1/12 rounded-full"
                     src={userDetails?.image}
                     alt="user Photo"
                   />
+                   <div className="skeleton w-24 h-24 rounded-full" />
                 </div>
               </div>
             ) : (
@@ -50,10 +50,7 @@ const NavBar = () => {
                 </div>
               </div>
             )}
-            <UserProfileMenu
-              userPhoto={userDetails?.image}
-              userName={user?.displayName}
-            ></UserProfileMenu>
+            <UserProfileMenu></UserProfileMenu>
 
             <button className="flex items-center  " onClick={handleSignOut}>
               <FaSignOutAlt className="ml-1 text-2xl" />
