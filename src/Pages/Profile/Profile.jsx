@@ -24,41 +24,57 @@ const Profile = () => {
   };
 
   const onSubmit = async (data) => {
-    const imageFiles = { image: data.image[0] };
-    const res = await axiosPublic.post(image_hosting_api, imageFiles, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
+    let imageUrl = userDetails.image; // fallback to existing image
 
-    const userUpdate = {
-      name: data.name,
-      nickName: data.nickName,
-      gender: data.gender,
-      country: data.country,
-      language: data.language,
-      image: res.data.data.display_url,
-    };
-    console.log(userUpdate);
-    if (!userDetails?._id) {
-      console.error("User ID is not available yet");
-      return;
-    }
+    try {
+      if (data.image && data.image[0]) {
+        const imageFiles = new FormData();
+        imageFiles.append("image", data.image[0]);
 
-    const updateUser = await axiosSecure.patch(
-      `/users/${userDetails._id}`,
-      userUpdate
-    );
+        const res = await axiosPublic.post(image_hosting_api, imageFiles, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
-    if (updateUser.data.modifiedCount > 0) {
+        imageUrl = res.data.data.display_url;
+      }
+
+      const userUpdate = {
+        name: data.name,
+        nickName: data.nickName,
+        gender: data.gender,
+        country: data.country,
+        language: data.language,
+        image: imageUrl,
+      };
+
+      if (!userDetails?._id) {
+        console.error("User ID is not available yet");
+        return;
+      }
+
+      const updateUser = await axiosSecure.patch(
+        `/users/${userDetails._id}`,
+        userUpdate
+      );
+
+      if (updateUser.data.modifiedCount > 0) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `Updated Profile`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      }
+    } catch (error) {
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: `Updated Profile`,
-        showConfirmButton: false,
-        timer: 1500,
+        icon: "error",
+        title: "Oops...",
+        text: `${error.message}`,
       });
-      refetch();
     }
   };
 
@@ -87,6 +103,13 @@ const Profile = () => {
                           type="file"
                           className="file-input file-input-bordered file-input-sm  max-w-xs"
                         />
+                        {userDetails?.image && (
+                          <img
+                            src={userDetails.image} // assuming this is a valid image URL
+                            alt="Current"
+                            className="w-24 h-24 mt-2 object-cover rounded"
+                          />
+                        )}
                       </div>
                       <div className="modal-action">
                         <form method="dialog">
